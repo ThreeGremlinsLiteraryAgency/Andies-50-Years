@@ -9,2395 +9,1704 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Kalam:wght@300;400&family=Sacramento&display=swap"
-rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Kalam:wght@300;400&family=Sacramento&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --navy:#173653;
+  --navy-deep:#102b45;
+  --blue:#527898;
+  --blue-mid:#6f91aa;
+  --blue-soft:#9eb6c8;
+  --blue-pale:#dce7ed;
 
-/* =========================================================
-   ANDIE'S 50TH BIRTHDAY SCRAPBOOK
-   BLUE / IVORY / GOLD THEME
-========================================================= */
+  --paper:#eee2ca;
+  --paper-light:#fbf4e6;
+  --paper-bright:#fffaf0;
+  --paper-dark:#ddc9a8;
 
-:root {
-  --blue-deep:#233b57;
-  --blue:#496985;
-  --blue-medium:#66839b;
-  --blue-soft:#91a8b9;
-  --blue-pale:#dce6ec;
+  --gold:#b78b3f;
+  --gold-light:#d4b36d;
+  --gold-pale:#ead7a8;
 
-  --navy:#1f344c;
-  --navy-soft:#344d68;
+  --ink:#193650;
+  --muted:#6f777b;
+  --heart:#a85e64;
 
-  --paper:#f7f2e7;
-  --paper-light:#fffdf7;
-  --paper-shadow:#e5dccb;
-
-  --gold:#b89a5b;
-  --gold-light:#d8c38d;
-
-  --ink:#25394f;
-  --muted:#6e7880;
-
-  --white:#ffffff;
-
-  --shadow:
-    0 12px 30px
-    rgba(24,45,66,.18);
-
-  --deep-shadow:
-    0 25px 65px
-    rgba(13,29,45,.35);
+  --shadow:0 18px 42px rgba(8,25,42,.25);
+  --deep-shadow:0 30px 80px rgba(5,20,35,.38);
 }
 
-
-* {
+*{
   box-sizing:border-box;
 }
 
-
-html {
+html{
   scroll-behavior:smooth;
 }
 
-
-body {
+body{
   margin:0;
-
+  min-height:100vh;
   color:var(--ink);
-
-  font-family:
-    "Cormorant Garamond",
-    Georgia,
-    serif;
+  font-family:"Cormorant Garamond",Georgia,serif;
 
   background:
-    radial-gradient(
-      circle at 15% 10%,
-      rgba(255,255,255,.12),
-      transparent 22%
-    ),
-    radial-gradient(
-      circle at 80% 30%,
-      rgba(255,255,255,.08),
-      transparent 20%
-    ),
+    radial-gradient(circle at 12% 14%,rgba(255,255,255,.09),transparent 22%),
+    radial-gradient(circle at 85% 20%,rgba(255,255,255,.06),transparent 20%),
+    radial-gradient(circle at 75% 75%,rgba(5,24,43,.18),transparent 30%),
     repeating-linear-gradient(
       0deg,
-      rgba(255,255,255,.025),
-      rgba(255,255,255,.025) 1px,
+      rgba(255,255,255,.018) 0,
+      rgba(255,255,255,.018) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(8,31,51,.025) 0,
+      rgba(8,31,51,.025) 1px,
       transparent 1px,
       transparent 5px
     ),
-    var(--blue);
+    linear-gradient(145deg,#6d8da6 0%,#4d7393 42%,#355b7b 100%);
 }
-
 
 button,
 textarea,
-input {
+input{
   font:inherit;
 }
 
-
-button {
+button{
   cursor:pointer;
 }
 
-
 /* =========================================================
-   NAVIGATION
+   NAV
 ========================================================= */
 
-.top-nav {
+.top-nav{
   position:sticky;
   top:0;
-
-  z-index:1000;
+  z-index:2000;
 
   display:flex;
   justify-content:center;
   align-items:center;
-
+  flex-wrap:wrap;
   gap:28px;
 
-  flex-wrap:wrap;
+  min-height:68px;
+  padding:10px 20px;
 
-  padding:14px 20px;
-
-  background:
-    rgba(247,242,231,.96);
-
-  border-bottom:
-    1px solid
-    rgba(31,52,76,.18);
-
-  box-shadow:
-    0 4px 18px
-    rgba(31,52,76,.08);
-
-  backdrop-filter:
-    blur(10px);
+  background:rgba(248,241,226,.97);
+  border-bottom:1px solid rgba(23,54,83,.14);
+  box-shadow:0 5px 20px rgba(9,28,45,.1);
+  backdrop-filter:blur(10px);
 }
-
 
 .top-nav a,
-.top-nav button {
+.top-nav button{
   position:relative;
-
+  padding:5px 2px;
   border:0;
-
   background:none;
-
   color:var(--navy);
-
   text-decoration:none;
-
   font-size:1.08rem;
-
-  transition:
-    color .2s,
-    transform .2s;
 }
-
-
-.top-nav a:hover,
-.top-nav button:hover {
-  color:var(--blue);
-
-  transform:
-    translateY(-1px);
-}
-
 
 .top-nav a:not(.add-memory)::after,
-.top-nav button:not(.add-memory)::after {
+.top-nav button:not(.add-memory)::after{
   content:"";
-
   position:absolute;
-
   left:50%;
-  bottom:-4px;
-
+  bottom:0;
   width:0;
   height:1px;
-
   background:var(--gold);
-
-  transform:
-    translateX(-50%);
-
-  transition:
-    width .25s;
+  transform:translateX(-50%);
+  transition:.2s;
 }
-
 
 .top-nav a:hover::after,
-.top-nav button:hover::after {
-  width:75%;
+.top-nav button:hover::after{
+  width:80%;
 }
 
-
-.top-nav .add-memory {
-  padding:
-    9px 20px;
-
+.top-nav .add-memory{
+  padding:9px 21px;
   border-radius:30px;
-
-  background:
-    var(--navy);
-
-  color:
-    var(--paper-light);
-
-  box-shadow:
-    0 4px 12px
-    rgba(31,52,76,.18);
+  background:var(--navy);
+  color:#fffaf0;
+  box-shadow:0 5px 12px rgba(16,43,69,.2);
+  transition:.2s;
 }
 
-
-.top-nav .add-memory:hover {
-  background:
-    var(--blue);
-
-  color:white;
+.top-nav .add-memory:hover{
+  background:var(--blue);
+  transform:translateY(-1px);
 }
-
 
 /* =========================================================
    HERO
 ========================================================= */
 
-.hero {
+.hero{
   position:relative;
-
-  min-height:84vh;
-
+  min-height:700px;
+  padding:64px 30px 76px;
   display:flex;
-  align-items:center;
   justify-content:center;
-
+  align-items:center;
   overflow:hidden;
-
-  padding:
-    80px
-    20px;
-
-  background:
-    radial-gradient(
-      circle at 50% 40%,
-      rgba(255,255,255,.12),
-      transparent 35%
-    ),
-    linear-gradient(
-      145deg,
-      #69859c,
-      #3f607c 55%,
-      #304b68
-    );
 }
 
-
-/* subtle scrapbook texture */
-
-.hero::before {
+.hero::before{
   content:"";
-
   position:absolute;
-
   inset:0;
-
   pointer-events:none;
 
-  opacity:.3;
-
   background:
+    radial-gradient(circle at 50% 45%,rgba(255,255,255,.10),transparent 38%),
     repeating-linear-gradient(
       45deg,
-      rgba(255,255,255,.025),
-      rgba(255,255,255,.025) 2px,
+      rgba(255,255,255,.018) 0,
+      rgba(255,255,255,.018) 2px,
       transparent 2px,
       transparent 8px
     );
 }
 
+/* layered paper */
 
-/* =========================================================
-   FLOATING SPARKLES
-========================================================= */
-
-.sparkle {
+.paper-shadow-one,
+.paper-shadow-two{
   position:absolute;
-
-  z-index:1;
-
-  color:
-    var(--gold-light);
-
-  font-family:
-    Georgia,
-    serif;
-
+  width:min(810px,82vw);
+  height:540px;
+  left:50%;
+  top:50%;
   pointer-events:none;
-
-  text-shadow:
-    0 2px 6px
-    rgba(30,45,60,.2);
-
-  animation:
-    sparkleFloat
-    5s
-    ease-in-out
-    infinite;
 }
 
-
-.sparkle.one {
-  top:14%;
-  left:10%;
-
-  font-size:2rem;
+.paper-shadow-one{
+  background:#d8e1e4;
+  transform:translate(-51%,-49%) rotate(-2.4deg);
+  box-shadow:0 20px 55px rgba(8,25,42,.18);
 }
 
-
-.sparkle.two {
-  top:27%;
-  right:12%;
-
-  font-size:1.3rem;
-
-  animation-delay:
-    -1.5s;
+.paper-shadow-two{
+  background:#e6d6ba;
+  transform:translate(-48%,-51%) rotate(1.6deg);
+  box-shadow:0 20px 55px rgba(8,25,42,.16);
 }
 
-
-.sparkle.three {
-  bottom:17%;
-  left:16%;
-
-  font-size:1.4rem;
-
-  animation-delay:
-    -3s;
-}
-
-
-.sparkle.four {
-  bottom:12%;
-  right:18%;
-
-  font-size:2rem;
-
-  animation-delay:
-    -2s;
-}
-
-
-@keyframes sparkleFloat {
-
-  0%,
-  100% {
-    transform:
-      translateY(0)
-      rotate(0deg);
-
-    opacity:.65;
-  }
-
-  50% {
-    transform:
-      translateY(-10px)
-      rotate(8deg);
-
-    opacity:1;
-  }
-
-}
-
-
-/* =========================================================
-   HERO SCRAPBOOK PAPER
-========================================================= */
-
-.hero-paper {
+.hero-paper{
   position:relative;
+  z-index:20;
 
-  z-index:5;
+  width:min(780px,82vw);
+  min-height:520px;
 
-  width:
-    min(
-      780px,
-      94%
-    );
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 
-  padding:
-    80px
-    55px
-    75px;
+  padding:58px 80px 52px;
 
   text-align:center;
 
   background:
-    linear-gradient(
-      135deg,
-      #fffdf8,
-      #f5eee0
-    );
-
-  box-shadow:
-    var(--deep-shadow);
-
-  transform:
-    rotate(-.4deg);
-}
-
-
-/* torn-paper edges */
-
-.hero-paper::before,
-.hero-paper::after {
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  right:0;
-
-  height:12px;
-
-  background:
-    radial-gradient(
-      circle at 11px -2px,
-      transparent 12px,
-      var(--paper-light) 13px
-    );
-
-  background-size:
-    24px 20px;
-}
-
-
-.hero-paper::before {
-  top:-10px;
-}
-
-
-.hero-paper::after {
-  bottom:-10px;
-
-  transform:
-    rotate(180deg);
-}
-
-
-/* fake scrapbook tape */
-
-.hero-tape {
-  position:absolute;
-
-  top:-18px;
-  left:50%;
-
-  width:115px;
-  height:38px;
-
-  background:
-    rgba(210,220,226,.82);
-
-  border:
-    1px solid
-    rgba(55,80,100,.1);
-
-  transform:
-    translateX(-50%)
-    rotate(-3deg);
-
-  box-shadow:
-    0 2px 5px
-    rgba(0,0,0,.06);
-}
-
-
-.hero h1 {
-  margin:0;
-
-  color:
-    var(--navy);
-
-  font-size:
-    clamp(
-      4rem,
-      9vw,
-      7.5rem
-    );
-
-  font-weight:600;
-
-  letter-spacing:.14em;
-
-  line-height:.9;
-}
-
-
-.script-title {
-  margin:
-    15px
-    0
-    5px;
-
-  color:
-    var(--blue);
-
-  font-family:
-    "Sacramento",
-    cursive;
-
-  font-size:
-    clamp(
-      3.1rem,
-      6vw,
-      5.3rem
-    );
-}
-
-
-.hero-heart {
-  margin-top:5px;
-
-  color:
-    var(--gold);
-
-  font-size:2rem;
-}
-
-
-.hero-years {
-  margin:
-    18px
-    0;
-
-  color:
-    var(--navy-soft);
-
-  letter-spacing:.45em;
-
-  font-size:1.05rem;
-}
-
-
-.birthday {
-  margin-bottom:10px;
-
-  color:
-    var(--navy);
-
-  font-size:1.75rem;
-
-  font-weight:600;
-}
-
-
-.hero-intro {
-  max-width:570px;
-
-  margin:auto;
-
-  color:#526274;
-
-  font-size:1.25rem;
-
-  line-height:1.65;
-}
-
-
-.open-button {
-  margin-top:30px;
-
-  padding:
-    14px
-    38px;
-
-  border:0;
-
-  border-radius:30px;
-
-  background:
-    var(--navy);
-
-  color:
+    radial-gradient(circle at 20% 15%,rgba(255,255,255,.8),transparent 30%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(98,70,40,.018) 0,
+      rgba(98,70,40,.018) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
     var(--paper-light);
 
-  font-size:1.15rem;
-
-  box-shadow:
-    0 7px 18px
-    rgba(31,52,76,.2);
-
-  transition:
-    transform .2s,
-    background .2s;
+  box-shadow:var(--deep-shadow);
+  transform:rotate(-.25deg);
 }
 
-
-.open-button:hover {
-  background:
-    var(--blue);
-
-  transform:
-    translateY(-2px);
-}
-
-
-/* =========================================================
-   DECORATIVE BOOK STACKS
-========================================================= */
-
-.book-stack {
+.hero-paper::before{
+  content:"";
   position:absolute;
-
-  z-index:3;
-
-  width:180px;
-  height:130px;
-
+  inset:12px;
+  border:1px solid rgba(183,139,63,.22);
   pointer-events:none;
 }
 
-
-.book-stack.left {
-  left:5%;
-  bottom:5%;
-
-  transform:
-    rotate(-7deg);
-}
-
-
-.book-stack.right {
-  right:5%;
-  top:9%;
-
-  transform:
-    rotate(8deg)
-    scale(.8);
-}
-
-
-.book {
-  position:absolute;
-
-  left:0;
-
-  height:30px;
-
-  border-radius:
-    3px
-    8px
-    8px
-    3px;
-
-  box-shadow:
-    0 5px 10px
-    rgba(20,35,50,.18);
-}
-
-
-.book::after {
-  content:"";
-
-  position:absolute;
-
-  top:5px;
-  right:5px;
-
-  width:
-    calc(100% - 16px);
-
-  height:
-    calc(100% - 10px);
-
-  border-radius:
-    0
-    4px
-    4px
-    0;
-
-  background:
-    #efe7d4;
-
-  opacity:.9;
-}
-
-
-.book.one {
-  bottom:0;
-
-  width:165px;
-
-  background:
-    #27445f;
-
-  transform:
-    rotate(2deg);
-}
-
-
-.book.two {
-  bottom:31px;
-  left:12px;
-
-  width:145px;
-
-  background:
-    #8099aa;
-
-  transform:
-    rotate(-3deg);
-}
-
-
-.book.three {
-  bottom:62px;
-  left:3px;
-
-  width:155px;
-
-  background:
-    #b29a66;
-
-  transform:
-    rotate(3deg);
-}
-
-
-/* tiny book decoration */
-
-.tiny-books {
-  display:flex;
-
-  justify-content:center;
-
-  align-items:flex-end;
-
-  gap:4px;
-
-  margin:
-    10px auto
-    0;
-
-  height:25px;
-}
-
-
-.tiny-book {
-  width:8px;
-
-  border-radius:
-    2px
-    2px
-    0
-    0;
-
-  background:
-    var(--blue);
-}
-
-
-.tiny-book:nth-child(1) {
-  height:18px;
-}
-
-
-.tiny-book:nth-child(2) {
-  height:24px;
-
-  background:
-    var(--gold);
-}
-
-
-.tiny-book:nth-child(3) {
-  height:20px;
-
-  background:
-    var(--navy);
-}
-
-
-.tiny-book:nth-child(4) {
-  height:15px;
-
-  background:
-    var(--blue-soft);
-}
-
-
-/* =========================================================
-   CHAPTER NAVIGATION
-========================================================= */
-
-.chapter-selector-wrapper {
-  position:sticky;
-
-  top:54px;
-
-  z-index:900;
-
-  border-top:
-    1px solid
-    rgba(31,52,76,.12);
-
-  border-bottom:
-    1px solid
-    rgba(31,52,76,.15);
-
-  background:
-    rgba(247,242,231,.97);
-
-  box-shadow:
-    0 5px 16px
-    rgba(31,52,76,.08);
-
-  backdrop-filter:
-    blur(10px);
-}
-
-
-.chapter-selector {
-  display:flex;
-
-  overflow-x:auto;
-
-  scrollbar-width:thin;
-
-  scrollbar-color:
-    var(--blue-soft)
-    transparent;
-
-  max-width:1600px;
-
-  margin:auto;
-}
-
-
-.chapter-button {
-  position:relative;
-
-  flex:
-    0 0 auto;
-
-  min-width:170px;
-
-  padding:
-    16px
-    18px;
-
-  border:0;
-
-  border-right:
-    1px solid
-    rgba(31,52,76,.12);
-
-  background:
-    transparent;
-
-  color:
-    var(--navy);
-
-  text-align:center;
-
-  transition:
-    background .2s,
-    color .2s;
-}
-
-
-.chapter-button:hover {
-  background:
-    rgba(73,105,133,.08);
-}
-
-
-.chapter-button.active {
-  background:
-    rgba(73,105,133,.13);
-
-  box-shadow:
-    inset
-    0
-    -3px
-    0
-    var(--gold);
-}
-
-
-.chapter-button.active::before {
+.hero-paper::after{
   content:"✦";
-
   position:absolute;
-
-  top:4px;
-  left:8px;
-
-  color:
-    var(--gold);
-
-  font-size:.7rem;
+  right:26px;
+  bottom:20px;
+  color:var(--gold-light);
+  font-size:1.2rem;
 }
 
+.hero-tape{
+  position:absolute;
+  z-index:25;
+  top:-17px;
+  left:50%;
+  width:120px;
+  height:35px;
+  transform:translateX(-50%) rotate(-3deg);
+  background:rgba(194,210,217,.76);
+  border:1px solid rgba(23,54,83,.07);
+  box-shadow:0 2px 5px rgba(0,0,0,.05);
+}
 
-.chapter-button strong {
-  display:block;
+.hero-small-star{
+  color:var(--gold);
+  font-size:1.1rem;
+  letter-spacing:.5em;
+  margin-bottom:5px;
+}
 
-  font-size:1.05rem;
+.hero h1{
+  margin:0;
+  color:var(--navy-deep);
+  font-size:clamp(4.5rem,8vw,7rem);
+  line-height:.86;
+  letter-spacing:.12em;
+  font-weight:500;
+}
 
+.script-title{
+  margin:18px 0 2px;
+  color:var(--blue);
+  font-family:"Sacramento",cursive;
+  font-size:clamp(3.4rem,6vw,5rem);
+  line-height:.95;
+}
+
+.hero-years{
+  margin-top:18px;
+  color:var(--gold);
+  font-size:.95rem;
+  letter-spacing:.42em;
+}
+
+.birthday{
+  margin-top:19px;
+  color:var(--navy);
+  font-size:1.65rem;
   font-weight:600;
 }
 
-
-.chapter-button span {
-  display:block;
-
-  margin-top:3px;
-
-  color:
-    var(--muted);
-
-  font-size:.82rem;
+.hero-intro{
+  max-width:540px;
+  margin:12px auto 0;
+  color:#586775;
+  font-size:1.15rem;
+  line-height:1.55;
 }
 
+.open-button{
+  margin-top:24px;
+  padding:12px 32px;
+  border:0;
+  border-radius:30px;
+  background:var(--navy);
+  color:#fffaf0;
+  box-shadow:0 7px 18px rgba(16,43,69,.2);
+  transition:.2s;
+}
+
+.open-button:hover{
+  background:var(--blue);
+  transform:translateY(-2px);
+}
 
 /* =========================================================
-   MAIN SCRAPBOOK
+   HERO DECORATIONS
 ========================================================= */
 
-.scrapbook {
-  position:relative;
+.decor{
+  position:absolute;
+  z-index:30;
+  pointer-events:none;
+}
 
-  min-height:75vh;
+.spark{
+  color:var(--gold-light);
+  text-shadow:0 2px 5px rgba(0,0,0,.12);
+}
 
-  max-width:1500px;
+.spark-a{
+  left:8%;
+  top:13%;
+  font-size:2.2rem;
+  transform:rotate(-8deg);
+}
 
-  margin:
-    45px
-    auto;
+.spark-b{
+  right:11%;
+  top:31%;
+  font-size:1.2rem;
+}
 
-  padding:
-    70px
-    6%
-    120px;
+.spark-c{
+  left:13%;
+  bottom:18%;
+  font-size:1.5rem;
+}
 
-  scroll-margin-top:130px;
+.spark-d{
+  right:16%;
+  bottom:12%;
+  font-size:2rem;
+}
 
+.spark-e{
+  left:21%;
+  top:28%;
+  font-size:.9rem;
+}
+
+.spark-f{
+  right:23%;
+  top:14%;
+  font-size:.9rem;
+}
+
+/* =========================================================
+   CSS BOOK ILLUSTRATIONS
+========================================================= */
+
+.book-stack{
+  position:absolute;
+  z-index:32;
+  width:205px;
+  height:150px;
+  pointer-events:none;
+}
+
+.books-left{
+  left:max(2vw,20px);
+  bottom:48px;
+  transform:rotate(-7deg);
+}
+
+.books-right{
+  right:max(2vw,20px);
+  top:75px;
+  transform:rotate(6deg) scale(.88);
+}
+
+.book{
+  position:absolute;
+  left:0;
+  height:38px;
+  border-radius:4px 10px 10px 4px;
+  box-shadow:0 8px 14px rgba(10,30,48,.22);
+}
+
+.book::before{
+  content:"";
+  position:absolute;
+  left:11px;
+  top:5px;
+  bottom:5px;
+  width:3px;
+  border-left:1px solid rgba(255,255,255,.45);
+  border-right:1px solid rgba(0,0,0,.12);
+}
+
+.book::after{
+  content:"";
+  position:absolute;
+  right:6px;
+  top:6px;
+  bottom:6px;
+  width:calc(100% - 25px);
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(45,65,80,.018),
-      rgba(45,65,80,.018) 1px,
+      #f4ead5 0,
+      #f4ead5 3px,
+      #e4d5b8 4px
+    );
+  border-radius:0 6px 6px 0;
+  box-shadow:inset 2px 0 2px rgba(0,0,0,.08);
+}
+
+.book-one{
+  width:190px;
+  bottom:0;
+  background:#1e405e;
+  transform:rotate(2deg);
+}
+
+.book-two{
+  width:165px;
+  bottom:41px;
+  left:19px;
+  background:#7896aa;
+  transform:rotate(-4deg);
+}
+
+.book-three{
+  width:180px;
+  bottom:82px;
+  left:6px;
+  background:#b49455;
+  transform:rotate(4deg);
+}
+
+.book-label{
+  position:absolute;
+  z-index:2;
+  left:21px;
+  top:11px;
+  width:18px;
+  height:12px;
+  border-top:1px solid rgba(234,215,168,.7);
+  border-bottom:1px solid rgba(234,215,168,.7);
+}
+
+/* =========================================================
+   BOTANICAL DECORATIONS
+========================================================= */
+
+.botanical{
+  position:absolute;
+  z-index:31;
+  width:170px;
+  height:210px;
+  pointer-events:none;
+  opacity:.92;
+}
+
+.botanical-left{
+  left:calc(50% - 500px);
+  top:100px;
+  transform:rotate(-17deg);
+}
+
+.botanical-right{
+  right:calc(50% - 500px);
+  bottom:65px;
+  transform:scaleX(-1) rotate(-12deg);
+}
+
+.stem{
+  position:absolute;
+  left:80px;
+  top:18px;
+  width:3px;
+  height:185px;
+  border-radius:50%;
+  background:#617c75;
+  transform:rotate(9deg);
+  transform-origin:bottom;
+}
+
+.leaf{
+  position:absolute;
+  width:46px;
+  height:22px;
+  border-radius:100% 0 100% 0;
+  background:linear-gradient(135deg,#8aa29c,#607d78);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.15);
+}
+
+.leaf.l1{
+  left:44px;
+  top:57px;
+  transform:rotate(35deg);
+}
+
+.leaf.l2{
+  left:83px;
+  top:85px;
+  transform:scaleX(-1) rotate(30deg);
+}
+
+.leaf.l3{
+  left:35px;
+  top:118px;
+  transform:rotate(25deg) scale(.9);
+}
+
+.leaf.l4{
+  left:88px;
+  top:145px;
+  transform:scaleX(-1) rotate(22deg) scale(.8);
+}
+
+.flower{
+  position:absolute;
+  width:42px;
+  height:42px;
+}
+
+.flower span{
+  position:absolute;
+  left:14px;
+  top:2px;
+  width:15px;
+  height:26px;
+  border-radius:70% 70% 60% 60%;
+  background:linear-gradient(#b9cfdf,#7699b5);
+  transform-origin:50% 19px;
+  box-shadow:inset 0 0 5px rgba(255,255,255,.25);
+}
+
+.flower span:nth-child(2){transform:rotate(72deg);}
+.flower span:nth-child(3){transform:rotate(144deg);}
+.flower span:nth-child(4){transform:rotate(216deg);}
+.flower span:nth-child(5){transform:rotate(288deg);}
+
+.flower::after{
+  content:"";
+  position:absolute;
+  left:17px;
+  top:16px;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--gold);
+}
+
+.flower.f1{
+  left:62px;
+  top:5px;
+}
+
+.flower.f2{
+  left:25px;
+  top:86px;
+  transform:scale(.7);
+}
+
+.flower.f3{
+  left:102px;
+  top:119px;
+  transform:scale(.58);
+}
+
+/* =========================================================
+   LITTLE PAPER SCRAPS
+========================================================= */
+
+.paper-note{
+  position:absolute;
+  z-index:28;
+  width:135px;
+  padding:12px 10px;
+  background:#e9dcc1;
+  color:var(--navy);
+  box-shadow:0 9px 20px rgba(8,25,42,.16);
+  font-family:"Kalam",cursive;
+  text-align:center;
+  pointer-events:none;
+}
+
+.note-left{
+  left:7%;
+  top:43%;
+  transform:rotate(-9deg);
+}
+
+.note-right{
+  right:6%;
+  bottom:33%;
+  transform:rotate(7deg);
+}
+
+.paper-note::before{
+  content:"";
+  position:absolute;
+  top:-9px;
+  left:38px;
+  width:55px;
+  height:20px;
+  background:rgba(201,214,219,.72);
+  transform:rotate(-3deg);
+}
+
+/* =========================================================
+   CHAPTER BAR
+========================================================= */
+
+.chapter-selector-wrapper{
+  position:sticky;
+  top:68px;
+  z-index:1500;
+  background:rgba(248,241,226,.97);
+  border-top:1px solid rgba(23,54,83,.1);
+  border-bottom:1px solid rgba(23,54,83,.16);
+  box-shadow:0 5px 18px rgba(9,28,45,.1);
+  backdrop-filter:blur(10px);
+}
+
+.chapter-selector{
+  max-width:1500px;
+  margin:auto;
+  display:flex;
+  overflow-x:auto;
+  scrollbar-width:thin;
+  scrollbar-color:var(--blue-soft) transparent;
+}
+
+.chapter-button{
+  position:relative;
+  flex:0 0 auto;
+  min-width:170px;
+  padding:15px 18px;
+  border:0;
+  border-right:1px solid rgba(23,54,83,.1);
+  background:transparent;
+  color:var(--navy);
+  text-align:center;
+}
+
+.chapter-button:hover{
+  background:rgba(82,120,152,.08);
+}
+
+.chapter-button.active{
+  background:#e3ebee;
+  box-shadow:inset 0 -3px 0 var(--gold);
+}
+
+.chapter-button.active::before{
+  content:"✦";
+  position:absolute;
+  left:9px;
+  top:5px;
+  color:var(--gold);
+  font-size:.65rem;
+}
+
+.chapter-button strong{
+  display:block;
+  font-size:1.02rem;
+  font-weight:600;
+}
+
+.chapter-button span{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:.8rem;
+}
+
+/* =========================================================
+   SCRAPBOOK AREA
+========================================================= */
+
+.scrapbook-stage{
+  position:relative;
+  padding:65px 24px 90px;
+}
+
+.scrapbook-stage::before,
+.scrapbook-stage::after{
+  content:"✦";
+  position:absolute;
+  color:var(--gold-light);
+  opacity:.75;
+  pointer-events:none;
+}
+
+.scrapbook-stage::before{
+  left:4%;
+  top:90px;
+  font-size:2rem;
+}
+
+.scrapbook-stage::after{
+  right:4%;
+  bottom:110px;
+  font-size:1.5rem;
+}
+
+.scrapbook{
+  position:relative;
+  max-width:1420px;
+  min-height:700px;
+  margin:auto;
+  padding:65px 6% 100px;
+
+  background:
+    radial-gradient(circle at 90% 8%,rgba(255,255,255,.6),transparent 22%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(95,68,40,.017) 0,
+      rgba(95,68,40,.017) 1px,
       transparent 1px,
       transparent 5px
     ),
     var(--paper);
 
-  box-shadow:
-    var(--deep-shadow);
+  box-shadow:var(--deep-shadow);
+  scroll-margin-top:145px;
 }
 
-
-/* gold corner ornaments */
-
-.scrapbook::before {
-  content:"✦";
-
+.scrapbook::before{
+  content:"";
   position:absolute;
-
-  top:20px;
-  left:25px;
-
-  color:
-    var(--gold);
-
-  font-size:2rem;
-
-  opacity:.75;
+  inset:16px;
+  border:1px solid rgba(183,139,63,.18);
+  pointer-events:none;
 }
 
-
-.scrapbook::after {
-  content:"✦";
-
+.scrapbook-corner{
   position:absolute;
-
-  right:25px;
-  bottom:20px;
-
-  color:
-    var(--gold);
-
-  font-size:2rem;
-
-  opacity:.75;
+  pointer-events:none;
+  z-index:2;
+  color:var(--gold);
+  font-size:1.5rem;
 }
 
+.corner-one{
+  top:28px;
+  left:32px;
+}
 
-.view-heading {
+.corner-two{
+  top:28px;
+  right:32px;
+}
+
+.view-heading{
   position:relative;
-
-  max-width:800px;
-
-  margin:
-    0
-    auto
-    55px;
-
+  max-width:760px;
+  margin:0 auto 52px;
   text-align:center;
 }
 
-
-.view-heading::before,
-.view-heading::after {
-  content:"✧";
-
-  position:absolute;
-
-  top:45%;
-
-  color:
-    var(--gold-light);
-
-  font-size:1.7rem;
+.view-heading .mini-ornament{
+  color:var(--gold);
+  letter-spacing:.6em;
+  font-size:.9rem;
 }
 
-
-.view-heading::before {
-  left:-20px;
-}
-
-
-.view-heading::after {
-  right:-20px;
-}
-
-
-.view-heading h2 {
-  margin:0;
-
-  color:
-    var(--navy);
-
-  font-family:
-    "Sacramento",
-    cursive;
-
-  font-size:
-    clamp(
-      3.5rem,
-      7vw,
-      5.4rem
-    );
-
+.view-heading h2{
+  margin:5px 0 0;
+  color:var(--navy);
+  font-family:"Sacramento",cursive;
+  font-size:clamp(3.5rem,6vw,5rem);
   font-weight:400;
+  line-height:1;
 }
 
-
-.view-years {
-  margin:
-    5px
-    0
-    12px;
-
-  color:
-    var(--blue);
-
-  letter-spacing:.35em;
+.view-years{
+  margin-top:10px;
+  color:var(--blue);
+  letter-spacing:.32em;
 }
 
-
-.memory-count {
+.memory-count{
   margin-top:8px;
-
-  color:
-    var(--gold);
-
-  font-family:
-    "Kalam",
-    cursive;
-
-  font-size:1.05rem;
+  color:var(--gold);
+  font-family:"Kalam",cursive;
 }
 
-
-.view-description {
+.view-description{
   max-width:650px;
-
-  margin:
-    15px
-    auto
-    0;
-
-  color:
-    #536476;
-
-  font-size:1.2rem;
-
-  line-height:1.6;
+  margin:12px auto 0;
+  color:#586875;
+  font-size:1.15rem;
+  line-height:1.55;
 }
-
 
 /* =========================================================
    PHOTO GRID
 ========================================================= */
 
-.photo-grid {
+.photo-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(
-      3,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  gap:
-    55px
-    42px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:58px 42px;
 }
 
-
-.photo-card {
+.photo-card{
   position:relative;
-
-  padding:
-    14px
-    14px
-    26px;
-
-  background:
-    var(--paper-light);
-
-  border:
-    1px solid
-    rgba(31,52,76,.08);
-
-  box-shadow:
-    var(--shadow);
-
+  padding:13px 13px 25px;
+  background:var(--paper-bright);
+  border:1px solid rgba(23,54,83,.08);
+  box-shadow:0 14px 28px rgba(13,35,55,.18);
   cursor:pointer;
-
-  transition:
-    transform .25s,
-    box-shadow .25s;
+  transition:transform .25s,box-shadow .25s;
 }
 
-
-.photo-card:nth-child(odd) {
-  transform:
-    rotate(-.65deg);
+.photo-card:nth-child(6n+1){
+  transform:rotate(-1.2deg);
 }
 
-
-.photo-card:nth-child(even) {
-  transform:
-    rotate(.65deg);
+.photo-card:nth-child(6n+2){
+  transform:rotate(.7deg);
 }
 
-
-.photo-card:hover {
-  transform:
-    rotate(0deg)
-    translateY(-7px);
-
-  box-shadow:
-    0 18px 35px
-    rgba(24,45,66,.24);
+.photo-card:nth-child(6n+3){
+  transform:rotate(-.4deg);
 }
 
+.photo-card:nth-child(6n+4){
+  transform:rotate(1deg);
+}
 
-/* scrapbook tape on cards */
+.photo-card:nth-child(6n+5){
+  transform:rotate(-.7deg);
+}
 
-.photo-card::before {
-  content:"";
+.photo-card:nth-child(6n){
+  transform:rotate(.4deg);
+}
 
-  position:absolute;
-
+.photo-card:hover{
+  transform:rotate(0) translateY(-7px);
+  box-shadow:0 20px 38px rgba(13,35,55,.25);
   z-index:4;
+}
 
-  top:-13px;
+.photo-card::before{
+  content:"";
+  position:absolute;
+  z-index:5;
+  top:-12px;
   left:50%;
-
-  width:75px;
-  height:25px;
-
-  background:
-    rgba(188,205,215,.72);
-
-  border:
-    1px solid
-    rgba(31,52,76,.07);
-
-  transform:
-    translateX(-50%)
-    rotate(-3deg);
-
+  width:78px;
+  height:24px;
+  transform:translateX(-50%) rotate(-4deg);
+  background:rgba(189,207,216,.73);
+  border:1px solid rgba(23,54,83,.05);
   pointer-events:none;
 }
 
-
-.photo-card:nth-child(even)::before {
-  transform:
-    translateX(-50%)
-    rotate(4deg);
+.photo-card:nth-child(even)::before{
+  transform:translateX(-50%) rotate(5deg);
 }
 
-
-.photo-image-wrapper {
-  position:relative;
-
-  overflow:hidden;
-
-  background:
-    var(--blue-pale);
-}
-
-
-.photo-image {
-  display:block;
-
-  width:100%;
-
-  aspect-ratio:4/3;
-
-  object-fit:cover;
-
-  transition:
-    transform .35s;
-}
-
-
-.photo-card:hover
-.photo-image {
-  transform:
-    scale(1.025);
-}
-
-
-.chapter-sticker {
+.photo-card::after{
+  content:"✦";
   position:absolute;
-
-  left:10px;
-  bottom:10px;
-
-  max-width:
-    calc(
-      100% - 20px
-    );
-
-  padding:
-    5px
-    11px;
-
-  border:
-    1px solid
-    rgba(31,52,76,.1);
-
-  border-radius:2px;
-
-  background:
-    rgba(247,242,231,.93);
-
-  color:
-    var(--navy);
-
-  font-size:.82rem;
-
-  box-shadow:
-    0 3px 9px
-    rgba(31,52,76,.12);
+  right:-11px;
+  bottom:-12px;
+  color:var(--gold);
+  font-size:1.2rem;
+  pointer-events:none;
 }
 
-
-.photo-info {
-  padding:
-    13px
-    5px
-    0;
+.photo-image-wrapper{
+  position:relative;
+  overflow:hidden;
+  background:#dce6e9;
 }
 
+.photo-image{
+  display:block;
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  transition:transform .3s;
+}
 
-.photo-top {
+.photo-card:hover .photo-image{
+  transform:scale(1.025);
+}
+
+.chapter-sticker{
+  position:absolute;
+  left:9px;
+  bottom:9px;
+  max-width:calc(100% - 18px);
+  padding:5px 10px;
+  background:rgba(248,241,226,.93);
+  border:1px solid rgba(23,54,83,.1);
+  color:var(--navy);
+  font-size:.8rem;
+  box-shadow:0 3px 8px rgba(0,0,0,.1);
+}
+
+.photo-info{
+  padding:12px 5px 0;
+}
+
+.photo-top{
   display:flex;
-
-  justify-content:
-    space-between;
-
-  align-items:
-    flex-start;
-
+  align-items:flex-start;
+  justify-content:space-between;
   gap:10px;
 }
 
-
-.photo-title {
-  color:
-    var(--navy);
-
+.photo-title{
+  color:var(--navy);
   font-size:1.35rem;
-
   font-weight:600;
 }
 
-
-.favorite-button {
-  flex:
-    0 0 auto;
-
-  padding:
-    0 5px;
-
+.favorite-button{
+  flex:0 0 auto;
+  padding:0 4px;
   border:0;
-
   background:none;
-
-  color:
-    var(--blue-soft);
-
+  color:#9aabb7;
   font-size:1.7rem;
 }
 
-
-.favorite-button:hover {
-  color:
-    var(--gold);
+.favorite-button:hover,
+.favorite-button.active{
+  color:var(--heart);
 }
 
-
-.favorite-button.active {
-  color:
-    var(--gold);
-}
-
-
-.photo-meta {
+.photo-meta{
   margin-top:4px;
-
-  color:
-    var(--blue);
-
-  font-size:.95rem;
+  color:var(--blue);
+  font-size:.93rem;
 }
 
-
-.photo-caption {
+.photo-caption{
   margin-top:9px;
-
-  color:
-    #47596a;
-
-  font-size:1.05rem;
+  color:#4f6070;
+  font-size:1.03rem;
+  line-height:1.4;
 }
 
-
-.photo-memory {
+.photo-memory{
   position:relative;
-
-  margin-top:14px;
-
-  padding:
-    14px
-    12px
-    5px;
-
-  border-top:
-    1px dashed
-    var(--blue-soft);
-
-  color:
-    #445568;
-
-  font-family:
-    "Kalam",
-    cursive;
-
-  line-height:1.55;
+  margin-top:13px;
+  padding:13px 10px 3px;
+  border-top:1px dashed #aab8be;
+  color:#465a6a;
+  font-family:"Kalam",cursive;
+  line-height:1.5;
 }
 
-
-.photo-memory::before {
-  content:"✦";
-
+.photo-memory::before{
+  content:"✧";
   position:absolute;
-
-  top:-9px;
-  right:6px;
-
-  padding:
-    0 4px;
-
-  background:
-    var(--paper-light);
-
-  color:
-    var(--gold);
-
-  font-size:.8rem;
+  right:5px;
+  top:-10px;
+  padding:0 4px;
+  background:var(--paper-bright);
+  color:var(--gold);
 }
-
 
 /* =========================================================
    LOADING / EMPTY
 ========================================================= */
 
-.loading {
-  padding:
-    100px
-    20px;
-
+.loading{
+  padding:100px 20px;
   text-align:center;
-
-  color:
-    var(--navy);
-
-  font-family:
-    "Kalam",
-    cursive;
-
-  font-size:1.25rem;
+  color:var(--navy);
+  font-family:"Kalam",cursive;
+  font-size:1.2rem;
 }
 
-
-.loading-heart {
+.loading-heart{
   display:block;
-
-  margin-bottom:10px;
-
-  color:
-    var(--gold);
-
-  font-size:2.2rem;
-
-  animation:
-    pulse
-    1.2s
-    infinite;
-}
-
-
-@keyframes pulse {
-
-  0%,
-  100% {
-    transform:
-      scale(1);
-  }
-
-  50% {
-    transform:
-      scale(1.18);
-  }
-
-}
-
-
-.empty-view {
-  max-width:650px;
-
-  margin:
-    30px
-    auto;
-
-  padding:
-    55px
-    30px;
-
-  border:
-    1px dashed
-    var(--blue-soft);
-
-  text-align:center;
-
-  color:
-    var(--muted);
-
-  background:
-    rgba(255,253,247,.55);
-
-  font-family:
-    "Kalam",
-    cursive;
-
-  font-size:1.15rem;
-}
-
-
-.empty-view .big-heart {
-  display:block;
-
-  margin-bottom:10px;
-
-  color:
-    var(--gold);
-
-  font-size:2.5rem;
-}
-
-
-/* =========================================================
-   PHOTO VIEWER
-   OPEN SCRAPBOOK DESIGN
-========================================================= */
-
-.modal {
-  position:fixed;
-
-  inset:0;
-
-  z-index:3000;
-
-  display:none;
-
-  align-items:center;
-  justify-content:center;
-
-  overflow:auto;
-
-  padding:24px;
-
-  background:
-    rgba(20,39,57,.92);
-}
-
-
-.modal.open {
-  display:flex;
-}
-
-
-.modal-paper {
-  position:relative;
-
-  display:grid;
-
-  grid-template-columns:
-    minmax(0,1.08fr)
-    minmax(360px,.92fr);
-
-  width:
-    min(
-      1380px,
-      96vw
-    );
-
-  height:
-    min(
-      820px,
-      92vh
-    );
-
-  max-height:92vh;
-
-  overflow:hidden;
-
-  padding:0;
-
-  background:
-    var(--paper-light);
-
-  box-shadow:
-    0 30px 90px
-    rgba(0,0,0,.5);
-}
-
-
-/* center fold */
-
-.modal-paper::after {
-  content:"";
-
-  position:absolute;
-
-  z-index:3;
-
-  top:0;
-  bottom:0;
-  left:50%;
-
-  width:1px;
-
-  pointer-events:none;
-
-  background:
-    rgba(55,75,95,.18);
-
-  box-shadow:
-    -9px 0 20px
-    rgba(40,55,70,.08),
-    9px 0 20px
-    rgba(40,55,70,.08);
-}
-
-
-.close-modal {
-  position:absolute;
-
-  z-index:20;
-
-  top:12px;
-  right:14px;
-
-  width:42px;
-  height:42px;
-
-  border:0;
-
-  border-radius:50%;
-
-  background:
-    rgba(247,242,231,.95);
-
-  color:
-    var(--navy);
-
+  margin-bottom:8px;
+  color:var(--heart);
   font-size:2rem;
-
-  line-height:1;
-
-  box-shadow:
-    0 3px 12px
-    rgba(20,40,60,.15);
 }
 
+.empty-view{
+  max-width:620px;
+  margin:20px auto;
+  padding:50px 30px;
+  border:1px dashed var(--blue-soft);
+  background:rgba(255,250,240,.48);
+  color:var(--muted);
+  text-align:center;
+  font-family:"Kalam",cursive;
+}
 
-/* left scrapbook page */
-
-.modal-image {
+.big-heart{
   display:block;
-
-  width:100%;
-  height:100%;
-
-  min-width:0;
-  min-height:0;
-
-  padding:38px;
-
-  object-fit:contain;
-
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(40,60,80,.02),
-      rgba(40,60,80,.02) 1px,
-      transparent 1px,
-      transparent 5px
-    ),
-    #f2eee5;
-
-  border-right:
-    1px solid
-    rgba(31,52,76,.08);
-}
-
-
-/* right scrapbook page */
-
-.modal-content {
-  position:relative;
-
-  min-width:0;
-  min-height:0;
-
-  max-width:none;
-
-  margin:0;
-
-  padding:
-    58px
-    55px
-    45px;
-
-  overflow-y:auto;
-
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(40,60,80,.018),
-      rgba(40,60,80,.018) 1px,
-      transparent 1px,
-      transparent 5px
-    ),
-    var(--paper-light);
-}
-
-
-/* decorative sparkle in modal */
-
-.modal-content::before {
-  content:"✦";
-
-  position:absolute;
-
-  top:22px;
-  left:26px;
-
-  color:
-    var(--gold);
-
-  font-size:1.25rem;
-}
-
-
-.modal-content::after {
-  content:"✧";
-
-  position:absolute;
-
-  right:28px;
-  bottom:22px;
-
-  color:
-    var(--gold-light);
-
-  font-size:1.5rem;
-}
-
-
-.modal-title-row {
-  display:flex;
-
-  justify-content:
-    space-between;
-
-  align-items:
-    flex-start;
-
-  gap:20px;
-}
-
-
-.modal-title {
-  margin:0;
-
-  color:
-    var(--navy);
-
-  font-size:
-    clamp(
-      2rem,
-      3vw,
-      3rem
-    );
-
-  line-height:1.05;
-}
-
-
-.modal-favorite {
-  flex:
-    0 0 auto;
-
-  border:0;
-
-  background:none;
-
-  color:
-    var(--blue-soft);
-
+  color:var(--heart);
   font-size:2.3rem;
+  margin-bottom:8px;
 }
-
-
-.modal-favorite:hover,
-.modal-favorite.active {
-  color:
-    var(--gold);
-}
-
-
-.modal-meta {
-  margin-top:12px;
-
-  color:
-    var(--blue);
-
-  font-size:1.05rem;
-}
-
-
-.modal-chapter {
-  display:inline-block;
-
-  margin-top:12px;
-
-  padding:
-    5px
-    11px;
-
-  border:
-    1px solid
-    rgba(31,52,76,.1);
-
-  border-radius:2px;
-
-  background:
-    var(--blue-pale);
-
-  color:
-    var(--navy);
-
-  font-size:.95rem;
-}
-
-
-.modal-caption {
-  margin-top:20px;
-
-  color:
-    #43576a;
-
-  font-size:1.25rem;
-
-  line-height:1.5;
-}
-
-
-.modal-my-memory {
-  position:relative;
-
-  margin-top:24px;
-
-  padding:
-    22px;
-
-  background:
-    #edf2f4;
-
-  border-left:
-    3px solid
-    var(--gold);
-
-  color:
-    #405367;
-
-  font-family:
-    "Kalam",
-    cursive;
-
-  font-size:1.1rem;
-
-  line-height:1.65;
-}
-
-
-.modal-my-memory::after {
-  content:"✦";
-
-  position:absolute;
-
-  top:8px;
-  right:10px;
-
-  color:
-    var(--gold-light);
-
-  font-size:.9rem;
-}
-
-
-/* =========================================================
-   ANDIE'S MEMORY
-========================================================= */
-
-.andie-box {
-  position:relative;
-
-  margin-top:34px;
-
-  padding-top:28px;
-
-  border-top:
-    1px dashed
-    var(--blue-soft);
-}
-
-
-.andie-box::before {
-  content:"♡";
-
-  position:absolute;
-
-  top:-15px;
-  right:10px;
-
-  padding:
-    0 8px;
-
-  background:
-    var(--paper-light);
-
-  color:
-    var(--gold);
-
-  font-size:1.5rem;
-}
-
-
-.andie-box h3 {
-  margin:
-    0
-    0
-    8px;
-
-  color:
-    var(--blue);
-
-  font-family:
-    "Sacramento",
-    cursive;
-
-  font-size:3rem;
-
-  font-weight:400;
-}
-
-
-.andie-box p {
-  margin:
-    0
-    0
-    14px;
-
-  color:
-    var(--muted);
-
-  font-size:1.05rem;
-}
-
-
-.andie-memory {
-  width:100%;
-
-  min-height:150px;
-
-  padding:14px;
-
-  border:
-    1px solid
-    var(--blue-soft);
-
-  border-radius:2px;
-
-  background:
-    #fffefa;
-
-  color:
-    var(--ink);
-
-  font-family:
-    "Kalam",
-    cursive;
-
-  font-size:1rem;
-
-  line-height:1.5;
-
-  resize:vertical;
-
-  box-shadow:
-    inset
-    0 2px 7px
-    rgba(31,52,76,.04);
-}
-
-
-.andie-memory:focus {
-  outline:none;
-
-  border-color:
-    var(--gold);
-
-  box-shadow:
-    0 0 0 3px
-    rgba(184,154,91,.12);
-}
-
-
-.save-memory {
-  margin-top:12px;
-
-  padding:
-    10px
-    24px;
-
-  border:0;
-
-  border-radius:25px;
-
-  background:
-    var(--navy);
-
-  color:
-    white;
-
-  transition:
-    background .2s,
-    transform .2s;
-}
-
-
-.save-memory:hover {
-  background:
-    var(--blue);
-
-  transform:
-    translateY(-1px);
-}
-
-
-.memory-status {
-  margin-left:10px;
-
-  color:
-    #5e775d;
-
-  font-family:
-    "Kalam",
-    cursive;
-}
-
 
 /* =========================================================
    ENDING
 ========================================================= */
 
-.ending {
+.ending{
   position:relative;
-
   overflow:hidden;
-
-  padding:
-    120px
-    20px;
-
+  padding:100px 20px 110px;
   text-align:center;
+  color:#fff9ec;
 
   background:
-    linear-gradient(
-      145deg,
-      var(--navy),
-      #34536f
-    );
-
-  color:
-    var(--paper-light);
+    radial-gradient(circle at 50% 0,rgba(255,255,255,.08),transparent 30%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.018) 0,
+      rgba(255,255,255,.018) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    var(--navy-deep);
 }
 
-
-.ending::before {
+.ending::before{
   content:"✦  ✧  ✦";
-
   display:block;
-
-  margin-bottom:15px;
-
-  color:
-    var(--gold-light);
-
-  letter-spacing:.8em;
-
-  font-size:1.3rem;
+  margin-bottom:12px;
+  color:var(--gold-light);
+  letter-spacing:.6em;
 }
 
-
-.ending h2 {
+.ending h2{
   margin:0;
-
-  font-family:
-    "Sacramento",
-    cursive;
-
-  font-size:
-    clamp(
-      3.5rem,
-      8vw,
-      6rem
-    );
-
+  font-family:"Sacramento",cursive;
+  font-size:clamp(3.5rem,7vw,5.5rem);
   font-weight:400;
 }
 
-
-.ending p {
-  margin-top:10px;
-
-  color:
-    #e5e9eb;
-
-  font-size:1.35rem;
+.ending p{
+  margin-top:8px;
+  font-size:1.3rem;
+  color:#dce5eb;
 }
 
+/* =========================================================
+   MODAL — OPEN SCRAPBOOK
+========================================================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  overflow:auto;
+  padding:24px;
+  background:rgba(10,29,47,.91);
+}
+
+.modal.open{
+  display:flex;
+}
+
+.modal-paper{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);
+  width:min(1380px,96vw);
+  height:min(820px,92vh);
+  max-height:92vh;
+  overflow:hidden;
+  background:var(--paper-light);
+  box-shadow:0 32px 90px rgba(0,0,0,.55);
+}
+
+.modal-paper::before{
+  content:"";
+  position:absolute;
+  z-index:8;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:18px;
+  transform:translateX(-50%);
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,
+    rgba(40,32,24,.08),
+    rgba(255,255,255,.28),
+    rgba(40,32,24,.08)
+  );
+}
+
+.modal-paper::after{
+  content:"";
+  position:absolute;
+  inset:14px;
+  z-index:7;
+  border:1px solid rgba(183,139,63,.14);
+  pointer-events:none;
+}
+
+.close-modal{
+  position:absolute;
+  z-index:30;
+  top:14px;
+  right:16px;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,250,240,.94);
+  color:var(--navy);
+  font-size:2rem;
+  line-height:1;
+  box-shadow:0 3px 12px rgba(0,0,0,.14);
+}
+
+.modal-left{
+  position:relative;
+  min-width:0;
+  min-height:0;
+  padding:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(85,65,45,.018) 0,
+      rgba(85,65,45,.018) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    #f4ecdd;
+}
+
+.modal-left::before{
+  content:"";
+  position:absolute;
+  z-index:4;
+  left:50%;
+  top:24px;
+  width:95px;
+  height:29px;
+  transform:translateX(-50%) rotate(-3deg);
+  background:rgba(188,205,214,.7);
+  pointer-events:none;
+}
+
+.modal-left::after{
+  content:"✦";
+  position:absolute;
+  left:20px;
+  bottom:18px;
+  color:var(--gold);
+  font-size:1.3rem;
+}
+
+.modal-image{
+  display:block;
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  padding:12px;
+  background:#fffaf0;
+  box-shadow:0 14px 30px rgba(26,40,50,.18);
+  transform:rotate(-.5deg);
+}
+
+.modal-content{
+  position:relative;
+  min-width:0;
+  min-height:0;
+  overflow-y:auto;
+  padding:58px 54px 46px;
+
+  background:
+    radial-gradient(circle at 100% 0,rgba(255,255,255,.6),transparent 25%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(85,65,45,.016) 0,
+      rgba(85,65,45,.016) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    var(--paper-light);
+}
+
+.modal-content::before{
+  content:"✦";
+  position:absolute;
+  left:24px;
+  top:22px;
+  color:var(--gold);
+  font-size:1.2rem;
+}
+
+.modal-content::after{
+  content:"❀";
+  position:absolute;
+  right:28px;
+  bottom:20px;
+  color:#7898ad;
+  opacity:.55;
+  font-size:2rem;
+}
+
+.modal-title-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+}
+
+.modal-title{
+  margin:0;
+  color:var(--navy);
+  font-size:clamp(2rem,3vw,3rem);
+  line-height:1.05;
+}
+
+.modal-favorite{
+  flex:0 0 auto;
+  border:0;
+  background:none;
+  color:#a8b4bb;
+  font-size:2.3rem;
+}
+
+.modal-favorite:hover,
+.modal-favorite.active{
+  color:var(--heart);
+}
+
+.modal-meta{
+  margin-top:12px;
+  color:var(--blue);
+  font-size:1.05rem;
+}
+
+.modal-chapter{
+  display:inline-block;
+  margin-top:12px;
+  padding:5px 11px;
+  background:#dfe9ed;
+  border:1px solid rgba(23,54,83,.1);
+  color:var(--navy);
+  font-size:.93rem;
+}
+
+.modal-caption{
+  margin-top:20px;
+  color:#42596c;
+  font-size:1.22rem;
+  line-height:1.5;
+}
+
+.modal-my-memory{
+  position:relative;
+  margin-top:24px;
+  padding:20px;
+  background:#e9eff1;
+  border-left:3px solid var(--gold);
+  color:#415769;
+  font-family:"Kalam",cursive;
+  font-size:1.08rem;
+  line-height:1.6;
+}
+
+.modal-my-memory::after{
+  content:"✧";
+  position:absolute;
+  top:7px;
+  right:10px;
+  color:var(--gold);
+}
+
+/* =========================================================
+   ANDIE MEMORY
+========================================================= */
+
+.andie-box{
+  position:relative;
+  margin-top:32px;
+  padding-top:27px;
+  border-top:1px dashed #aebbc1;
+}
+
+.andie-box::before{
+  content:"♡";
+  position:absolute;
+  top:-16px;
+  right:10px;
+  padding:0 8px;
+  background:var(--paper-light);
+  color:var(--heart);
+  font-size:1.5rem;
+}
+
+.andie-box h3{
+  margin:0 0 7px;
+  color:var(--blue);
+  font-family:"Sacramento",cursive;
+  font-size:3rem;
+  font-weight:400;
+}
+
+.andie-box p{
+  margin:0 0 14px;
+  color:var(--muted);
+}
+
+.andie-memory{
+  width:100%;
+  min-height:150px;
+  padding:14px;
+  resize:vertical;
+  border:1px solid #aebec7;
+  background:#fffdf7;
+  color:var(--ink);
+  font-family:"Kalam",cursive;
+  font-size:1rem;
+  line-height:1.5;
+}
+
+.andie-memory:focus{
+  outline:none;
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(183,139,63,.12);
+}
+
+.save-memory{
+  margin-top:12px;
+  padding:10px 22px;
+  border:0;
+  border-radius:25px;
+  background:var(--navy);
+  color:white;
+}
+
+.save-memory:hover{
+  background:var(--blue);
+}
+
+.save-memory:disabled{
+  opacity:.6;
+  cursor:default;
+}
+
+.memory-status{
+  margin-left:10px;
+  color:#61795e;
+  font-family:"Kalam",cursive;
+}
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:1100px) {
-
-  .book-stack {
-    opacity:.55;
-
-    transform:
-      scale(.7);
+@media(max-width:1200px){
+  .botanical-left{
+    left:1%;
   }
 
+  .botanical-right{
+    right:1%;
+  }
+
+  .paper-note{
+    display:none;
+  }
 }
 
-
-@media(max-width:950px) {
-
-  .photo-grid {
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(
-          0,
-          1fr
-        )
-      );
+@media(max-width:1000px){
+  .hero{
+    min-height:650px;
   }
 
+  .book-stack{
+    opacity:.8;
+    transform:scale(.7);
+  }
 
-  .modal {
+  .books-left{
+    left:-15px;
+  }
+
+  .books-right{
+    right:-15px;
+  }
+
+  .botanical{
+    opacity:.65;
+    transform:scale(.75);
+  }
+
+  .photo-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:950px){
+  .modal{
     align-items:flex-start;
   }
 
-
-  .modal-paper {
+  .modal-paper{
     display:block;
-
-    width:
-      min(
-        760px,
-        96vw
-      );
-
+    width:min(760px,96vw);
     height:auto;
-
     max-height:none;
-
     overflow:visible;
-
-    padding:20px;
+    padding:18px;
+    background:var(--paper-light);
   }
 
-
-  .modal-paper::after {
+  .modal-paper::before{
     display:none;
   }
 
+  .modal-left{
+    padding:30px 10px 10px;
+    background:transparent;
+  }
 
-  .modal-image {
-    width:100%;
-
-    height:auto;
-
+  .modal-image{
     max-height:65vh;
-
-    padding:0;
-
-    object-fit:contain;
-
-    border-right:0;
-
-    background:transparent;
   }
 
-
-  .modal-content {
-    max-width:750px;
-
-    margin:
-      25px
-      auto
-      10px;
-
-    padding:
-      15px
-      5px
-      5px;
-
+  .modal-content{
+    margin:15px auto 0;
+    padding:28px 12px 20px;
     overflow:visible;
-
     background:transparent;
   }
-
 }
 
-
-@media(max-width:650px) {
-
-  .top-nav {
+@media(max-width:700px){
+  .top-nav{
     gap:12px;
-
-    padding:10px;
+    min-height:58px;
+    padding:8px 10px;
   }
 
-
   .top-nav a,
-  .top-nav button {
+  .top-nav button{
     font-size:.9rem;
   }
 
-
-  .chapter-selector-wrapper {
-    top:48px;
+  .chapter-selector-wrapper{
+    top:58px;
   }
 
-
-  .chapter-button {
+  .chapter-button{
     min-width:145px;
-
-    padding:
-      13px
-      12px;
+    padding:12px;
   }
 
-
-  .hero {
-    min-height:78vh;
-
-    padding:
-      55px
-      15px;
+  .hero{
+    min-height:620px;
+    padding:50px 14px 60px;
   }
 
-
-  .hero-paper {
-    padding:
-      60px
-      22px;
+  .paper-shadow-one,
+  .paper-shadow-two{
+    width:90vw;
+    height:480px;
   }
 
-
-  .hero-years {
-    letter-spacing:.2em;
+  .hero-paper{
+    width:88vw;
+    min-height:470px;
+    padding:48px 22px 42px;
   }
 
+  .hero h1{
+    font-size:4rem;
+    letter-spacing:.08em;
+  }
 
-  .book-stack {
+  .script-title{
+    font-size:3.2rem;
+  }
+
+  .hero-years{
+    letter-spacing:.25em;
+  }
+
+  .book-stack,
+  .botanical{
     display:none;
   }
 
-
-  .scrapbook {
-    margin:
-      20px
-      10px;
-
-    padding:
-      55px
-      20px
-      90px;
+  .spark-a{
+    left:4%;
   }
 
-
-  .view-heading::before,
-  .view-heading::after {
-    display:none;
+  .spark-b{
+    right:5%;
   }
 
-
-  .photo-grid {
-    grid-template-columns:
-      1fr;
+  .scrapbook-stage{
+    padding:25px 9px 50px;
   }
 
-
-  .modal {
-    padding:8px;
+  .scrapbook{
+    padding:52px 20px 75px;
   }
 
-
-  .modal-paper {
-    padding:15px;
+  .photo-grid{
+    grid-template-columns:1fr;
   }
 
+  .modal{
+    padding:7px;
+  }
 
-  .modal-title {
+  .modal-paper{
+    padding:12px;
+  }
+
+  .modal-title{
     font-size:1.8rem;
   }
 
-
-  .andie-box h3 {
+  .andie-box h3{
     font-size:2.5rem;
   }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =======================================================
+<!-- =========================================================
      NAVIGATION
-======================================================= -->
+========================================================= -->
 
 <nav class="top-nav">
+  <a href="#home">Home</a>
 
-  <a href="#home">
-    Home
-  </a>
-
-  <button
-    type="button"
-    onclick="showAllMemories()"
-  >
+  <button type="button" onclick="showAllMemories()">
     Scrapbook
   </button>
 
-  <button
-    type="button"
-    onclick="showFavorites()"
-  >
+  <button type="button" onclick="showFavorites()">
     Mom's Favorites
   </button>
 
-  <a
-    class="add-memory"
-    href="add-photo.html"
-  >
+  <a class="add-memory" href="add-photo.html">
     + Add a Memory
   </a>
-
 </nav>
 
-
-<!-- =======================================================
+<!-- =========================================================
      HERO
-======================================================= -->
+========================================================= -->
 
-<header
-  class="hero"
-  id="home"
->
+<header class="hero" id="home">
 
-  <span class="sparkle one">
-    ✦
-  </span>
+  <div class="paper-shadow-one" aria-hidden="true"></div>
+  <div class="paper-shadow-two" aria-hidden="true"></div>
 
-  <span class="sparkle two">
-    ✧
-  </span>
+  <span class="decor spark spark-a" aria-hidden="true">✦</span>
+  <span class="decor spark spark-b" aria-hidden="true">✧</span>
+  <span class="decor spark spark-c" aria-hidden="true">✦</span>
+  <span class="decor spark spark-d" aria-hidden="true">✧</span>
+  <span class="decor spark spark-e" aria-hidden="true">⋆</span>
+  <span class="decor spark spark-f" aria-hidden="true">⋆</span>
 
-  <span class="sparkle three">
-    ✦
-  </span>
+  <!-- LEFT BOOKS -->
 
-  <span class="sparkle four">
-    ✧
-  </span>
+  <div class="book-stack books-left" aria-hidden="true">
+    <div class="book book-one">
+      <span class="book-label"></span>
+    </div>
 
+    <div class="book book-two">
+      <span class="book-label"></span>
+    </div>
 
-  <!-- decorative books -->
-
-  <div class="book-stack left">
-
-    <div class="book one"></div>
-    <div class="book two"></div>
-    <div class="book three"></div>
-
+    <div class="book book-three">
+      <span class="book-label"></span>
+    </div>
   </div>
 
+  <!-- RIGHT BOOKS -->
 
-  <div class="book-stack right">
+  <div class="book-stack books-right" aria-hidden="true">
+    <div class="book book-one">
+      <span class="book-label"></span>
+    </div>
 
-    <div class="book one"></div>
-    <div class="book two"></div>
-    <div class="book three"></div>
+    <div class="book book-two">
+      <span class="book-label"></span>
+    </div>
 
+    <div class="book book-three">
+      <span class="book-label"></span>
+    </div>
   </div>
 
+  <!-- LEFT FLOWERS -->
+
+  <div class="botanical botanical-left" aria-hidden="true">
+    <div class="stem"></div>
+
+    <div class="leaf l1"></div>
+    <div class="leaf l2"></div>
+    <div class="leaf l3"></div>
+    <div class="leaf l4"></div>
+
+    <div class="flower f1">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="flower f2">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="flower f3">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- RIGHT FLOWERS -->
+
+  <div class="botanical botanical-right" aria-hidden="true">
+    <div class="stem"></div>
+
+    <div class="leaf l1"></div>
+    <div class="leaf l2"></div>
+    <div class="leaf l3"></div>
+    <div class="leaf l4"></div>
+
+    <div class="flower f1">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="flower f2">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="flower f3">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <div class="paper-note note-left" aria-hidden="true">
+    a life full<br>of stories
+  </div>
+
+  <div class="paper-note note-right" aria-hidden="true">
+    fifty years<br>of love ♡
+  </div>
+
+  <!-- MAIN PAPER -->
 
   <div class="hero-paper">
 
-    <div class="hero-tape"></div>
+    <div class="hero-tape" aria-hidden="true"></div>
 
-    <h1>
-      ANDIE
-    </h1>
+    <div class="hero-small-star" aria-hidden="true">
+      ✦ ✧ ✦
+    </div>
+
+    <h1>ANDIE</h1>
 
     <div class="script-title">
       50 Years of Memories
-    </div>
-
-    <div class="hero-heart">
-      ♡
     </div>
 
     <div class="hero-years">
@@ -2409,26 +1718,11 @@ button {
     </div>
 
     <p class="hero-intro">
-      This is the story of your life,
-      told through the people, places,
-      adventures, laughter, and little
-      moments that made it ours.
+      This is the story of your life, told through the people,
+      places, adventures, laughter, and little moments that made it ours.
     </p>
 
-
-    <div class="tiny-books">
-      <span class="tiny-book"></span>
-      <span class="tiny-book"></span>
-      <span class="tiny-book"></span>
-      <span class="tiny-book"></span>
-    </div>
-
-
-    <button
-      class="open-button"
-      type="button"
-      onclick="openScrapbook()"
-    >
+    <button class="open-button" type="button" onclick="openScrapbook()">
       Open the Scrapbook →
     </button>
 
@@ -2436,122 +1730,82 @@ button {
 
 </header>
 
-
-<!-- =======================================================
+<!-- =========================================================
      CHAPTER SELECTOR
-======================================================= -->
+========================================================= -->
 
 <div class="chapter-selector-wrapper">
+  <div class="chapter-selector" id="chapterSelector"></div>
+</div>
 
-  <div
-    class="chapter-selector"
-    id="chapterSelector"
-  ></div>
+<!-- =========================================================
+     SCRAPBOOK
+========================================================= -->
+
+<div class="scrapbook-stage">
+
+  <main class="scrapbook" id="scrapbook">
+
+    <span class="scrapbook-corner corner-one" aria-hidden="true">
+      ✦
+    </span>
+
+    <span class="scrapbook-corner corner-two" aria-hidden="true">
+      ✧
+    </span>
+
+    <div class="loading" id="loading">
+      <span class="loading-heart">♥</span>
+      Opening Andie's scrapbook...
+    </div>
+
+    <div id="scrapbookView" style="display:none;">
+
+      <div class="view-heading">
+
+        <div class="mini-ornament" aria-hidden="true">
+          ✦ ✧ ✦
+        </div>
+
+        <h2 id="viewTitle">
+          All Memories
+        </h2>
+
+        <div class="view-years" id="viewYears"></div>
+
+        <div class="memory-count" id="memoryCount"></div>
+
+        <div class="view-description" id="viewDescription"></div>
+
+      </div>
+
+      <div class="photo-grid" id="photoGrid"></div>
+
+      <div class="empty-view" id="emptyView" style="display:none;">
+        <span class="big-heart">♡</span>
+        No memories have been added here yet.
+      </div>
+
+    </div>
+
+  </main>
 
 </div>
 
-
-<!-- =======================================================
-     SCRAPBOOK
-======================================================= -->
-
-<main
-  class="scrapbook"
-  id="scrapbook"
->
-
-  <div
-    class="loading"
-    id="loading"
-  >
-
-    <span class="loading-heart">
-      ♥
-    </span>
-
-    Opening Andie's scrapbook...
-
-  </div>
-
-
-  <div
-    id="scrapbookView"
-    style="display:none;"
-  >
-
-    <div class="view-heading">
-
-      <h2 id="viewTitle">
-        All Memories
-      </h2>
-
-      <div
-        class="view-years"
-        id="viewYears"
-      ></div>
-
-      <div
-        class="memory-count"
-        id="memoryCount"
-      ></div>
-
-      <div
-        class="view-description"
-        id="viewDescription"
-      ></div>
-
-    </div>
-
-
-    <div
-      class="photo-grid"
-      id="photoGrid"
-    ></div>
-
-
-    <div
-      class="empty-view"
-      id="emptyView"
-      style="display:none;"
-    >
-
-      <span class="big-heart">
-        ♡
-      </span>
-
-      No memories have been added
-      to this chapter yet.
-
-    </div>
-
-  </div>
-
-</main>
-<!-- =======================================================
+<!-- =========================================================
      ENDING
-======================================================= -->
+========================================================= -->
 
 <section class="ending">
-
-  <h2>
-    50 years down.
-  </h2>
-
-  <p>
-    We're going to need a lot more pages. ♥
-  </p>
-
+  <h2>50 years down.</h2>
+  <p>We're going to need a lot more pages. ♥</p>
 </section>
 
+<!-- =========================================================
+     PHOTO MODAL
+========================================================= -->
 
-<!-- =======================================================
-     PHOTO VIEWER — OPEN SCRAPBOOK
-======================================================= -->
-
-<div
-  class="modal"
-  id="photoModal"
->
+<div class="modal" id="photoModal">
 
   <div class="modal-paper">
 
@@ -2564,27 +1818,19 @@ button {
       ×
     </button>
 
-
-    <!-- LEFT SCRAPBOOK PAGE -->
-
-    <img
-      class="modal-image"
-      id="modalImage"
-      alt=""
-    >
-
-
-    <!-- RIGHT SCRAPBOOK PAGE -->
+    <div class="modal-left">
+      <img
+        class="modal-image"
+        id="modalImage"
+        alt=""
+      >
+    </div>
 
     <div class="modal-content">
 
       <div class="modal-title-row">
 
-        <h2
-          class="modal-title"
-          id="modalTitle"
-        ></h2>
-
+        <h2 class="modal-title" id="modalTitle"></h2>
 
         <button
           class="modal-favorite"
@@ -2597,48 +1843,27 @@ button {
 
       </div>
 
+      <div class="modal-meta" id="modalMeta"></div>
 
-      <div
-        class="modal-meta"
-        id="modalMeta"
-      ></div>
+      <div class="modal-chapter" id="modalChapter"></div>
 
+      <div class="modal-caption" id="modalCaption"></div>
 
-      <div
-        class="modal-chapter"
-        id="modalChapter"
-      ></div>
-
-
-      <div
-        class="modal-caption"
-        id="modalCaption"
-      ></div>
-
-
-      <div
-        class="modal-my-memory"
-        id="modalMyMemory"
-      ></div>
-
+      <div class="modal-my-memory" id="modalMyMemory"></div>
 
       <div class="andie-box">
 
-        <h3>
-          Andie's Memory
-        </h3>
+        <h3>Andie's Memory</h3>
 
         <p>
           Mom, what do you remember about this moment?
         </p>
-
 
         <textarea
           class="andie-memory"
           id="andieMemory"
           placeholder="Write your memory here..."
         ></textarea>
-
 
         <button
           class="save-memory"
@@ -2648,7 +1873,6 @@ button {
         >
           Save My Memory
         </button>
-
 
         <span
           class="memory-status"
@@ -2663,25 +1887,18 @@ button {
 
 </div>
 
+<!-- =========================================================
+     SUPABASE
+========================================================= -->
 
-<script
-src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-</script>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-
-/* =========================================================
-   SUPABASE CONNECTION
-========================================================= */
-
 const SUPABASE_URL =
   "https://pxwkirgekfrfwsozqzmy.supabase.co";
 
-
 const SUPABASE_KEY =
   "sb_publishable_-sSrsb4qejl2ISgJN3Ts8w_JCezDFX9";
-
 
 const supabaseClient =
   supabase.createClient(
@@ -2689,37 +1906,24 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
-
-/* =========================================================
-   APP STATE
-========================================================= */
-
 let chapters = [];
-
 let photos = [];
-
 let memories = [];
-
 let favorites = [];
 
 let activePhoto = null;
-
 let activeView = "all";
 
-
 /* =========================================================
-   LOAD SCRAPBOOK
+   LOAD
 ========================================================= */
 
-async function loadScrapbook() {
+async function loadScrapbook(){
 
   const loading =
-    document.getElementById(
-      "loading"
-    );
+    document.getElementById("loading");
 
-
-  try {
+  try{
 
     const results =
       await Promise.all([
@@ -2729,9 +1933,7 @@ async function loadScrapbook() {
           .select("*")
           .order(
             "display_order",
-            {
-              ascending:true
-            }
+            {ascending:true}
           ),
 
         supabaseClient
@@ -2753,9 +1955,7 @@ async function loadScrapbook() {
           )
           .order(
             "display_order",
-            {
-              ascending:true
-            }
+            {ascending:true}
           ),
 
         supabaseClient
@@ -2768,81 +1968,58 @@ async function loadScrapbook() {
 
       ]);
 
+    const [
+      chapterResult,
+      photoResult,
+      memoryResult,
+      favoriteResult
+    ] = results;
 
-    const chapterResult =
-      results[0];
-
-    const photoResult =
-      results[1];
-
-    const memoryResult =
-      results[2];
-
-    const favoriteResult =
-      results[3];
-
-
-    if (chapterResult.error) {
+    if(chapterResult.error){
       throw chapterResult.error;
     }
 
-
-    if (photoResult.error) {
+    if(photoResult.error){
       throw photoResult.error;
     }
 
-
-    if (memoryResult.error) {
+    if(memoryResult.error){
       throw memoryResult.error;
     }
 
-
-    if (favoriteResult.error) {
+    if(favoriteResult.error){
       throw favoriteResult.error;
     }
-
 
     chapters =
       chapterResult.data || [];
 
-
     photos =
       photoResult.data || [];
-
 
     memories =
       memoryResult.data || [];
 
-
     favorites =
       favoriteResult.data || [];
 
-
     loading.style.display =
       "none";
-
 
     document.getElementById(
       "scrapbookView"
     ).style.display =
       "block";
 
-
     renderChapterSelector();
 
-
-    showAllMemories(
-      false
-    );
+    showAllMemories(false);
 
   }
 
-  catch(error) {
+  catch(error){
 
-    console.error(
-      error
-    );
-
+    console.error(error);
 
     loading.innerHTML =
       `
@@ -2852,33 +2029,27 @@ async function loadScrapbook() {
 
         <br><br>
 
-        ${escapeHTML(
-          error.message
-        )}
+        ${escapeHTML(error.message)}
       `;
 
   }
 
 }
 
-
 /* =========================================================
    CHAPTER SELECTOR
 ========================================================= */
 
-function renderChapterSelector() {
+function renderChapterSelector(){
 
   const selector =
     document.getElementById(
       "chapterSelector"
     );
 
+  selector.innerHTML = "";
 
-  selector.innerHTML =
-    "";
-
-
-  const allButton =
+  selector.appendChild(
     createChapterButton(
       "all",
       "All Memories",
@@ -2888,54 +2059,29 @@ function renderChapterSelector() {
           ? " photo"
           : " photos"
       )
+    )
+  );
+
+  chapters.forEach(chapter => {
+
+    const count =
+      photos.filter(
+        photo =>
+          Number(photo.chapter_id) ===
+          Number(chapter.id)
+      ).length;
+
+    selector.appendChild(
+      createChapterButton(
+        String(chapter.id),
+        chapter.name,
+        `${formatChapterYears(chapter)} • ${count}`
+      )
     );
 
+  });
 
   selector.appendChild(
-    allButton
-  );
-
-
-  chapters.forEach(
-    chapter => {
-
-      const count =
-        photos.filter(
-          photo =>
-            Number(
-              photo.chapter_id
-            ) ===
-            Number(
-              chapter.id
-            )
-        ).length;
-
-
-      const years =
-        formatChapterYears(
-          chapter
-        );
-
-
-      const button =
-        createChapterButton(
-          String(
-            chapter.id
-          ),
-          chapter.name,
-          `${years} • ${count}`
-        );
-
-
-      selector.appendChild(
-        button
-      );
-
-    }
-  );
-
-
-  const favoriteButton =
     createChapterButton(
       "favorites",
       "♡ Mom's Favorites",
@@ -2944,46 +2090,32 @@ function renderChapterSelector() {
           ? "favorite"
           : "favorites"
       }`
-    );
-
-
-  selector.appendChild(
-    favoriteButton
+    )
   );
-
 
   updateActiveButton();
 
 }
 
-
-/* =========================================================
-   CREATE CHAPTER BUTTON
-========================================================= */
-
 function createChapterButton(
   view,
   title,
   subtitle
-) {
+){
 
   const button =
     document.createElement(
       "button"
     );
 
-
   button.type =
     "button";
-
 
   button.className =
     "chapter-button";
 
-
   button.dataset.view =
     view;
-
 
   button.innerHTML =
     `
@@ -2996,30 +2128,25 @@ function createChapterButton(
       </span>
     `;
 
-
   button.addEventListener(
     "click",
     () => {
 
-      if (
-        view ===
-        "all"
-      ) {
+      if(view === "all"){
 
         showAllMemories();
 
       }
 
-      else if (
-        view ===
-        "favorites"
-      ) {
+      else if(
+        view === "favorites"
+      ){
 
         showFavorites();
 
       }
 
-      else {
+      else{
 
         showChapter(
           Number(view)
@@ -3030,23 +2157,19 @@ function createChapterButton(
     }
   );
 
-
   return button;
 
 }
 
-
 /* =========================================================
-   ALL MEMORIES
+   VIEWS
 ========================================================= */
 
 function showAllMemories(
   scroll = true
-) {
+){
 
-  activeView =
-    "all";
-
+  activeView = "all";
 
   setViewHeader(
     "All Memories",
@@ -3055,108 +2178,72 @@ function showAllMemories(
     "Every photograph, story, adventure, ordinary day, and little moment collected in one place."
   );
 
-
   renderPhotos(
     photos
   );
 
-
   updateActiveButton();
 
-
-  if (scroll) {
+  if(scroll){
     scrollToScrapbook();
   }
 
 }
 
-
-/* =========================================================
-   SINGLE CHAPTER
-========================================================= */
-
 function showChapter(
   chapterId
-) {
+){
 
   const chapter =
     chapters.find(
       item =>
-        Number(
-          item.id
-        ) ===
-        Number(
-          chapterId
-        )
+        Number(item.id) ===
+        Number(chapterId)
     );
 
-
-  if (!chapter) {
+  if(!chapter){
     return;
   }
 
-
   activeView =
-    String(
-      chapterId
-    );
-
+    String(chapterId);
 
   const chapterPhotos =
     photos.filter(
       photo =>
-        Number(
-          photo.chapter_id
-        ) ===
-        Number(
-          chapterId
-        )
+        Number(photo.chapter_id) ===
+        Number(chapterId)
     );
-
 
   setViewHeader(
     chapter.name,
-    formatChapterYears(
-      chapter
-    ),
+    formatChapterYears(chapter),
     chapterPhotos.length,
     chapter.description || ""
   );
-
 
   renderPhotos(
     chapterPhotos
   );
 
-
   updateActiveButton();
-
 
   scrollToScrapbook();
 
 }
 
-
-/* =========================================================
-   FAVORITES
-========================================================= */
-
 function showFavorites(
   scroll = true
-) {
+){
 
   activeView =
     "favorites";
 
-
   const favoritePhotos =
     photos.filter(
       photo =>
-        isFavorite(
-          photo.id
-        )
+        isFavorite(photo.id)
     );
-
 
   setViewHeader(
     "Mom's Favorites",
@@ -3165,45 +2252,35 @@ function showFavorites(
     "The moments Andie wants to keep especially close."
   );
 
-
   renderPhotos(
     favoritePhotos,
     true
   );
 
-
   updateActiveButton();
 
-
-  if (scroll) {
+  if(scroll){
     scrollToScrapbook();
   }
 
 }
-
-
-/* =========================================================
-   VIEW HEADER
-========================================================= */
 
 function setViewHeader(
   title,
   years,
   count,
   description
-) {
+){
 
   document.getElementById(
     "viewTitle"
   ).textContent =
     title;
 
-
   document.getElementById(
     "viewYears"
   ).textContent =
     years || "";
-
 
   document.getElementById(
     "memoryCount"
@@ -3214,7 +2291,6 @@ function setViewHeader(
         : "memories"
     }`;
 
-
   document.getElementById(
     "viewDescription"
   ).textContent =
@@ -3222,45 +2298,38 @@ function setViewHeader(
 
 }
 
-
 /* =========================================================
-   RENDER PHOTOS
+   PHOTO GRID
 ========================================================= */
 
 function renderPhotos(
   photoList,
   favoritesView = false
-) {
+){
 
   const grid =
     document.getElementById(
       "photoGrid"
     );
 
-
   const empty =
     document.getElementById(
       "emptyView"
     );
 
+  grid.innerHTML = "";
 
-  grid.innerHTML =
-    "";
-
-
-  if (!photoList.length) {
+  if(!photoList.length){
 
     grid.style.display =
       "none";
 
-
     empty.style.display =
       "block";
 
-
-    if (favoritesView) {
-
-      empty.innerHTML =
+    empty.innerHTML =
+      favoritesView
+        ?
         `
           <span class="big-heart">
             ♡
@@ -3268,13 +2337,8 @@ function renderPhotos(
 
           Mom hasn't chosen any
           favorite memories yet.
-        `;
-
-    }
-
-    else {
-
-      empty.innerHTML =
+        `
+        :
         `
           <span class="big-heart">
             ♡
@@ -3284,29 +2348,21 @@ function renderPhotos(
           added here yet.
         `;
 
-    }
-
-
     return;
 
   }
 
-
   empty.style.display =
     "none";
 
-
   grid.style.display =
     "grid";
-
 
   photoList.forEach(
     photo => {
 
       grid.appendChild(
-        createPhotoCard(
-          photo
-        )
+        createPhotoCard(photo)
       );
 
     }
@@ -3314,48 +2370,33 @@ function renderPhotos(
 
 }
 
-
-/* =========================================================
-   PHOTO CARD
-========================================================= */
-
-function createPhotoCard(
-  photo
-) {
+function createPhotoCard(photo){
 
   const card =
     document.createElement(
       "article"
     );
 
-
   card.className =
     "photo-card";
-
 
   const imageUrl =
     getPhotoUrl(
       photo.image_path
     );
 
-
   const favorite =
     isFavorite(
       photo.id
     );
-
 
   const chapter =
     getChapter(
       photo.chapter_id
     );
 
-
   const meta =
-    buildMeta(
-      photo
-    );
-
+    buildMeta(photo);
 
   card.innerHTML =
     `
@@ -3363,9 +2404,7 @@ function createPhotoCard(
 
         <img
           class="photo-image"
-          src="${escapeAttribute(
-            imageUrl
-          )}"
+          src="${escapeAttribute(imageUrl)}"
           alt="${escapeAttribute(
             photo.title ||
             "Family memory"
@@ -3378,9 +2417,7 @@ function createPhotoCard(
             ?
             `
               <div class="chapter-sticker">
-                ${escapeHTML(
-                  chapter.name
-                )}
+                ${escapeHTML(chapter.name)}
               </div>
             `
             :
@@ -3389,89 +2426,69 @@ function createPhotoCard(
 
       </div>
 
-
       <div class="photo-info">
 
         <div class="photo-top">
 
           <div class="photo-title">
-
             ${escapeHTML(
               photo.title ||
               "A Memory"
             )}
-
           </div>
-
 
           <button
             type="button"
-            class="
-              favorite-button
-              ${
-                favorite
-                  ? "active"
-                  : ""
-              }
-            "
+            class="favorite-button ${
+              favorite
+                ? "active"
+                : ""
+            }"
             aria-label="Favorite photo"
           >
-
             ${
               favorite
                 ? "♥"
                 : "♡"
             }
-
           </button>
 
         </div>
-
 
         ${
           meta
             ?
             `
               <div class="photo-meta">
-
-                ${escapeHTML(
-                  meta
-                )}
-
+                ${escapeHTML(meta)}
               </div>
             `
             :
             ""
         }
-
 
         ${
           photo.caption
             ?
             `
               <div class="photo-caption">
-
                 ${escapeHTML(
                   photo.caption
                 )}
-
               </div>
             `
             :
             ""
         }
 
-
         ${
           photo.my_memory
             ?
             `
               <div class="photo-memory">
-
                 ${escapeHTML(
                   photo.my_memory
                 )}
-
               </div>
             `
             :
@@ -3481,77 +2498,63 @@ function createPhotoCard(
       </div>
     `;
 
-
-  const favoriteButton =
-    card.querySelector(
+  card
+    .querySelector(
       ".favorite-button"
+    )
+    .addEventListener(
+      "click",
+      event => {
+
+        event.stopPropagation();
+
+        toggleFavorite(
+          photo.id
+        );
+
+      }
     );
-
-
-  favoriteButton.addEventListener(
-    "click",
-    event => {
-
-      event.stopPropagation();
-
-
-      toggleFavorite(
-        photo.id
-      );
-
-    }
-  );
-
 
   card.addEventListener(
     "click",
     () => {
 
-      openPhoto(
-        photo
-      );
+      openPhoto(photo);
 
     }
   );
-
 
   return card;
 
 }
 
-
 /* =========================================================
-   OPEN PHOTO
+   PHOTO MODAL
 ========================================================= */
 
-function openPhoto(
-  photo
-) {
+function openPhoto(photo){
 
   activePhoto =
     photo;
-
 
   const chapter =
     getChapter(
       photo.chapter_id
     );
 
+  const img =
+    document.getElementById(
+      "modalImage"
+    );
 
-  document.getElementById(
-    "modalImage"
-  ).src =
+  img.src =
     getPhotoUrl(
       photo.image_path
     );
 
-
-  document.getElementById(
-    "modalImage"
-  ).alt =
+  img.alt =
     photo.title ||
     "Family memory";
-
 
   document.getElementById(
     "modalTitle"
@@ -3559,89 +2562,76 @@ function openPhoto(
     photo.title ||
     "A Memory";
 
-
   document.getElementById(
     "modalMeta"
   ).textContent =
-    buildMeta(
-      photo
-    );
-
+    buildMeta(photo);
 
   const chapterBox =
     document.getElementById(
       "modalChapter"
     );
 
-
-  if (chapter) {
+  if(chapter){
 
     chapterBox.textContent =
       chapter.name;
-
 
     chapterBox.style.display =
       "inline-block";
 
   }
 
-  else {
+  else{
 
     chapterBox.style.display =
       "none";
 
   }
 
-
   const caption =
     document.getElementById(
       "modalCaption"
     );
 
-
-  if (photo.caption) {
+  if(photo.caption){
 
     caption.textContent =
       photo.caption;
-
 
     caption.style.display =
       "block";
 
   }
 
-  else {
+  else{
 
     caption.style.display =
       "none";
 
   }
-
 
   const myMemory =
     document.getElementById(
       "modalMyMemory"
     );
 
-
-  if (photo.my_memory) {
+  if(photo.my_memory){
 
     myMemory.textContent =
       photo.my_memory;
-
 
     myMemory.style.display =
       "block";
 
   }
 
-  else {
+  else{
 
     myMemory.style.display =
       "none";
 
   }
-
 
   const existingMemory =
     memories.find(
@@ -3650,22 +2640,18 @@ function openPhoto(
         photo.id
     );
 
-
   document.getElementById(
     "andieMemory"
   ).value =
     existingMemory?.memory ||
     "";
 
-
   document.getElementById(
     "memoryStatus"
   ).textContent =
     "";
 
-
   updateModalFavorite();
-
 
   document.getElementById(
     "photoModal"
@@ -3673,16 +2659,12 @@ function openPhoto(
     "open"
   );
 
-
   document.body.style.overflow =
     "hidden";
 
 }
-  /* =========================================================
-   CLOSE PHOTO
-========================================================= */
 
-function closeModal() {
+function closeModal(){
 
   document.getElementById(
     "photoModal"
@@ -3690,20 +2672,13 @@ function closeModal() {
     "open"
   );
 
-
   document.body.style.overflow =
     "";
-
 
   activePhoto =
     null;
 
 }
-
-
-/* =========================================================
-   CLICK BACKDROP TO CLOSE
-========================================================= */
 
 document.getElementById(
   "photoModal"
@@ -3711,43 +2686,26 @@ document.getElementById(
   "click",
   event => {
 
-    if (
+    if(
       event.target.id ===
       "photoModal"
-    ) {
-
+    ){
       closeModal();
-
     }
 
   }
 );
-
-
-/* =========================================================
-   ESCAPE KEY CLOSES PHOTO
-========================================================= */
 
 document.addEventListener(
   "keydown",
   event => {
 
-    if (
-      event.key ===
-      "Escape"
-    ) {
-
+    if(event.key === "Escape"){
       closeModal();
-
     }
 
   }
 );
-
-
-/* =========================================================
-   MODAL FAVORITE BUTTON
-========================================================= */
 
 document.getElementById(
   "modalFavorite"
@@ -3755,29 +2713,24 @@ document.getElementById(
   "click",
   async () => {
 
-    if (!activePhoto) {
+    if(!activePhoto){
       return;
     }
-
 
     await toggleFavorite(
       activePhoto.id
     );
-
 
     updateModalFavorite();
 
   }
 );
 
-
 /* =========================================================
-   CHECK FAVORITE STATUS
+   FAVORITES
 ========================================================= */
 
-function isFavorite(
-  photoId
-) {
+function isFavorite(photoId){
 
   return favorites.some(
     favorite =>
@@ -3787,14 +2740,9 @@ function isFavorite(
 
 }
 
-
-/* =========================================================
-   TOGGLE FAVORITE
-========================================================= */
-
 async function toggleFavorite(
   photoId
-) {
+){
 
   const existing =
     favorites.find(
@@ -3803,8 +2751,7 @@ async function toggleFavorite(
         photoId
     );
 
-
-  if (existing) {
+  if(existing){
 
     const result =
       await supabaseClient
@@ -3815,23 +2762,19 @@ async function toggleFavorite(
           photoId
         );
 
-
-    if (result.error) {
+    if(result.error){
 
       console.error(
         result.error
       );
 
-
       alert(
         "Favorites aren't writable yet. We'll enable this when we add Andie's login."
       );
 
-
       return;
 
     }
-
 
     favorites =
       favorites.filter(
@@ -3842,35 +2785,30 @@ async function toggleFavorite(
 
   }
 
-  else {
+  else{
 
     const result =
       await supabaseClient
         .from("favorites")
         .insert({
-          photo_id:
-            photoId
+          photo_id:photoId
         })
         .select()
         .single();
 
-
-    if (result.error) {
+    if(result.error){
 
       console.error(
         result.error
       );
 
-
       alert(
         "Favorites aren't writable yet. We'll enable this when we add Andie's login."
       );
 
-
       return;
 
     }
-
 
     favorites.push(
       result.data
@@ -3878,109 +2816,64 @@ async function toggleFavorite(
 
   }
 
-
-  /*
-     Refresh chapter counts because
-     Mom's Favorites may have changed.
-  */
-
   renderChapterSelector();
 
+  if(activeView === "favorites"){
 
-  /*
-     Refresh whichever scrapbook
-     view is currently open.
-  */
-
-  if (
-    activeView ===
-    "favorites"
-  ) {
-
-    showFavorites(
-      false
-    );
+    showFavorites(false);
 
   }
 
-  else if (
-    activeView ===
-    "all"
-  ) {
+  else if(activeView === "all"){
 
-    showAllMemories(
-      false
-    );
+    showAllMemories(false);
 
   }
 
-  else {
-
-    const chapterId =
-      Number(
-        activeView
-      );
-
-
-    const chapterPhotos =
-      photos.filter(
-        photo =>
-          Number(
-            photo.chapter_id
-          ) ===
-          chapterId
-      );
-
+  else{
 
     renderPhotos(
-      chapterPhotos
+      photos.filter(
+        photo =>
+          Number(photo.chapter_id) ===
+          Number(activeView)
+      )
     );
 
   }
-
 
   updateModalFavorite();
 
 }
 
-
-/* =========================================================
-   UPDATE LARGE FAVORITE HEART
-========================================================= */
-
-function updateModalFavorite() {
+function updateModalFavorite(){
 
   const button =
     document.getElementById(
       "modalFavorite"
     );
 
-
-  if (!activePhoto) {
+  if(!activePhoto){
 
     button.textContent =
       "♡";
-
 
     button.classList.remove(
       "active"
     );
 
-
     return;
 
   }
 
-
-  if (
+  if(
     isFavorite(
       activePhoto.id
     )
-  ) {
+  ){
 
     button.textContent =
       "♥";
-
 
     button.classList.add(
       "active"
@@ -3988,11 +2881,10 @@ function updateModalFavorite() {
 
   }
 
-  else {
+  else{
 
     button.textContent =
       "♡";
-
 
     button.classList.remove(
       "active"
@@ -4002,47 +2894,39 @@ function updateModalFavorite() {
 
 }
 
-
 /* =========================================================
-   SAVE ANDIE'S MEMORY
+   ANDIE'S MEMORY
 ========================================================= */
 
-async function saveAndieMemory() {
+async function saveAndieMemory(){
 
-  if (!activePhoto) {
+  if(!activePhoto){
     return;
   }
-
 
   const textarea =
     document.getElementById(
       "andieMemory"
     );
 
-
   const status =
     document.getElementById(
       "memoryStatus"
     );
-
 
   const button =
     document.getElementById(
       "saveMemoryButton"
     );
 
-
   button.disabled =
     true;
-
 
   status.textContent =
     "Saving...";
 
-
   const memoryText =
     textarea.value.trim();
-
 
   const existing =
     memories.find(
@@ -4051,15 +2935,9 @@ async function saveAndieMemory() {
         activePhoto.id
     );
 
-
   let result;
 
-
-  /*
-     Update an existing memory.
-  */
-
-  if (existing) {
+  if(existing){
 
     result =
       await supabaseClient
@@ -4067,7 +2945,6 @@ async function saveAndieMemory() {
           "andie_memories"
         )
         .update({
-
           memory:
             memoryText ||
             null,
@@ -4075,7 +2952,6 @@ async function saveAndieMemory() {
           updated_at:
             new Date()
               .toISOString()
-
         })
         .eq(
           "photo_id",
@@ -4086,13 +2962,7 @@ async function saveAndieMemory() {
 
   }
 
-
-  /*
-     Or create Andie's first
-     memory for this photograph.
-  */
-
-  else {
+  else{
 
     result =
       await supabaseClient
@@ -4100,53 +2970,35 @@ async function saveAndieMemory() {
           "andie_memories"
         )
         .insert({
-
           photo_id:
             activePhoto.id,
 
           memory:
             memoryText ||
             null
-
         })
         .select()
         .single();
 
   }
 
-
-  /*
-     If RLS currently prevents
-     writing, keep the scrapbook
-     working and show a message.
-  */
-
-  if (result.error) {
+  if(result.error){
 
     console.error(
       result.error
     );
 
-
     status.textContent =
       "Saving will be enabled with Mom's login.";
 
-
     button.disabled =
       false;
-
 
     return;
 
   }
 
-
-  /*
-     Keep the local copy of the
-     memories in sync with Supabase.
-  */
-
-  if (existing) {
+  if(existing){
 
     memories =
       memories.map(
@@ -4159,7 +3011,7 @@ async function saveAndieMemory() {
 
   }
 
-  else {
+  else{
 
     memories.push(
       result.data
@@ -4167,83 +3019,55 @@ async function saveAndieMemory() {
 
   }
 
-
   status.textContent =
     "Saved ♥";
-
 
   button.disabled =
     false;
 
 }
 
-
 /* =========================================================
-   GET PUBLIC PHOTO URL
+   HELPERS
 ========================================================= */
 
-function getPhotoUrl(
-  path
-) {
+function getPhotoUrl(path){
 
-  const result =
-    supabaseClient
-      .storage
-      .from(
-        "family-photos"
-      )
-      .getPublicUrl(
-        path
-      );
-
-
-  return result
+  return supabaseClient
+    .storage
+    .from(
+      "family-photos"
+    )
+    .getPublicUrl(path)
     .data
     .publicUrl;
 
 }
 
-
-/* =========================================================
-   GET CHAPTER
-========================================================= */
-
-function getChapter(
-  chapterId
-) {
+function getChapter(chapterId){
 
   return chapters.find(
     chapter =>
-      Number(
-        chapter.id
-      ) ===
-      Number(
-        chapterId
-      )
+      Number(chapter.id) ===
+      Number(chapterId)
   );
 
 }
 
-
-/* =========================================================
-   FORMAT CHAPTER YEARS
-========================================================= */
-
 function formatChapterYears(
   chapter
-) {
+){
 
-  if (
+  if(
     chapter.start_year ===
     chapter.end_year
-  ) {
+  ){
 
     return String(
       chapter.start_year
     );
 
   }
-
 
   return (
     chapter.start_year +
@@ -4253,29 +3077,17 @@ function formatChapterYears(
 
 }
 
+function buildMeta(photo){
 
-/* =========================================================
-   BUILD PHOTO DATE / LOCATION
-========================================================= */
+  const pieces = [];
 
-function buildMeta(
-  photo
-) {
-
-  const pieces =
-    [];
-
-
-  if (
-    photo.photo_date
-  ) {
+  if(photo.photo_date){
 
     const date =
       new Date(
         photo.photo_date +
         "T12:00:00"
       );
-
 
     pieces.push(
       date.toLocaleDateString(
@@ -4290,9 +3102,7 @@ function buildMeta(
 
   }
 
-  else if (
-    photo.photo_year
-  ) {
+  else if(photo.photo_year){
 
     pieces.push(
       String(
@@ -4302,10 +3112,7 @@ function buildMeta(
 
   }
 
-
-  if (
-    photo.location
-  ) {
+  if(photo.location){
 
     pieces.push(
       photo.location
@@ -4313,143 +3120,75 @@ function buildMeta(
 
   }
 
-
   return pieces.join(
     " • "
   );
 
 }
 
+function updateActiveButton(){
 
-/* =========================================================
-   ACTIVE CHAPTER BUTTON
-========================================================= */
-
-function updateActiveButton() {
-
-  const buttons =
-    document.querySelectorAll(
+  document
+    .querySelectorAll(
       ".chapter-button"
+    )
+    .forEach(
+      button => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.view ===
+          String(activeView)
+        );
+
+      }
     );
-
-
-  buttons.forEach(
-    button => {
-
-      button.classList.toggle(
-        "active",
-        button.dataset.view ===
-        String(
-          activeView
-        )
-      );
-
-    }
-  );
 
 }
 
+function openScrapbook(){
 
-/* =========================================================
-   OPEN SCRAPBOOK FROM HERO
-========================================================= */
-
-function openScrapbook() {
-
-  showAllMemories(
-    false
-  );
-
+  showAllMemories(false);
 
   scrollToScrapbook();
 
 }
 
-
-/* =========================================================
-   SCROLL TO SCRAPBOOK
-========================================================= */
-
-function scrollToScrapbook() {
+function scrollToScrapbook(){
 
   document.getElementById(
     "scrapbook"
   ).scrollIntoView({
-
-    behavior:
-      "smooth",
-
-    block:
-      "start"
-
+    behavior:"smooth",
+    block:"start"
   });
 
 }
 
+function escapeHTML(value){
 
-/* =========================================================
-   HTML SAFETY
-========================================================= */
-
-function escapeHTML(
-  value
-) {
-
-  if (
+  if(
     value === null ||
     value === undefined
-  ) {
-
+  ){
     return "";
-
   }
 
-
-  return String(
-    value
-  )
-
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
 
-
-function escapeAttribute(
-  value
-) {
-
-  return escapeHTML(
-    value
-  );
-
+function escapeAttribute(value){
+  return escapeHTML(value);
 }
-
 
 /* =========================================================
-   START SCRAPBOOK
+   START
 ========================================================= */
 
 loadScrapbook();
