@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Andie — 50 Years of Memories</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Kalam:wght@300;400&family=Sacramento&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #f5ead4;
+      --paper-light: #fffaf0;
+      --paper-dark: #e4d1ae;
+      --ink: #3a2b25;
+      --muted: #7b6b61;
+      --rose: #a96758;
+      --rose-light: #dba899;
+      --wood: #4a2d20;
+      --shadow: rgba(54, 35, 25, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,.35), transparent 30%),
+        repeating-linear-gradient(
+          0deg,
+          rgba(90,60,40,.025),
+          rgba(90,60,40,.025) 1px,
+          transparent 1px,
+          transparent 4px
+        ),
+        var(--paper);
+      font-family: "Cormorant Garamond", Georgia, serif;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* ---------------- NAVIGATION ---------------- */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      flex-wrap: wrap;
+      padding: 15px 25px;
+      background: rgba(250, 241, 222, 0.96);
+      border-bottom: 1px solid rgba(90, 60, 40, 0.15);
+      box-shadow: 0 3px 15px rgba(50, 30, 20, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 1.05rem;
+      letter-spacing: .03em;
+    }
+
+    nav a:hover {
+      color: var(--rose);
+    }
+
+    /* ---------------- HERO ---------------- */
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 1fr;
+      align-items: center;
+      gap: 35px;
+      padding: 65px 7%;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(54,32,22,.1), rgba(54,32,22,.1)),
+        linear-gradient(135deg, #5a3929, #2d1b14);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 25px;
+      border: 1px solid rgba(255,255,255,.15);
+      pointer-events: none;
+    }
+
+    .hero-photo {
+      transform: rotate(-5deg);
+      background: #f8f1e4;
+      padding: 12px 12px 45px;
+      box-shadow: 0 14px 30px rgba(0,0,0,.3);
+      position: relative;
+    }
+
+    .hero-photo.right {
+      transform: rotate(5deg);
+    }
+
+    .photo-placeholder {
+      aspect-ratio: 4 / 5;
+      background:
+        linear-gradient(135deg, #d9c3a4, #9b7764);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.85);
+      text-align: center;
+      padding: 25px;
+      font-family: "Kalam", cursive;
+      font-size: 1.1rem;
+    }
+
+    .hero-paper {
+      position: relative;
+      background: var(--paper-light);
+      padding: 70px 50px;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(0,0,0,.25);
+      border-radius: 2px;
+    }
+
+    .hero-paper::before,
+    .hero-paper::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background:
+        radial-gradient(circle at 10px -2px, transparent 12px, var(--paper-light) 13px);
+      background-size: 22px 20px;
+    }
+
+    .hero-paper::before {
+      top: -10px;
+    }
+
+    .hero-paper::after {
+      bottom: -10px;
+      transform: rotate(180deg);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(4rem, 8vw, 7rem);
+      font-weight: 500;
+      letter-spacing: .12em;
+      line-height: .9;
+    }
+
+    .script-title {
+      font-family: "Sacramento", cursive;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      margin: 15px 0;
+    }
+
+    .years {
+      letter-spacing: .45em;
+      font-size: 1.1rem;
+      margin: 25px 0;
+    }
+
+    .heart {
+      color: var(--rose);
+      font-size: 2rem;
+    }
+
+    .birthday {
+      font-size: 1.65rem;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      max-width: 520px;
+      margin: auto;
+      font-size: 1.25rem;
+      line-height: 1.55;
+    }
+
+    .open-button {
+      margin-top: 35px;
+      padding: 15px 45px;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      background: var(--rose);
+      font-size: 1.25rem;
+      box-shadow: 0 8px 20px rgba(92, 54, 43, .22);
+      transition: .2s;
+    }
+
+    .open-button:hover {
+      transform: translateY(-2px);
+      background: #955a4d;
+    }
+
+    /* ---------------- CHAPTER BAR ---------------- */
+
+    .chapters {
+      display: flex;
+      overflow-x: auto;
+      background: #f8eedc;
+      border-bottom: 1px solid #d9c8aa;
+      border-top: 1px solid #d9c8aa;
+    }
+
+    .chapter {
+      min-width: 175px;
+      padding: 20px 15px;
+      text-align: center;
+      border-right: 1px solid #ddcdb3;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .chapter:hover {
+      background: rgba(169,103,88,.08);
+    }
+
+    .chapter strong {
+      display: block;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .chapter span {
+      display: block;
+      font-size: .85rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* ---------------- SCRAPBOOK ---------------- */
+
+    .scrapbook {
+      max-width: 1450px;
+      margin: auto;
+      padding: 70px 5% 100px;
+    }
+
+    .chapter-header {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .chapter-header h2 {
+      font-family: "Sacramento", cursive;
+      font-size: 4rem;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .chapter-header .date-range {
+      letter-spacing: .4em;
+      margin: 5px 0 18px;
+    }
+
+    .chapter-header p {
+      max-width: 650px;
+      margin: auto;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    /* ---------------- PHOTO GRID ---------------- */
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 45px;
+      align-items: start;
+    }
+
+    .memory-card {
+      background: #fffaf0;
+      padding: 13px 13px 22px;
+      box-shadow: 0 8px 22px var(--shadow);
+      transition: .25s;
+      position: relative;
+    }
+
+    .memory-card:nth-child(odd) {
+      transform: rotate(-1deg);
+    }
+
+    .memory-card:nth-child(even) {
+      transform: rotate(1deg);
+    }
+
+    .memory-card:hover {
+      transform: rotate(0deg) translateY(-5px);
+      box-shadow: 0 14px 30px rgba(54,35,25,.22);
+    }
+
+    .card-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background:
+        linear-gradient(135deg, #d6c0a1, #967465);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      font-family: "Kalam", cursive;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 13px;
+      gap: 10px;
+    }
+
+    .photo-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .favorite {
+      border: none;
+      background: none;
+      font-size: 1.5rem;
+      color: #bca99c;
+      padding: 2px 6px;
+    }
+
+    .favorite.active {
+      color: #d56f5d;
+    }
+
+    .caption {
+      color: var(--muted);
+      margin: 5px 0 12px;
+    }
+
+    .my-memory {
+      font-family: "Kalam", cursive;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      border-top: 1px solid #eadbc4;
+      padding-top: 12px;
+    }
+
+    .mom-section {
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 1px dashed #ccbca6;
+    }
+
+    .mom-section label {
+      display: block;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 8px;
+    }
+
+    .mom-memory {
+      width: 100%;
+      min-height: 90px;
+      resize: vertical;
+      border: 1px solid #dacbb6;
+      background: #fffdf7;
+      padding: 10px;
+      color: var(--ink);
+      outline: none;
+      font-family: "Kalam", cursive;
+    }
+
+    .mom-memory:focus {
+      border-color: var(--rose);
+    }
+
+    .save-memory {
+      margin-top: 9px;
+      border: none;
+      padding: 8px 18px;
+      background: var(--ink);
+      color: white;
+      border-radius: 5px;
+    }
+
+    .saved-message {
+      display: inline-block;
+      margin-left: 10px;
+      color: var(--rose);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .saved-message.show {
+      opacity: 1;
+    }
+
+    /* ---------------- 50 MEMORIES ---------------- */
+
+    .fifty {
+      margin-top: 100px;
+      padding: 60px 30px;
+      text-align: center;
+      background: rgba(255,250,240,.65);
+      border-top: 1px solid #d9c8aa;
+      border-bottom: 1px solid #d9c8aa;
+    }
+
+    .fifty h2 {
+      font-family: "Sacramento", cursive;
+      font-size: 4rem;
+      margin: 0 0 10px;
+      font-weight: 400;
+    }
+
+    .fifty p {
+      font-size: 1.25rem;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .memory-number {
+      font-family: "Sacramento", cursive;
+      font-size: 3rem;
+      color: var(--rose);
+      margin-top: 35px;
+    }
+
+    .special-memory {
+      max-width: 700px;
+      margin: 5px auto 0;
+      font-family: "Kalam", cursive;
+      font-size: 1.35rem;
+      line-height: 1.6;
+    }
+
+    /* ---------------- END ---------------- */
+
+    .ending {
+      text-align: center;
+      padding: 120px 30px;
+      background: #3d271e;
+      color: #f8eedc;
+    }
+
+    .ending h2 {
+      font-family: "Sacramento", cursive;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .ending p {
+      font-size: 1.4rem;
+      margin-top: 15px;
+    }
+
+    /* ---------------- MOBILE ---------------- */
+
+    @media (max-width: 950px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 60px 8%;
+      }
+
+      .hero-photo {
+        display: none;
+      }
+
+      .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        gap: 15px;
+        padding: 12px;
+      }
+
+      nav a {
+        font-size: .9rem;
+      }
+
+      .hero {
+        min-height: 80vh;
+        padding: 50px 18px;
+      }
+
+      .hero-paper {
+        padding: 55px 20px;
+      }
+
+      .hero h1 {
+        font-size: 3.3rem;
+      }
+
+      .script-title {
+        font-size: 2.8rem;
+      }
+
+      .years {
+        letter-spacing: .2em;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .scrapbook {
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+
+      .chapter-header h2 {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#scrapbook">Scrapbook</a>
+    <a href="#photos">All Photos</a>
+    <a href="#favorites">Mom's Favorites</a>
+    <a href="#memories">50 Memories</a>
+  </nav>
+
+  <header class="hero" id="home">
+
+    <div class="hero-photo">
+      <div class="photo-placeholder">
+        One of your favorite photos of Mom will go here.
+      </div>
+    </div>
+
+    <div class="hero-paper">
+
+      <h1>ANDIE</h1>
+
+      <div class="script-title">
+        50 Years of Memories
+      </div>
+
+      <div class="heart">♡</div>
+
+      <div class="years">
+        1976 — 2026
+      </div>
+
+      <div class="birthday">
+        Happy 50th Birthday, Mom.
+      </div>
+
+      <p class="intro">
+        This is the story of your life, told through the people,
+        places, adventures, laughter, and little moments that
+        made it ours.
+      </p>
+
+      <button
+        class="open-button"
+        onclick="document.getElementById('scrapbook').scrollIntoView()"
+      >
+        Open the Scrapbook →
+      </button>
+
+    </div>
+
+    <div class="hero-photo right">
+      <div class="photo-placeholder">
+        Another family photo will go here.
+      </div>
+    </div>
+
+  </header>
+
+  <section class="chapters">
+
+    <a class="chapter" href="#early">
+      <strong>♡ The Early Years</strong>
+      <span>1976 — 1985</span>
+    </a>
+
+    <a class="chapter" href="#growing">
+      <strong>Growing Up</strong>
+      <span>1986 — 1995</span>
+    </a>
+
+    <a class="chapter" href="#mom">
+      <strong>Becoming Mom</strong>
+      <span>1996 — 2005</span>
+    </a>
+
+    <a class="chapter" href="#childhood">
+      <strong>Our Childhood</strong>
+      <span>2006 — 2015</span>
+    </a>
+
+    <a class="chapter" href="#adventures">
+      <strong>Adventures</strong>
+      <span>2016 — 2020</span>
+    </a>
+
+    <a class="chapter" href="#littlethings">
+      <strong>The Little Things</strong>
+      <span>2021 — 2025</span>
+    </a>
+
+    <a class="chapter" href="#today">
+      <strong>Today</strong>
+      <span>2026</span>
+    </a>
+
+    <a class="chapter" href="#memories">
+      <strong>50 Memories</strong>
+      <span>For 50 Years</span>
+    </a>
+
+  </section>
+
+  <main class="scrapbook" id="scrapbook">
+
+    <section id="early">
+
+      <div class="chapter-header">
+
+        <h2>The Early Years</h2>
+
+        <div class="date-range">
+          1976 — 1985
+        </div>
+
+        <p>
+          The beginning of a beautiful story. These are the
+          years that shaped you — your curiosity, your heart,
+          your personality, and the beginnings of the woman
+          we know and love.
+        </p>
+
+      </div>
+
+      <div class="photo-grid" id="photos">
+
+        <!-- PHOTO 1 -->
+
+        <article class="memory-card" data-photo="photo1">
+
+          <div class="card-image">
+            Your photo will go here
+          </div>
+
+          <div class="card-top">
+
+            <div class="photo-title">
+              Summer 1980
+            </div>
+
+            <button
+              class="favorite"
+              onclick="toggleFavorite(this, 'photo1')"
+              aria-label="Favorite this photo"
+            >
+              ♡
+            </button>
+
+          </div>
+
+          <div class="caption">
+            At the beach
+          </div>
+
+          <div class="my-memory">
+            You've always loved the water. I imagine this is
+            where that sense of adventure was already beginning.
+          </div>
+
+          <div class="mom-section">
+
+            <label>
+              Andie's Memory
+            </label>
+
+            <textarea
+              class="mom-memory"
+              id="memory-photo1"
+              placeholder="Mom, write what you remember about this photo..."
+            ></textarea>
+
+            <button
+              class="save-memory"
+              onclick="saveMemory('photo1')"
+            >
+              Save Memory
+            </button>
+
+            <span
+              class="saved-message"
+              id="saved-photo1"
+            >
+              Saved ♥
+            </span>
+
+          </div>
+
+        </article>
+
+        <!-- PHOTO 2 -->
+
+        <article class="memory-card" data-photo="photo2">
+
+          <div class="card-image">
+            Another childhood photo will go here
+          </div>
+
+          <div class="card-top">
+
+            <div class="photo-title">
+              Christmas 1982
+            </div>
+
+            <button
+              class="favorite"
+              onclick="toggleFavorite(this, 'photo2')"
+            >
+              ♡
+            </button>
+
+          </div>
+
+          <div class="caption">
+            That smile.
+          </div>
+
+          <div class="my-memory">
+            You brought so much joy to everyone around you,
+            even then.
+          </div>
+
+          <div class="mom-section">
+
+            <label>
+              Andie's Memory
+            </label>
+
+            <textarea
+              class="mom-memory"
+              id="memory-photo2"
+              placeholder="What do you remember?"
+            ></textarea>
+
+            <button
+              class="save-memory"
+              onclick="saveMemory('photo2')"
+            >
+              Save Memory
+            </button>
+
+            <span
+              class="saved-message"
+              id="saved-photo2"
+            >
+              Saved ♥
+            </span>
+
+          </div>
+
+        </article>
+
+        <!-- PHOTO 3 -->
+
+        <article class="memory-card" data-photo="photo3">
+
+          <div class="card-image">
+            Another favorite memory will go here
+          </div>
+
+          <div class="card-top">
+
+            <div class="photo-title">
+              1983
+            </div>
+
+            <button
+              class="favorite"
+              onclick="toggleFavorite(this, 'photo3')"
+            >
+              ♡
+            </button>
+
+          </div>
+
+          <div class="caption">
+            You and your best friend.
+          </div>
+
+          <div class="my-memory">
+            You've always had a special way of loving the
+            people and animals around you.
+          </div>
+
+          <div class="mom-section">
+
+            <label>
+              Andie's Memory
+            </label>
+
+            <textarea
+              class="mom-memory"
+              id="memory-photo3"
+              placeholder="Tell us the story behind this one..."
+            ></textarea>
+
+            <button
+              class="save-memory"
+              onclick="saveMemory('photo3')"
+            >
+              Save Memory
+            </button>
+
+            <span
+              class="saved-message"
+              id="saved-photo3"
+            >
+              Saved ♥
+            </span>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <section class="fifty" id="memories">
+
+      <h2>50 Memories for 50 Years</h2>
+
+      <p>
+        Fifty little pieces of a life that has meant more
+        to us than you could ever know.
+      </p>
+
+      <div class="memory-number">
+        Memory No. 1
+      </div>
+
+      <div class="special-memory">
+        Some of the best parts of our lives are ordinary
+        moments that probably didn't feel important when
+        they happened. This scrapbook is our attempt to
+        make sure those moments aren't forgotten.
+      </div>
+
+    </section>
+
+  </main>
+
+  <section class="ending">
+
+    <h2>
+      50 years down.
+    </h2>
+
+    <p>
+      We're going to need a lot more pages. ♥
+    </p>
+
+  </section>
+
+  <script>
+
+    /* --------------------------------
+       SAVE MOM'S WRITTEN MEMORIES
+       -------------------------------- */
+
+    function saveMemory(photoId) {
+
+      const textarea =
+        document.getElementById("memory-" + photoId);
+
+      const savedMessage =
+        document.getElementById("saved-" + photoId);
+
+      localStorage.setItem(
+        "andie-memory-" + photoId,
+        textarea.value
+      );
+
+      savedMessage.classList.add("show");
+
+      setTimeout(() => {
+        savedMessage.classList.remove("show");
+      }, 1800);
+    }
+
+
+    /* --------------------------------
+       FAVORITES
+       -------------------------------- */
+
+    function toggleFavorite(button, photoId) {
+
+      const storageKey =
+        "andie-favorite-" + photoId;
+
+      const isFavorite =
+        localStorage.getItem(storageKey) === "true";
+
+      if (isFavorite) {
+
+        localStorage.setItem(
+          storageKey,
+          "false"
+        );
+
+        button.classList.remove("active");
+        button.textContent = "♡";
+
+      } else {
+
+        localStorage.setItem(
+          storageKey,
+          "true"
+        );
+
+        button.classList.add("active");
+        button.textContent = "♥";
+
+      }
+    }
+
+
+    /* --------------------------------
+       LOAD SAVED INFORMATION
+       -------------------------------- */
+
+    window.addEventListener("DOMContentLoaded", () => {
+
+      const cards =
+        document.querySelectorAll(".memory-card");
+
+      cards.forEach(card => {
+
+        const photoId =
+          card.dataset.photo;
+
+        const savedMemory =
+          localStorage.getItem(
+            "andie-memory-" + photoId
+          );
+
+        if (savedMemory) {
+
+          const textarea =
+            document.getElementById(
+              "memory-" + photoId
+            );
+
+          textarea.value = savedMemory;
+        }
+
+
+        const favorite =
+          localStorage.getItem(
+            "andie-favorite-" + photoId
+          );
+
+        if (favorite === "true") {
+
+          const button =
+            card.querySelector(".favorite");
+
+          button.classList.add("active");
+          button.textContent = "♥";
+        }
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
