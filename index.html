@@ -38,7 +38,6 @@ html {
 
 body {
   margin:0;
-
   color:var(--ink);
 
   font-family:
@@ -74,19 +73,13 @@ button {
 
 .top-nav {
   position:sticky;
-
   top:0;
-
   z-index:1000;
 
   display:flex;
-
   justify-content:center;
-
   align-items:center;
-
   gap:30px;
-
   flex-wrap:wrap;
 
   padding:14px 20px;
@@ -104,13 +97,9 @@ button {
 .top-nav a,
 .top-nav button {
   color:var(--ink);
-
   text-decoration:none;
-
   background:none;
-
   border:0;
-
   font-size:1.05rem;
 }
 
@@ -121,17 +110,13 @@ button {
 
 .top-nav .add-memory {
   padding:8px 18px;
-
   border-radius:20px;
-
   background:var(--rose);
-
   color:white;
 }
 
 .top-nav .add-memory:hover {
   background:var(--rose-dark);
-
   color:white;
 }
 
@@ -144,9 +129,7 @@ button {
   min-height:82vh;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   padding:70px 20px;
@@ -177,9 +160,7 @@ button {
     50px;
 
   text-align:center;
-
-  background:
-    var(--paper-light);
+  background:var(--paper-light);
 
   box-shadow:
     0 20px 50px
@@ -189,12 +170,9 @@ button {
 .hero-paper::before,
 .hero-paper::after {
   content:"";
-
   position:absolute;
-
   left:0;
   right:0;
-
   height:10px;
 
   background:
@@ -214,9 +192,7 @@ button {
 
 .hero-paper::after {
   bottom:-9px;
-
-  transform:
-    rotate(180deg);
+  transform:rotate(180deg);
 }
 
 .hero h1 {
@@ -230,15 +206,12 @@ button {
     );
 
   font-weight:500;
-
   letter-spacing:.13em;
-
   line-height:.9;
 }
 
 .script-title {
-  margin:
-    15px 0;
+  margin:15px 0;
 
   font-family:
     "Sacramento",
@@ -254,32 +227,24 @@ button {
 
 .hero-heart {
   color:var(--rose);
-
   font-size:2rem;
 }
 
 .hero-years {
-  margin:
-    20px 0;
-
+  margin:20px 0;
   letter-spacing:.45em;
-
   font-size:1.1rem;
 }
 
 .birthday {
   margin-bottom:10px;
-
   font-size:1.7rem;
 }
 
 .hero-intro {
   max-width:550px;
-
   margin:auto;
-
   font-size:1.25rem;
-
   line-height:1.6;
 }
 
@@ -287,22 +252,19 @@ button {
   margin-top:30px;
 
   padding:
-    14px 38px;
+    14px
+    38px;
 
   border:0;
-
   border-radius:8px;
 
   background:var(--rose);
-
   color:white;
-
   font-size:1.2rem;
 }
 
 .open-button:hover {
-  background:
-    var(--rose-dark);
+  background:var(--rose-dark);
 }
 
 
@@ -312,9 +274,7 @@ button {
 
 .chapter-selector-wrapper {
   position:sticky;
-
   top:54px;
-
   z-index:900;
 
   border-top:
@@ -332,37 +292,28 @@ button {
 
 .chapter-selector {
   display:flex;
-
   overflow-x:auto;
-
   scrollbar-width:thin;
-
   margin:auto;
-
   max-width:1600px;
 }
 
 .chapter-button {
-  flex:
-    0 0 auto;
-
+  flex:0 0 auto;
   min-width:170px;
 
   padding:
-    16px 18px;
+    16px
+    18px;
 
   border:0;
 
   border-right:
     1px solid var(--border);
 
-  background:
-    transparent;
-
+  background:transparent;
   color:var(--ink);
-
   text-align:center;
-
   transition:.2s;
 }
 
@@ -395,19 +346,14 @@ button {
 
 .chapter-button strong {
   display:block;
-
   font-size:1.05rem;
-
   font-weight:600;
 }
 
 .chapter-button span {
   display:block;
-
   margin-top:3px;
-
   color:var(--muted);
-
   font-size:.82rem;
 }
 
@@ -418,9 +364,7 @@ button {
 
 .scrapbook {
   min-height:70vh;
-
   max-width:1450px;
-
   margin:auto;
 
   padding:
@@ -433,7 +377,6 @@ button {
 
 .view-heading {
   margin-bottom:50px;
-
   text-align:center;
 }
 
@@ -460,7 +403,6 @@ button {
     12px;
 
   letter-spacing:.35em;
-
   color:#59493f;
 }
 
@@ -483,9 +425,7 @@ button {
     15px auto 0;
 
   color:#59493f;
-
   font-size:1.2rem;
-
   line-height:1.6;
 }
 
@@ -539,13 +479,11 @@ button {
 }
 
 .photo-card:nth-child(odd) {
-  transform:
-    rotate(-.65deg);
+  transform:rotate(-.65deg);
 }
 
 .photo-card:nth-child(even) {
-  transform:
-    rotate(.65deg);
+  transform:rotate(.65deg);
 }
 
 .photo-card:hover {
@@ -567,19 +505,14 @@ button {
 
 .photo-image-wrapper {
   position:relative;
-
   overflow:hidden;
-
   background:#ddccb0;
 }
 
 .photo-image {
   display:block;
-
   width:100%;
-
   aspect-ratio:4/3;
-
   object-fit:cover;
 
   transition:
@@ -588,15 +521,12 @@ button {
 
 .photo-card:hover
 .photo-image {
-  transform:
-    scale(1.02);
+  transform:scale(1.02);
 }
 
 .chapter-sticker {
   position:absolute;
-
   left:10px;
-
   bottom:10px;
 
   max-width:
@@ -618,7 +548,6 @@ button {
     );
 
   color:var(--ink);
-
   font-size:.82rem;
 
   box-shadow:
@@ -642,35 +571,25 @@ button {
 
 .photo-top {
   display:flex;
-
-  justify-content:
-    space-between;
-
-  align-items:
-    flex-start;
-
+  justify-content:space-between;
+  align-items:flex-start;
   gap:10px;
 }
 
 .photo-title {
   font-size:1.3rem;
-
   font-weight:600;
 }
 
 .favorite-button {
-  flex:
-    0 0 auto;
+  flex:0 0 auto;
 
   padding:
     0 5px;
 
   border:0;
-
   background:none;
-
   color:#b6a296;
-
   font-size:1.65rem;
 }
 
@@ -680,21 +599,17 @@ button {
 
 .photo-meta {
   margin-top:4px;
-
   color:var(--muted);
-
   font-size:.95rem;
 }
 
 .photo-caption {
   margin-top:9px;
-
   font-size:1.05rem;
 }
 
 .photo-memory {
   margin-top:13px;
-
   padding-top:12px;
 
   border-top:
@@ -729,11 +644,8 @@ button {
 
 .loading-heart {
   display:block;
-
   margin-bottom:10px;
-
   color:var(--rose);
-
   font-size:2.2rem;
 
   animation:
@@ -745,13 +657,11 @@ button {
 
   0%,
   100% {
-    transform:
-      scale(1);
+    transform:scale(1);
   }
 
   50% {
-    transform:
-      scale(1.2);
+    transform:scale(1.2);
   }
 
 }
@@ -771,7 +681,6 @@ button {
     #cbb9a1;
 
   text-align:center;
-
   color:var(--muted);
 
   background:
@@ -791,35 +700,28 @@ button {
 
 .empty-view .big-heart {
   display:block;
-
   margin-bottom:10px;
-
   color:var(--rose);
-
   font-size:2.5rem;
 }
 
 
 /* =========================================
-   PHOTO MODAL
+   PHOTO MODAL — TWO-PAGE SCRAPBOOK
 ========================================= */
 
 .modal {
   position:fixed;
-
   inset:0;
-
   z-index:3000;
 
   display:none;
-
   align-items:center;
-
   justify-content:center;
 
   overflow:auto;
 
-  padding:25px;
+  padding:24px;
 
   background:
     rgba(
@@ -834,20 +736,35 @@ button {
   display:flex;
 }
 
+/*
+  The modal itself becomes the scrapbook spread.
+  Left side = photograph.
+  Right side = story and Andie's memory.
+*/
 .modal-paper {
   position:relative;
 
-  width:
-    min(
-      1000px,
-      96vw
-    );
+  display:grid;
+
+  grid-template-columns:
+    minmax(0, 1.08fr)
+    minmax(360px, .92fr);
+
+  width:min(
+    1380px,
+    96vw
+  );
+
+  height:min(
+    820px,
+    92vh
+  );
 
   max-height:92vh;
 
-  overflow:auto;
+  overflow:hidden;
 
-  padding:25px;
+  padding:0;
 
   background:
     var(--paper-light);
@@ -864,21 +781,45 @@ button {
     );
 }
 
+/* center seam of the scrapbook */
+.modal-paper::after {
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  bottom:0;
+  left:50%;
+
+  width:1px;
+
+  pointer-events:none;
+
+  background:
+    rgba(
+      130,
+      100,
+      75,
+      .18
+    );
+
+  box-shadow:
+    -8px 0 18px rgba(80,50,35,.05),
+    8px 0 18px rgba(80,50,35,.05);
+}
+
 .close-modal {
   position:absolute;
 
-  top:10px;
+  top:12px;
+  right:14px;
 
-  right:15px;
-
-  z-index:3;
+  z-index:10;
 
   width:42px;
-
   height:42px;
 
   border:0;
-
   border-radius:50%;
 
   background:
@@ -892,29 +833,63 @@ button {
   color:var(--ink);
 
   font-size:2rem;
-
   line-height:1;
+
+  box-shadow:
+    0 2px 10px
+    rgba(0,0,0,.12);
 }
 
+/* LEFT SCRAPBOOK PAGE */
 .modal-image {
   display:block;
 
-  max-width:100%;
+  width:100%;
+  height:100%;
 
-  max-height:65vh;
+  min-width:0;
+  min-height:0;
 
-  margin:auto;
+  padding:34px;
 
   object-fit:contain;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(90,60,40,.018),
+      rgba(90,60,40,.018) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    #f8eedc;
 }
 
+/* RIGHT SCRAPBOOK PAGE */
 .modal-content {
-  max-width:750px;
+  min-width:0;
+  min-height:0;
 
-  margin:
-    25px
-    auto
-    10px;
+  max-width:none;
+
+  margin:0;
+
+  padding:
+    55px
+    52px
+    45px;
+
+  overflow-y:auto;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(90,60,40,.018),
+      rgba(90,60,40,.018) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    var(--paper-light);
 }
 
 .modal-title-row {
@@ -932,17 +907,26 @@ button {
 .modal-title {
   margin:0;
 
-  font-size:2rem;
+  font-size:
+    clamp(
+      2rem,
+      3vw,
+      3rem
+    );
+
+  line-height:1.05;
 }
 
 .modal-favorite {
+  flex:0 0 auto;
+
   border:0;
 
   background:none;
 
   color:#b6a296;
 
-  font-size:2rem;
+  font-size:2.3rem;
 }
 
 .modal-favorite.active {
@@ -950,37 +934,41 @@ button {
 }
 
 .modal-meta {
-  margin-top:5px;
+  margin-top:12px;
 
   color:var(--muted);
+
+  font-size:1.05rem;
 }
 
 .modal-chapter {
   display:inline-block;
 
-  margin-top:8px;
+  margin-top:12px;
 
   padding:
-    4px
-    9px;
+    5px
+    11px;
 
   border-radius:3px;
 
   background:#f0e1c9;
 
-  font-size:.9rem;
+  font-size:.95rem;
 }
 
 .modal-caption {
-  margin-top:15px;
+  margin-top:20px;
 
-  font-size:1.15rem;
+  font-size:1.25rem;
+
+  line-height:1.5;
 }
 
 .modal-my-memory {
-  margin-top:20px;
+  margin-top:24px;
 
-  padding:18px;
+  padding:20px;
 
   background:#f6ead5;
 
@@ -991,12 +979,16 @@ button {
   font-size:1.1rem;
 
   line-height:1.6;
+
+  border-left:
+    3px solid
+    var(--paper-dark);
 }
 
 .andie-box {
-  margin-top:30px;
+  margin-top:34px;
 
-  padding-top:25px;
+  padding-top:28px;
 
   border-top:
     1px dashed
@@ -1011,17 +1003,26 @@ button {
     "Sacramento",
     cursive;
 
-  font-size:2.5rem;
+  font-size:3rem;
 
   font-weight:400;
+}
+
+.andie-box p {
+  margin:
+    0 0 14px;
+
+  color:var(--muted);
+
+  font-size:1.05rem;
 }
 
 .andie-memory {
   width:100%;
 
-  min-height:140px;
+  min-height:150px;
 
-  padding:12px;
+  padding:14px;
 
   border:
     1px solid
@@ -1035,6 +1036,10 @@ button {
     "Kalam",
     cursive;
 
+  font-size:1rem;
+
+  line-height:1.5;
+
   resize:vertical;
 }
 
@@ -1046,7 +1051,7 @@ button {
 }
 
 .save-memory {
-  margin-top:10px;
+  margin-top:12px;
 
   padding:
     10px
@@ -1109,13 +1114,12 @@ button {
 
 .ending p {
   margin-top:10px;
-
   font-size:1.35rem;
 }
 
 
 /* =========================================
-   MOBILE
+   TABLET / MOBILE
 ========================================= */
 
 @media(max-width:950px) {
@@ -1131,13 +1135,70 @@ button {
       );
   }
 
+  /*
+    Below 950px the scrapbook spread becomes
+    the original stacked photo/details layout.
+  */
+  .modal {
+    align-items:flex-start;
+  }
+
+  .modal-paper {
+    display:block;
+
+    width:min(
+      760px,
+      96vw
+    );
+
+    height:auto;
+
+    max-height:none;
+
+    overflow:visible;
+
+    padding:20px;
+  }
+
+  .modal-paper::after {
+    display:none;
+  }
+
+  .modal-image {
+    width:100%;
+    height:auto;
+
+    max-height:65vh;
+
+    padding:0;
+
+    object-fit:contain;
+
+    background:transparent;
+  }
+
+  .modal-content {
+    max-width:750px;
+
+    margin:
+      25px
+      auto
+      10px;
+
+    padding:0;
+
+    overflow:visible;
+
+    background:transparent;
+  }
+
 }
+
 
 @media(max-width:650px) {
 
   .top-nav {
     gap:12px;
-
     padding:10px;
   }
 
@@ -1193,22 +1254,22 @@ button {
   }
 
   .modal-paper {
-    padding:
-      15px;
+    padding:15px;
+  }
+
+  .modal-title {
+    font-size:1.8rem;
+  }
+
+  .andie-box h3 {
+    font-size:2.5rem;
   }
 
 }
 
 </style>
 </head>
-
-
 <body>
-
-
-<!-- =========================================
-     TOP NAVIGATION
-========================================= -->
 
 <nav class="top-nav">
 
@@ -1240,10 +1301,6 @@ button {
 </nav>
 
 
-<!-- =========================================
-     HERO
-========================================= -->
-
 <header
   class="hero"
   id="home"
@@ -1272,12 +1329,10 @@ button {
     </div>
 
     <p class="hero-intro">
-
       This is the story of your life,
       told through the people, places,
       adventures, laughter, and little
       moments that made it ours.
-
     </p>
 
     <button
@@ -1293,10 +1348,6 @@ button {
 </header>
 
 
-<!-- =========================================
-     CHAPTER BUTTONS
-========================================= -->
-
 <div class="chapter-selector-wrapper">
 
   <div
@@ -1306,10 +1357,6 @@ button {
 
 </div>
 
-
-<!-- =========================================
-     SCRAPBOOK
-========================================= -->
 
 <main
   class="scrapbook"
@@ -1385,10 +1432,6 @@ button {
 </main>
 
 
-<!-- =========================================
-     ENDING
-========================================= -->
-
 <section class="ending">
 
   <h2>
@@ -1403,7 +1446,7 @@ button {
 
 
 <!-- =========================================
-     PHOTO MODAL
+     PHOTO VIEWER
 ========================================= -->
 
 <div
@@ -1423,6 +1466,7 @@ button {
     </button>
 
 
+    <!-- LEFT SIDE -->
     <img
       class="modal-image"
       id="modalImage"
@@ -1430,6 +1474,7 @@ button {
     >
 
 
+    <!-- RIGHT SIDE -->
     <div class="modal-content">
 
       <div class="modal-title-row">
@@ -1482,8 +1527,7 @@ button {
         </h3>
 
         <p>
-          Mom, what do you remember
-          about this moment?
+          Mom, what do you remember about this moment?
         </p>
 
         <textarea
@@ -1976,7 +2020,6 @@ function showChapter(
 
 
   updateActiveButton();
-
 
   scrollToScrapbook();
 
@@ -2547,7 +2590,7 @@ function closeModal() {
 
 
 /* =========================================
-   MODAL BACKDROP
+   CLICK BACKDROP TO CLOSE
 ========================================= */
 
 document.getElementById(
@@ -2570,7 +2613,7 @@ document.getElementById(
 
 
 /* =========================================
-   ESCAPE CLOSES MODAL
+   ESCAPE KEY CLOSES MODAL
 ========================================= */
 
 document.addEventListener(
@@ -2591,7 +2634,7 @@ document.addEventListener(
 
 
 /* =========================================
-   MODAL FAVORITE BUTTON
+   MODAL FAVORITE
 ========================================= */
 
 document.getElementById(
