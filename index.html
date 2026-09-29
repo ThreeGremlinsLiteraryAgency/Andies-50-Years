@@ -1,1022 +1,2104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Andie — 50 Years of Memories</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Kalam:wght@300;400&family=Sacramento&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --paper: #f5ead4;
-      --paper-light: #fffaf0;
-      --paper-dark: #e4d1ae;
-      --ink: #3a2b25;
-      --muted: #7b6b61;
-      --rose: #a96758;
-      --rose-light: #dba899;
-      --wood: #4a2d20;
-      --shadow: rgba(54, 35, 25, 0.18);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 20% 10%, rgba(255,255,255,.35), transparent 30%),
-        repeating-linear-gradient(
-          0deg,
-          rgba(90,60,40,.025),
-          rgba(90,60,40,.025) 1px,
-          transparent 1px,
-          transparent 4px
-        ),
-        var(--paper);
-      font-family: "Cormorant Garamond", Georgia, serif;
-    }
-
-    button,
-    input,
-    textarea {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    /* ---------------- NAVIGATION ---------------- */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: center;
-      gap: 35px;
-      flex-wrap: wrap;
-      padding: 15px 25px;
-      background: rgba(250, 241, 222, 0.96);
-      border-bottom: 1px solid rgba(90, 60, 40, 0.15);
-      box-shadow: 0 3px 15px rgba(50, 30, 20, 0.08);
-      backdrop-filter: blur(8px);
-    }
-
-    nav a {
-      color: var(--ink);
-      text-decoration: none;
-      font-size: 1.05rem;
-      letter-spacing: .03em;
-    }
-
-    nav a:hover {
-      color: var(--rose);
-    }
-
-    /* ---------------- HERO ---------------- */
-
-    .hero {
-      min-height: 88vh;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr 1fr;
-      align-items: center;
-      gap: 35px;
-      padding: 65px 7%;
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(rgba(54,32,22,.1), rgba(54,32,22,.1)),
-        linear-gradient(135deg, #5a3929, #2d1b14);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 25px;
-      border: 1px solid rgba(255,255,255,.15);
-      pointer-events: none;
-    }
-
-    .hero-photo {
-      transform: rotate(-5deg);
-      background: #f8f1e4;
-      padding: 12px 12px 45px;
-      box-shadow: 0 14px 30px rgba(0,0,0,.3);
-      position: relative;
-    }
-
-    .hero-photo.right {
-      transform: rotate(5deg);
-    }
-
-    .photo-placeholder {
-      aspect-ratio: 4 / 5;
-      background:
-        linear-gradient(135deg, #d9c3a4, #9b7764);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,.85);
-      text-align: center;
-      padding: 25px;
-      font-family: "Kalam", cursive;
-      font-size: 1.1rem;
-    }
-
-    .hero-paper {
-      position: relative;
-      background: var(--paper-light);
-      padding: 70px 50px;
-      text-align: center;
-      box-shadow: 0 18px 45px rgba(0,0,0,.25);
-      border-radius: 2px;
-    }
-
-    .hero-paper::before,
-    .hero-paper::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 12px;
-      background:
-        radial-gradient(circle at 10px -2px, transparent 12px, var(--paper-light) 13px);
-      background-size: 22px 20px;
-    }
-
-    .hero-paper::before {
-      top: -10px;
-    }
-
-    .hero-paper::after {
-      bottom: -10px;
-      transform: rotate(180deg);
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(4rem, 8vw, 7rem);
-      font-weight: 500;
-      letter-spacing: .12em;
-      line-height: .9;
-    }
-
-    .script-title {
-      font-family: "Sacramento", cursive;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      margin: 15px 0;
-    }
-
-    .years {
-      letter-spacing: .45em;
-      font-size: 1.1rem;
-      margin: 25px 0;
-    }
-
-    .heart {
-      color: var(--rose);
-      font-size: 2rem;
-    }
-
-    .birthday {
-      font-size: 1.65rem;
-      margin-bottom: 10px;
-    }
-
-    .intro {
-      max-width: 520px;
-      margin: auto;
-      font-size: 1.25rem;
-      line-height: 1.55;
-    }
-
-    .open-button {
-      margin-top: 35px;
-      padding: 15px 45px;
-      border: none;
-      border-radius: 12px;
-      color: white;
-      background: var(--rose);
-      font-size: 1.25rem;
-      box-shadow: 0 8px 20px rgba(92, 54, 43, .22);
-      transition: .2s;
-    }
-
-    .open-button:hover {
-      transform: translateY(-2px);
-      background: #955a4d;
-    }
-
-    /* ---------------- CHAPTER BAR ---------------- */
-
-    .chapters {
-      display: flex;
-      overflow-x: auto;
-      background: #f8eedc;
-      border-bottom: 1px solid #d9c8aa;
-      border-top: 1px solid #d9c8aa;
-    }
-
-    .chapter {
-      min-width: 175px;
-      padding: 20px 15px;
-      text-align: center;
-      border-right: 1px solid #ddcdb3;
-      text-decoration: none;
-      color: var(--ink);
-    }
-
-    .chapter:hover {
-      background: rgba(169,103,88,.08);
-    }
-
-    .chapter strong {
-      display: block;
-      font-weight: 600;
-      font-size: 1.05rem;
-    }
-
-    .chapter span {
-      display: block;
-      font-size: .85rem;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    /* ---------------- SCRAPBOOK ---------------- */
-
-    .scrapbook {
-      max-width: 1450px;
-      margin: auto;
-      padding: 70px 5% 100px;
-    }
-
-    .chapter-header {
-      text-align: center;
-      margin-bottom: 55px;
-    }
-
-    .chapter-header h2 {
-      font-family: "Sacramento", cursive;
-      font-size: 4rem;
-      font-weight: 400;
-      margin: 0;
-    }
-
-    .chapter-header .date-range {
-      letter-spacing: .4em;
-      margin: 5px 0 18px;
-    }
-
-    .chapter-header p {
-      max-width: 650px;
-      margin: auto;
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
-
-    /* ---------------- PHOTO GRID ---------------- */
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 45px;
-      align-items: start;
-    }
-
-    .memory-card {
-      background: #fffaf0;
-      padding: 13px 13px 22px;
-      box-shadow: 0 8px 22px var(--shadow);
-      transition: .25s;
-      position: relative;
-    }
-
-    .memory-card:nth-child(odd) {
-      transform: rotate(-1deg);
-    }
-
-    .memory-card:nth-child(even) {
-      transform: rotate(1deg);
-    }
-
-    .memory-card:hover {
-      transform: rotate(0deg) translateY(-5px);
-      box-shadow: 0 14px 30px rgba(54,35,25,.22);
-    }
-
-    .card-image {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background:
-        linear-gradient(135deg, #d6c0a1, #967465);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      font-family: "Kalam", cursive;
-      padding: 20px;
-      overflow: hidden;
-    }
-
-    .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 13px;
-      gap: 10px;
-    }
-
-    .photo-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .favorite {
-      border: none;
-      background: none;
-      font-size: 1.5rem;
-      color: #bca99c;
-      padding: 2px 6px;
-    }
-
-    .favorite.active {
-      color: #d56f5d;
-    }
-
-    .caption {
-      color: var(--muted);
-      margin: 5px 0 12px;
-    }
-
-    .my-memory {
-      font-family: "Kalam", cursive;
-      font-size: 1.05rem;
-      line-height: 1.5;
-      border-top: 1px solid #eadbc4;
-      padding-top: 12px;
-    }
-
-    .mom-section {
-      margin-top: 18px;
-      padding-top: 15px;
-      border-top: 1px dashed #ccbca6;
-    }
-
-    .mom-section label {
-      display: block;
-      font-size: .9rem;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      margin-bottom: 8px;
-    }
-
-    .mom-memory {
-      width: 100%;
-      min-height: 90px;
-      resize: vertical;
-      border: 1px solid #dacbb6;
-      background: #fffdf7;
-      padding: 10px;
-      color: var(--ink);
-      outline: none;
-      font-family: "Kalam", cursive;
-    }
-
-    .mom-memory:focus {
-      border-color: var(--rose);
-    }
-
-    .save-memory {
-      margin-top: 9px;
-      border: none;
-      padding: 8px 18px;
-      background: var(--ink);
-      color: white;
-      border-radius: 5px;
-    }
-
-    .saved-message {
-      display: inline-block;
-      margin-left: 10px;
-      color: var(--rose);
-      opacity: 0;
-      transition: opacity .3s;
-    }
-
-    .saved-message.show {
-      opacity: 1;
-    }
-
-    /* ---------------- 50 MEMORIES ---------------- */
-
-    .fifty {
-      margin-top: 100px;
-      padding: 60px 30px;
-      text-align: center;
-      background: rgba(255,250,240,.65);
-      border-top: 1px solid #d9c8aa;
-      border-bottom: 1px solid #d9c8aa;
-    }
-
-    .fifty h2 {
-      font-family: "Sacramento", cursive;
-      font-size: 4rem;
-      margin: 0 0 10px;
-      font-weight: 400;
-    }
-
-    .fifty p {
-      font-size: 1.25rem;
-      max-width: 650px;
-      margin: auto;
-    }
-
-    .memory-number {
-      font-family: "Sacramento", cursive;
-      font-size: 3rem;
-      color: var(--rose);
-      margin-top: 35px;
-    }
-
-    .special-memory {
-      max-width: 700px;
-      margin: 5px auto 0;
-      font-family: "Kalam", cursive;
-      font-size: 1.35rem;
-      line-height: 1.6;
-    }
-
-    /* ---------------- END ---------------- */
-
-    .ending {
-      text-align: center;
-      padding: 120px 30px;
-      background: #3d271e;
-      color: #f8eedc;
-    }
-
-    .ending h2 {
-      font-family: "Sacramento", cursive;
-      font-size: clamp(3.5rem, 7vw, 6rem);
-      font-weight: 400;
-      margin: 0;
-    }
-
-    .ending p {
-      font-size: 1.4rem;
-      margin-top: 15px;
-    }
-
-    /* ---------------- MOBILE ---------------- */
-
-    @media (max-width: 950px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 60px 8%;
-      }
-
-      .hero-photo {
-        display: none;
-      }
-
-      .photo-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 650px) {
-      nav {
-        gap: 15px;
-        padding: 12px;
-      }
-
-      nav a {
-        font-size: .9rem;
-      }
-
-      .hero {
-        min-height: 80vh;
-        padding: 50px 18px;
-      }
-
-      .hero-paper {
-        padding: 55px 20px;
-      }
-
-      .hero h1 {
-        font-size: 3.3rem;
-      }
-
-      .script-title {
-        font-size: 2.8rem;
-      }
-
-      .years {
-        letter-spacing: .2em;
-      }
-
-      .photo-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .scrapbook {
-        padding-left: 25px;
-        padding-right: 25px;
-      }
-
-      .chapter-header h2 {
-        font-size: 3rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Andie — 50 Years of Memories</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Kalam:wght@300;400&family=Sacramento&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+  --paper:#f5ead4;
+  --paper-light:#fffaf0;
+  --paper-dark:#e4d1ae;
+  --ink:#3a2b25;
+  --muted:#7b6b61;
+  --rose:#a96758;
+  --rose-light:#dba899;
+  --border:#d9c8aa;
+  --wood:#3f281f;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  margin:0;
+  color:var(--ink);
+  font-family:"Cormorant Garamond", Georgia, serif;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(90,60,40,.025),
+      rgba(90,60,40,.025) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    var(--paper);
+}
+
+button,
+textarea {
+  font:inherit;
+}
+
+/* ==============================
+   NAVIGATION
+============================== */
+
+nav {
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+  flex-wrap:wrap;
+
+  padding:15px 20px;
+
+  background:rgba(255,250,240,.96);
+  border-bottom:1px solid var(--border);
+
+  backdrop-filter:blur(8px);
+}
+
+nav a {
+  text-decoration:none;
+  color:var(--ink);
+  font-size:1.05rem;
+}
+
+nav a:hover {
+  color:var(--rose);
+}
+
+.add-link {
+  padding:7px 15px;
+  background:var(--rose);
+  color:white !important;
+  border-radius:20px;
+}
+
+
+/* ==============================
+   HERO
+============================== */
+
+.hero {
+  min-height:88vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:70px 20px;
+
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(255,255,255,.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #563728,
+      #2c1b15
+    );
+}
+
+.hero-paper {
+  position:relative;
+
+  width:min(760px, 92%);
+
+  padding:75px 50px;
+
+  text-align:center;
+
+  background:var(--paper-light);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.35);
+}
+
+.hero-paper::before,
+.hero-paper::after {
+  content:"";
+
+  position:absolute;
+  left:0;
+  right:0;
+
+  height:10px;
+
+  background:
+    radial-gradient(
+      circle at 10px -2px,
+      transparent 12px,
+      var(--paper-light) 13px
+    );
+
+  background-size:22px 20px;
+}
+
+.hero-paper::before {
+  top:-9px;
+}
+
+.hero-paper::after {
+  bottom:-9px;
+  transform:rotate(180deg);
+}
+
+.hero h1 {
+  margin:0;
+
+  font-size:clamp(4rem,9vw,7rem);
+
+  font-weight:500;
+
+  letter-spacing:.13em;
+  line-height:.9;
+}
+
+.script-title {
+  margin:15px 0;
+
+  font-family:"Sacramento", cursive;
+
+  font-size:clamp(3rem,6vw,5rem);
+}
+
+.heart {
+  color:var(--rose);
+  font-size:2rem;
+}
+
+.years {
+  margin:20px 0;
+
+  font-size:1.1rem;
+
+  letter-spacing:.45em;
+}
+
+.birthday {
+  margin-bottom:10px;
+
+  font-size:1.7rem;
+}
+
+.intro {
+  max-width:550px;
+
+  margin:auto;
+
+  font-size:1.25rem;
+  line-height:1.6;
+}
+
+.open-button {
+  margin-top:30px;
+
+  padding:14px 38px;
+
+  border:0;
+  border-radius:8px;
+
+  background:var(--rose);
+
+  color:white;
+
+  font-size:1.2rem;
+
+  cursor:pointer;
+}
+
+.open-button:hover {
+  background:#955a4d;
+}
+
+
+/* ==============================
+   CHAPTER NAV
+============================== */
+
+.chapter-nav {
+  display:flex;
+
+  overflow-x:auto;
+
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+
+  background:#f8eedc;
+}
+
+.chapter-link {
+  min-width:180px;
+
+  padding:18px;
+
+  text-align:center;
+
+  text-decoration:none;
+
+  color:var(--ink);
+
+  border-right:1px solid var(--border);
+}
+
+.chapter-link:hover {
+  background:rgba(169,103,88,.08);
+}
+
+.chapter-link strong {
+  display:block;
+
+  font-weight:600;
+}
+
+.chapter-link span {
+  display:block;
+
+  margin-top:3px;
+
+  color:var(--muted);
+
+  font-size:.85rem;
+}
+
+
+/* ==============================
+   SCRAPBOOK
+============================== */
+
+.scrapbook {
+  max-width:1450px;
+
+  margin:auto;
+
+  padding:60px 5% 120px;
+}
+
+.chapter-section {
+  margin-bottom:110px;
+
+  scroll-margin-top:100px;
+}
+
+.chapter-heading {
+  margin-bottom:45px;
+
+  text-align:center;
+}
+
+.chapter-heading h2 {
+  margin:0;
+
+  font-family:"Sacramento", cursive;
+
+  font-size:4rem;
+  font-weight:400;
+}
+
+.chapter-years {
+  margin:5px 0 15px;
+
+  letter-spacing:.35em;
+}
+
+.chapter-description {
+  max-width:650px;
+
+  margin:auto;
+
+  font-size:1.2rem;
+  line-height:1.6;
+
+  color:#58483e;
+}
+
+
+/* ==============================
+   PHOTOS
+============================== */
+
+.photo-grid {
+  display:grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0,1fr));
+
+  gap:42px;
+}
+
+.photo-card {
+  padding:13px 13px 23px;
+
+  background:var(--paper-light);
+
+  box-shadow:
+    0 8px 22px rgba(54,35,25,.18);
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.photo-card:nth-child(odd) {
+  transform:rotate(-.7deg);
+}
+
+.photo-card:nth-child(even) {
+  transform:rotate(.7deg);
+}
+
+.photo-card:hover {
+  transform:
+    rotate(0)
+    translateY(-6px);
+
+  box-shadow:
+    0 15px 30px rgba(54,35,25,.25);
+}
+
+.photo-image {
+  width:100%;
+  aspect-ratio:4/3;
+
+  object-fit:cover;
+
+  display:block;
+
+  background:#ddccb0;
+}
+
+.photo-info {
+  padding:12px 5px 0;
+}
+
+.photo-top {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+
+  gap:10px;
+}
+
+.photo-title {
+  font-size:1.3rem;
+  font-weight:600;
+}
+
+.favorite-button {
+  border:0;
+
+  background:none;
+
+  color:#b6a296;
+
+  font-size:1.65rem;
+
+  cursor:pointer;
+
+  padding:0 5px;
+}
+
+.favorite-button.active {
+  color:#d36f5e;
+}
+
+.photo-meta {
+  margin-top:3px;
+
+  color:var(--muted);
+
+  font-size:.95rem;
+}
+
+.photo-caption {
+  margin-top:8px;
+
+  font-size:1.05rem;
+}
+
+.photo-memory {
+  margin-top:13px;
+
+  padding-top:12px;
+
+  border-top:1px solid #eadbc4;
+
+  font-family:"Kalam", cursive;
+
+  line-height:1.5;
+}
+
+.empty-chapter {
+  padding:35px;
+
+  border:1px dashed #ccbca6;
+
+  text-align:center;
+
+  color:var(--muted);
+
+  font-family:"Kalam", cursive;
+}
+
+
+/* ==============================
+   LOADING
+============================== */
+
+.loading {
+  padding:100px 20px;
+
+  text-align:center;
+
+  font-family:"Kalam", cursive;
+
+  font-size:1.3rem;
+}
+
+.loading-heart {
+  display:block;
+
+  margin-bottom:12px;
+
+  color:var(--rose);
+
+  font-size:2rem;
+
+  animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform:scale(1);
+  }
+
+  50% {
+    transform:scale(1.2);
+  }
+}
+
+
+/* ==============================
+   MODAL
+============================== */
+
+.modal {
+  position:fixed;
+
+  inset:0;
+
+  z-index:2000;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:25px;
+
+  background:rgba(30,18,13,.85);
+
+  overflow:auto;
+}
+
+.modal.open {
+  display:flex;
+}
+
+.modal-paper {
+  position:relative;
+
+  width:min(1000px,96vw);
+
+  max-height:92vh;
+
+  overflow:auto;
+
+  padding:25px;
+
+  background:var(--paper-light);
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.5);
+}
+
+.close-modal {
+  position:absolute;
+
+  top:10px;
+  right:15px;
+
+  z-index:3;
+
+  border:0;
+
+  background:rgba(255,250,240,.9);
+
+  color:var(--ink);
+
+  font-size:2rem;
+
+  cursor:pointer;
+}
+
+.modal-image {
+  display:block;
+
+  max-width:100%;
+  max-height:65vh;
+
+  margin:auto;
+
+  object-fit:contain;
+}
+
+.modal-content {
+  max-width:750px;
+
+  margin:25px auto 10px;
+}
+
+.modal-title {
+  margin:0;
+
+  font-size:2rem;
+}
+
+.modal-meta {
+  margin-top:5px;
+
+  color:var(--muted);
+}
+
+.modal-caption {
+  margin-top:15px;
+
+  font-size:1.15rem;
+}
+
+.modal-my-memory {
+  margin-top:20px;
+
+  padding:18px;
+
+  background:#f6ead5;
+
+  font-family:"Kalam", cursive;
+
+  font-size:1.1rem;
+  line-height:1.6;
+}
+
+.andie-box {
+  margin-top:30px;
+
+  padding-top:25px;
+
+  border-top:1px dashed #cbb9a1;
+}
+
+.andie-box h3 {
+  margin:0 0 8px;
+
+  font-family:"Sacramento", cursive;
+
+  font-size:2.3rem;
+
+  font-weight:400;
+}
+
+.andie-memory {
+  width:100%;
+
+  min-height:130px;
+
+  padding:12px;
+
+  border:1px solid var(--border);
+
+  background:#fffdf8;
+
+  color:var(--ink);
+
+  font-family:"Kalam", cursive;
+
+  resize:vertical;
+}
+
+.save-memory {
+  margin-top:10px;
+
+  padding:10px 22px;
+
+  border:0;
+  border-radius:5px;
+
+  background:var(--ink);
+
+  color:white;
+
+  cursor:pointer;
+}
+
+.memory-status {
+  margin-left:10px;
+
+  color:#58744f;
+
+  font-family:"Kalam", cursive;
+}
+
+
+/* ==============================
+   ENDING
+============================== */
+
+.ending {
+  padding:110px 20px;
+
+  text-align:center;
+
+  background:var(--wood);
+
+  color:#f8eedc;
+}
+
+.ending h2 {
+  margin:0;
+
+  font-family:"Sacramento", cursive;
+
+  font-size:clamp(3.5rem,8vw,6rem);
+
+  font-weight:400;
+}
+
+.ending p {
+  margin-top:10px;
+
+  font-size:1.35rem;
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media(max-width:950px) {
+
+  .photo-grid {
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+}
+
+@media(max-width:650px) {
+
+  nav {
+    gap:12px;
+
+    padding:11px;
+  }
+
+  nav a {
+    font-size:.9rem;
+  }
+
+  .hero {
+    min-height:80vh;
+
+    padding:45px 15px;
+  }
+
+  .hero-paper {
+    padding:55px 20px;
+  }
+
+  .years {
+    letter-spacing:.2em;
+  }
+
+  .photo-grid {
+    grid-template-columns:1fr;
+  }
+
+  .scrapbook {
+    padding-left:22px;
+    padding-right:22px;
+  }
+
+  .chapter-heading h2 {
+    font-size:3.2rem;
+  }
+
+  .modal {
+    padding:10px;
+  }
+
+  .modal-paper {
+    padding:15px;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#scrapbook">Scrapbook</a>
-    <a href="#photos">All Photos</a>
-    <a href="#favorites">Mom's Favorites</a>
-    <a href="#memories">50 Memories</a>
-  </nav>
 
-  <header class="hero" id="home">
+<!-- ==============================
+     NAVIGATION
+============================== -->
 
-    <div class="hero-photo">
-      <div class="photo-placeholder">
-        One of your favorite photos of Mom will go here.
-      </div>
+<nav>
+
+  <a href="#home">
+    Home
+  </a>
+
+  <a href="#scrapbook">
+    Scrapbook
+  </a>
+
+  <a href="#favorites">
+    Mom's Favorites
+  </a>
+
+  <a
+    class="add-link"
+    href="add-photo.html"
+  >
+    + Add a Memory
+  </a>
+
+</nav>
+
+
+<!-- ==============================
+     HERO
+============================== -->
+
+<header
+  class="hero"
+  id="home"
+>
+
+  <div class="hero-paper">
+
+    <h1>
+      ANDIE
+    </h1>
+
+    <div class="script-title">
+      50 Years of Memories
     </div>
 
-    <div class="hero-paper">
-
-      <h1>ANDIE</h1>
-
-      <div class="script-title">
-        50 Years of Memories
-      </div>
-
-      <div class="heart">♡</div>
-
-      <div class="years">
-        1976 — 2026
-      </div>
-
-      <div class="birthday">
-        Happy 50th Birthday, Mom.
-      </div>
-
-      <p class="intro">
-        This is the story of your life, told through the people,
-        places, adventures, laughter, and little moments that
-        made it ours.
-      </p>
-
-      <button
-        class="open-button"
-        onclick="document.getElementById('scrapbook').scrollIntoView()"
-      >
-        Open the Scrapbook →
-      </button>
-
+    <div class="heart">
+      ♡
     </div>
 
-    <div class="hero-photo right">
-      <div class="photo-placeholder">
-        Another family photo will go here.
-      </div>
+    <div class="years">
+      1976 — 2026
     </div>
 
-  </header>
+    <div class="birthday">
+      Happy 50th Birthday, Mom.
+    </div>
 
-  <section class="chapters">
+    <p class="intro">
 
-    <a class="chapter" href="#early">
-      <strong>♡ The Early Years</strong>
-      <span>1976 — 1985</span>
-    </a>
+      This is the story of your life,
+      told through the people, places,
+      adventures, laughter, and little
+      moments that made it ours.
 
-    <a class="chapter" href="#growing">
-      <strong>Growing Up</strong>
-      <span>1986 — 1995</span>
-    </a>
-
-    <a class="chapter" href="#mom">
-      <strong>Becoming Mom</strong>
-      <span>1996 — 2005</span>
-    </a>
-
-    <a class="chapter" href="#childhood">
-      <strong>Our Childhood</strong>
-      <span>2006 — 2015</span>
-    </a>
-
-    <a class="chapter" href="#adventures">
-      <strong>Adventures</strong>
-      <span>2016 — 2020</span>
-    </a>
-
-    <a class="chapter" href="#littlethings">
-      <strong>The Little Things</strong>
-      <span>2021 — 2025</span>
-    </a>
-
-    <a class="chapter" href="#today">
-      <strong>Today</strong>
-      <span>2026</span>
-    </a>
-
-    <a class="chapter" href="#memories">
-      <strong>50 Memories</strong>
-      <span>For 50 Years</span>
-    </a>
-
-  </section>
-
-  <main class="scrapbook" id="scrapbook">
-
-    <section id="early">
-
-      <div class="chapter-header">
-
-        <h2>The Early Years</h2>
-
-        <div class="date-range">
-          1976 — 1985
-        </div>
-
-        <p>
-          The beginning of a beautiful story. These are the
-          years that shaped you — your curiosity, your heart,
-          your personality, and the beginnings of the woman
-          we know and love.
-        </p>
-
-      </div>
-
-      <div class="photo-grid" id="photos">
-
-        <!-- PHOTO 1 -->
-
-        <article class="memory-card" data-photo="photo1">
-
-          <div class="card-image">
-            Your photo will go here
-          </div>
-
-          <div class="card-top">
-
-            <div class="photo-title">
-              Summer 1980
-            </div>
-
-            <button
-              class="favorite"
-              onclick="toggleFavorite(this, 'photo1')"
-              aria-label="Favorite this photo"
-            >
-              ♡
-            </button>
-
-          </div>
-
-          <div class="caption">
-            At the beach
-          </div>
-
-          <div class="my-memory">
-            You've always loved the water. I imagine this is
-            where that sense of adventure was already beginning.
-          </div>
-
-          <div class="mom-section">
-
-            <label>
-              Andie's Memory
-            </label>
-
-            <textarea
-              class="mom-memory"
-              id="memory-photo1"
-              placeholder="Mom, write what you remember about this photo..."
-            ></textarea>
-
-            <button
-              class="save-memory"
-              onclick="saveMemory('photo1')"
-            >
-              Save Memory
-            </button>
-
-            <span
-              class="saved-message"
-              id="saved-photo1"
-            >
-              Saved ♥
-            </span>
-
-          </div>
-
-        </article>
-
-        <!-- PHOTO 2 -->
-
-        <article class="memory-card" data-photo="photo2">
-
-          <div class="card-image">
-            Another childhood photo will go here
-          </div>
-
-          <div class="card-top">
-
-            <div class="photo-title">
-              Christmas 1982
-            </div>
-
-            <button
-              class="favorite"
-              onclick="toggleFavorite(this, 'photo2')"
-            >
-              ♡
-            </button>
-
-          </div>
-
-          <div class="caption">
-            That smile.
-          </div>
-
-          <div class="my-memory">
-            You brought so much joy to everyone around you,
-            even then.
-          </div>
-
-          <div class="mom-section">
-
-            <label>
-              Andie's Memory
-            </label>
-
-            <textarea
-              class="mom-memory"
-              id="memory-photo2"
-              placeholder="What do you remember?"
-            ></textarea>
-
-            <button
-              class="save-memory"
-              onclick="saveMemory('photo2')"
-            >
-              Save Memory
-            </button>
-
-            <span
-              class="saved-message"
-              id="saved-photo2"
-            >
-              Saved ♥
-            </span>
-
-          </div>
-
-        </article>
-
-        <!-- PHOTO 3 -->
-
-        <article class="memory-card" data-photo="photo3">
-
-          <div class="card-image">
-            Another favorite memory will go here
-          </div>
-
-          <div class="card-top">
-
-            <div class="photo-title">
-              1983
-            </div>
-
-            <button
-              class="favorite"
-              onclick="toggleFavorite(this, 'photo3')"
-            >
-              ♡
-            </button>
-
-          </div>
-
-          <div class="caption">
-            You and your best friend.
-          </div>
-
-          <div class="my-memory">
-            You've always had a special way of loving the
-            people and animals around you.
-          </div>
-
-          <div class="mom-section">
-
-            <label>
-              Andie's Memory
-            </label>
-
-            <textarea
-              class="mom-memory"
-              id="memory-photo3"
-              placeholder="Tell us the story behind this one..."
-            ></textarea>
-
-            <button
-              class="save-memory"
-              onclick="saveMemory('photo3')"
-            >
-              Save Memory
-            </button>
-
-            <span
-              class="saved-message"
-              id="saved-photo3"
-            >
-              Saved ♥
-            </span>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <section class="fifty" id="memories">
-
-      <h2>50 Memories for 50 Years</h2>
-
-      <p>
-        Fifty little pieces of a life that has meant more
-        to us than you could ever know.
-      </p>
-
-      <div class="memory-number">
-        Memory No. 1
-      </div>
-
-      <div class="special-memory">
-        Some of the best parts of our lives are ordinary
-        moments that probably didn't feel important when
-        they happened. This scrapbook is our attempt to
-        make sure those moments aren't forgotten.
-      </div>
-
-    </section>
-
-  </main>
-
-  <section class="ending">
-
-    <h2>
-      50 years down.
-    </h2>
-
-    <p>
-      We're going to need a lot more pages. ♥
     </p>
 
-  </section>
+    <button
+      class="open-button"
+      onclick="
+        document
+          .getElementById('scrapbook')
+          .scrollIntoView()
+      "
+    >
+      Open the Scrapbook →
+    </button>
 
-  <script>
+  </div>
 
-    /* --------------------------------
-       SAVE MOM'S WRITTEN MEMORIES
-       -------------------------------- */
+</header>
 
-    function saveMemory(photoId) {
 
-      const textarea =
-        document.getElementById("memory-" + photoId);
+<!-- ==============================
+     CHAPTER NAVIGATION
+============================== -->
 
-      const savedMessage =
-        document.getElementById("saved-" + photoId);
+<div
+  class="chapter-nav"
+  id="chapterNav"
+></div>
 
-      localStorage.setItem(
-        "andie-memory-" + photoId,
-        textarea.value
+
+<!-- ==============================
+     SCRAPBOOK
+============================== -->
+
+<main
+  class="scrapbook"
+  id="scrapbook"
+>
+
+  <div
+    class="loading"
+    id="loading"
+  >
+
+    <span class="loading-heart">
+      ♥
+    </span>
+
+    Opening Andie's scrapbook...
+
+  </div>
+
+  <div id="chaptersContainer"></div>
+
+</main>
+
+
+<!-- ==============================
+     ENDING
+============================== -->
+
+<section class="ending">
+
+  <h2>
+    50 years down.
+  </h2>
+
+  <p>
+    We're going to need a lot more pages. ♥
+  </p>
+
+</section>
+
+
+<!-- ==============================
+     PHOTO MODAL
+============================== -->
+
+<div
+  class="modal"
+  id="photoModal"
+>
+
+  <div class="modal-paper">
+
+    <button
+      class="close-modal"
+      onclick="closeModal()"
+      aria-label="Close photo"
+    >
+      ×
+    </button>
+
+    <img
+      class="modal-image"
+      id="modalImage"
+      alt=""
+    >
+
+    <div class="modal-content">
+
+      <h2
+        class="modal-title"
+        id="modalTitle"
+      ></h2>
+
+      <div
+        class="modal-meta"
+        id="modalMeta"
+      ></div>
+
+      <div
+        class="modal-caption"
+        id="modalCaption"
+      ></div>
+
+      <div
+        class="modal-my-memory"
+        id="modalMyMemory"
+      ></div>
+
+      <div class="andie-box">
+
+        <h3>
+          Andie's Memory
+        </h3>
+
+        <p>
+          Mom, what do you remember about this moment?
+        </p>
+
+        <textarea
+          class="andie-memory"
+          id="andieMemory"
+          placeholder="Write your memory here..."
+        ></textarea>
+
+        <button
+          class="save-memory"
+          id="saveMemoryButton"
+          onclick="saveAndieMemory()"
+        >
+          Save My Memory
+        </button>
+
+        <span
+          class="memory-status"
+          id="memoryStatus"
+        ></span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* ==========================================
+   SUPABASE
+========================================== */
+
+const SUPABASE_URL =
+  "https://pxwkirgekfrfwsozqzmy.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_-sSrsb4qejl2ISgJN3Ts8w_JCezDFX9";
+
+const supabaseClient =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+/* ==========================================
+   STATE
+========================================== */
+
+let chapters = [];
+
+let photos = [];
+
+let memories = [];
+
+let favorites = [];
+
+let activePhoto = null;
+
+
+/* ==========================================
+   LOAD EVERYTHING
+========================================== */
+
+async function loadScrapbook() {
+
+  const loading =
+    document.getElementById("loading");
+
+  try {
+
+    const [
+      chapterResult,
+      photoResult,
+      memoryResult,
+      favoriteResult
+    ] =
+      await Promise.all([
+
+        supabaseClient
+          .from("chapters")
+          .select("*")
+          .order(
+            "display_order",
+            { ascending:true }
+          ),
+
+        supabaseClient
+          .from("photos")
+          .select("*")
+          .order(
+            "photo_year",
+            { ascending:true }
+          )
+          .order(
+            "photo_date",
+            { ascending:true }
+          )
+          .order(
+            "display_order",
+            { ascending:true }
+          ),
+
+        supabaseClient
+          .from("andie_memories")
+          .select("*"),
+
+        supabaseClient
+          .from("favorites")
+          .select("*")
+
+      ]);
+
+
+    if (chapterResult.error) {
+      throw chapterResult.error;
+    }
+
+    if (photoResult.error) {
+      throw photoResult.error;
+    }
+
+    if (memoryResult.error) {
+      throw memoryResult.error;
+    }
+
+    if (favoriteResult.error) {
+      throw favoriteResult.error;
+    }
+
+
+    chapters =
+      chapterResult.data || [];
+
+    photos =
+      photoResult.data || [];
+
+    memories =
+      memoryResult.data || [];
+
+    favorites =
+      favoriteResult.data || [];
+
+
+    loading.style.display =
+      "none";
+
+
+    renderChapterNavigation();
+
+    renderScrapbook();
+
+  }
+
+  catch(error) {
+
+    console.error(error);
+
+    loading.innerHTML =
+      `
+        <strong>
+          The scrapbook couldn't open.
+        </strong>
+
+        <br><br>
+
+        ${escapeHTML(error.message)}
+      `;
+
+  }
+
+}
+
+
+/* ==========================================
+   CHAPTER NAVIGATION
+========================================== */
+
+function renderChapterNavigation() {
+
+  const nav =
+    document.getElementById(
+      "chapterNav"
+    );
+
+  nav.innerHTML = "";
+
+
+  chapters.forEach(chapter => {
+
+    const link =
+      document.createElement("a");
+
+    link.className =
+      "chapter-link";
+
+    link.href =
+      "#chapter-" + chapter.id;
+
+
+    const yearText =
+      chapter.start_year ===
+      chapter.end_year
+
+        ? chapter.start_year
+
+        : `${chapter.start_year} — ${chapter.end_year}`;
+
+
+    link.innerHTML =
+      `
+        <strong>
+          ${escapeHTML(chapter.name)}
+        </strong>
+
+        <span>
+          ${yearText}
+        </span>
+      `;
+
+
+    nav.appendChild(link);
+
+  });
+
+
+  const favoritesLink =
+    document.createElement("a");
+
+  favoritesLink.className =
+    "chapter-link";
+
+  favoritesLink.href =
+    "#favorites";
+
+  favoritesLink.innerHTML =
+    `
+      <strong>
+        ♡ Mom's Favorites
+      </strong>
+
+      <span>
+        Her favorite memories
+      </span>
+    `;
+
+  nav.appendChild(
+    favoritesLink
+  );
+
+}
+
+
+/* ==========================================
+   RENDER SCRAPBOOK
+========================================== */
+
+function renderScrapbook() {
+
+  const container =
+    document.getElementById(
+      "chaptersContainer"
+    );
+
+  container.innerHTML = "";
+
+
+  chapters.forEach(chapter => {
+
+    const section =
+      document.createElement(
+        "section"
       );
 
-      savedMessage.classList.add("show");
+    section.className =
+      "chapter-section";
 
-      setTimeout(() => {
-        savedMessage.classList.remove("show");
-      }, 1800);
+    section.id =
+      "chapter-" + chapter.id;
+
+
+    const chapterPhotos =
+      photos.filter(
+        photo =>
+          Number(photo.chapter_id) ===
+          Number(chapter.id)
+      );
+
+
+    const yearText =
+      chapter.start_year ===
+      chapter.end_year
+
+        ? chapter.start_year
+
+        : `${chapter.start_year} — ${chapter.end_year}`;
+
+
+    section.innerHTML =
+      `
+        <div class="chapter-heading">
+
+          <h2>
+            ${escapeHTML(chapter.name)}
+          </h2>
+
+          <div class="chapter-years">
+            ${yearText}
+          </div>
+
+          <div class="chapter-description">
+            ${escapeHTML(
+              chapter.description || ""
+            )}
+          </div>
+
+        </div>
+
+        <div
+          class="photo-grid"
+          id="grid-${chapter.id}"
+        ></div>
+      `;
+
+
+    container.appendChild(
+      section
+    );
+
+
+    const grid =
+      section.querySelector(
+        ".photo-grid"
+      );
+
+
+    if (!chapterPhotos.length) {
+
+      grid.innerHTML =
+        `
+          <div class="empty-chapter">
+            More memories are waiting
+            to be added to this chapter. ♡
+          </div>
+        `;
+
+    }
+
+    else {
+
+      chapterPhotos.forEach(
+        photo => {
+
+          grid.appendChild(
+            createPhotoCard(photo)
+          );
+
+        }
+      );
+
+    }
+
+  });
+
+
+  renderFavoritesSection(
+    container
+  );
+
+}
+
+
+/* ==========================================
+   CREATE PHOTO CARD
+========================================== */
+
+function createPhotoCard(photo) {
+
+  const card =
+    document.createElement(
+      "article"
+    );
+
+  card.className =
+    "photo-card";
+
+
+  const imageUrl =
+    getPhotoUrl(
+      photo.image_path
+    );
+
+
+  const isFavorite =
+    favorites.some(
+      favorite =>
+        favorite.photo_id ===
+        photo.id
+    );
+
+
+  const meta =
+    buildMeta(photo);
+
+
+  card.innerHTML =
+    `
+      <img
+        class="photo-image"
+        src="${escapeAttribute(imageUrl)}"
+        alt="${escapeAttribute(
+          photo.title ||
+          "Family memory"
+        )}"
+        loading="lazy"
+      >
+
+      <div class="photo-info">
+
+        <div class="photo-top">
+
+          <div class="photo-title">
+            ${escapeHTML(
+              photo.title ||
+              "A Memory"
+            )}
+          </div>
+
+          <button
+            class="favorite-button
+            ${isFavorite ? "active" : ""}"
+            aria-label="Favorite photo"
+          >
+            ${isFavorite ? "♥" : "♡"}
+          </button>
+
+        </div>
+
+        ${
+          meta
+            ?
+            `
+              <div class="photo-meta">
+                ${escapeHTML(meta)}
+              </div>
+            `
+            :
+            ""
+        }
+
+        ${
+          photo.caption
+            ?
+            `
+              <div class="photo-caption">
+                ${escapeHTML(
+                  photo.caption
+                )}
+              </div>
+            `
+            :
+            ""
+        }
+
+        ${
+          photo.my_memory
+            ?
+            `
+              <div class="photo-memory">
+                ${escapeHTML(
+                  photo.my_memory
+                )}
+              </div>
+            `
+            :
+            ""
+        }
+
+      </div>
+    `;
+
+
+  const favoriteButton =
+    card.querySelector(
+      ".favorite-button"
+    );
+
+
+  favoriteButton.addEventListener(
+    "click",
+    event => {
+
+      event.stopPropagation();
+
+      toggleFavorite(
+        photo.id,
+        favoriteButton
+      );
+
+    }
+  );
+
+
+  card.addEventListener(
+    "click",
+    () => openPhoto(photo)
+  );
+
+
+  return card;
+
+}
+
+
+/* ==========================================
+   FAVORITES SECTION
+========================================== */
+
+function renderFavoritesSection(
+  container
+) {
+
+  const section =
+    document.createElement(
+      "section"
+    );
+
+  section.className =
+    "chapter-section";
+
+  section.id =
+    "favorites";
+
+
+  section.innerHTML =
+    `
+      <div class="chapter-heading">
+
+        <h2>
+          Mom's Favorites
+        </h2>
+
+        <div class="chapter-description">
+          The moments Andie wants
+          to keep especially close.
+        </div>
+
+      </div>
+
+      <div
+        class="photo-grid"
+        id="favoriteGrid"
+      ></div>
+    `;
+
+
+  container.appendChild(
+    section
+  );
+
+
+  const grid =
+    section.querySelector(
+      "#favoriteGrid"
+    );
+
+
+  const favoritePhotos =
+    photos.filter(
+      photo =>
+        favorites.some(
+          favorite =>
+            favorite.photo_id ===
+            photo.id
+        )
+    );
+
+
+  if (!favoritePhotos.length) {
+
+    grid.innerHTML =
+      `
+        <div class="empty-chapter">
+          Mom hasn't chosen any
+          favorites yet. ♡
+        </div>
+      `;
+
+    return;
+  }
+
+
+  favoritePhotos.forEach(
+    photo => {
+
+      grid.appendChild(
+        createPhotoCard(photo)
+      );
+
+    }
+  );
+
+}
+
+
+/* ==========================================
+   PHOTO URL
+========================================== */
+
+function getPhotoUrl(path) {
+
+  const {
+    data
+  } =
+    supabaseClient
+      .storage
+      .from("family-photos")
+      .getPublicUrl(path);
+
+
+  return data.publicUrl;
+
+}
+
+
+/* ==========================================
+   PHOTO MODAL
+========================================== */
+
+function openPhoto(photo) {
+
+  activePhoto =
+    photo;
+
+
+  document.getElementById(
+    "modalImage"
+  ).src =
+    getPhotoUrl(
+      photo.image_path
+    );
+
+
+  document.getElementById(
+    "modalTitle"
+  ).textContent =
+    photo.title ||
+    "A Memory";
+
+
+  document.getElementById(
+    "modalMeta"
+  ).textContent =
+    buildMeta(photo);
+
+
+  const caption =
+    document.getElementById(
+      "modalCaption"
+    );
+
+  caption.textContent =
+    photo.caption || "";
+
+  caption.style.display =
+    photo.caption
+      ? "block"
+      : "none";
+
+
+  const myMemory =
+    document.getElementById(
+      "modalMyMemory"
+    );
+
+  myMemory.textContent =
+    photo.my_memory || "";
+
+  myMemory.style.display =
+    photo.my_memory
+      ? "block"
+      : "none";
+
+
+  const memory =
+    memories.find(
+      item =>
+        item.photo_id ===
+        photo.id
+    );
+
+
+  document.getElementById(
+    "andieMemory"
+  ).value =
+    memory?.memory || "";
+
+
+  document.getElementById(
+    "memoryStatus"
+  ).textContent =
+    "";
+
+
+  document.getElementById(
+    "photoModal"
+  ).classList.add(
+    "open"
+  );
+
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+/* ==========================================
+   CLOSE MODAL
+========================================== */
+
+function closeModal() {
+
+  document.getElementById(
+    "photoModal"
+  ).classList.remove(
+    "open"
+  );
+
+  document.body.style.overflow =
+    "";
+
+  activePhoto =
+    null;
+
+}
+
+
+document.getElementById(
+  "photoModal"
+).addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target.id ===
+      "photoModal"
+    ) {
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key ===
+      "Escape"
+    ) {
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+/* ==========================================
+   FAVORITE
+========================================== */
+
+async function toggleFavorite(
+  photoId,
+  button
+) {
+
+  const existing =
+    favorites.find(
+      favorite =>
+        favorite.photo_id ===
+        photoId
+    );
+
+
+  button.disabled =
+    true;
+
+
+  if (existing) {
+
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("favorites")
+        .delete()
+        .eq(
+          "photo_id",
+          photoId
+        );
+
+
+    if (error) {
+
+      console.error(error);
+
+      alert(
+        "This favorite couldn't be changed yet."
+      );
+
+      button.disabled =
+        false;
+
+      return;
     }
 
 
-    /* --------------------------------
-       FAVORITES
-       -------------------------------- */
+    favorites =
+      favorites.filter(
+        favorite =>
+          favorite.photo_id !==
+          photoId
+      );
 
-    function toggleFavorite(button, photoId) {
+  }
 
-      const storageKey =
-        "andie-favorite-" + photoId;
+  else {
 
-      const isFavorite =
-        localStorage.getItem(storageKey) === "true";
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("favorites")
+        .insert({
+          photo_id:photoId
+        })
+        .select()
+        .single();
 
-      if (isFavorite) {
 
-        localStorage.setItem(
-          storageKey,
-          "false"
-        );
+    if (error) {
 
-        button.classList.remove("active");
-        button.textContent = "♡";
+      console.error(error);
 
-      } else {
+      alert(
+        "This favorite couldn't be saved yet."
+      );
 
-        localStorage.setItem(
-          storageKey,
-          "true"
-        );
+      button.disabled =
+        false;
 
-        button.classList.add("active");
-        button.textContent = "♥";
-
-      }
+      return;
     }
 
 
-    /* --------------------------------
-       LOAD SAVED INFORMATION
-       -------------------------------- */
+    favorites.push(data);
 
-    window.addEventListener("DOMContentLoaded", () => {
+  }
 
-      const cards =
-        document.querySelectorAll(".memory-card");
 
-      cards.forEach(card => {
+  renderScrapbook();
 
-        const photoId =
-          card.dataset.photo;
+}
 
-        const savedMemory =
-          localStorage.getItem(
-            "andie-memory-" + photoId
-          );
 
-        if (savedMemory) {
+/* ==========================================
+   SAVE ANDIE'S MEMORY
+========================================== */
 
-          const textarea =
-            document.getElementById(
-              "memory-" + photoId
-            );
+async function saveAndieMemory() {
 
-          textarea.value = savedMemory;
+  if (!activePhoto) {
+    return;
+  }
+
+
+  const textarea =
+    document.getElementById(
+      "andieMemory"
+    );
+
+  const status =
+    document.getElementById(
+      "memoryStatus"
+    );
+
+  const button =
+    document.getElementById(
+      "saveMemoryButton"
+    );
+
+
+  button.disabled =
+    true;
+
+  status.textContent =
+    "Saving...";
+
+
+  const memoryText =
+    textarea.value.trim();
+
+
+  const existing =
+    memories.find(
+      item =>
+        item.photo_id ===
+        activePhoto.id
+    );
+
+
+  let result;
+
+
+  if (existing) {
+
+    result =
+      await supabaseClient
+        .from("andie_memories")
+        .update({
+          memory:
+            memoryText || null,
+
+          updated_at:
+            new Date().toISOString()
+        })
+        .eq(
+          "photo_id",
+          activePhoto.id
+        )
+        .select()
+        .single();
+
+  }
+
+  else {
+
+    result =
+      await supabaseClient
+        .from("andie_memories")
+        .insert({
+
+          photo_id:
+            activePhoto.id,
+
+          memory:
+            memoryText || null
+
+        })
+        .select()
+        .single();
+
+  }
+
+
+  if (result.error) {
+
+    console.error(
+      result.error
+    );
+
+    status.textContent =
+      "Couldn't save yet.";
+
+    button.disabled =
+      false;
+
+    return;
+  }
+
+
+  if (existing) {
+
+    memories =
+      memories.map(
+        item =>
+          item.photo_id ===
+          activePhoto.id
+            ? result.data
+            : item
+      );
+
+  }
+
+  else {
+
+    memories.push(
+      result.data
+    );
+
+  }
+
+
+  status.textContent =
+    "Saved ♥";
+
+
+  button.disabled =
+    false;
+
+}
+
+
+/* ==========================================
+   META
+========================================== */
+
+function buildMeta(photo) {
+
+  const pieces = [];
+
+
+  if (photo.photo_date) {
+
+    const date =
+      new Date(
+        photo.photo_date +
+        "T12:00:00"
+      );
+
+    pieces.push(
+      date.toLocaleDateString(
+        undefined,
+        {
+          year:"numeric",
+          month:"long",
+          day:"numeric"
         }
+      )
+    );
+
+  }
+
+  else if (photo.photo_year) {
+
+    pieces.push(
+      String(
+        photo.photo_year
+      )
+    );
+
+  }
 
 
-        const favorite =
-          localStorage.getItem(
-            "andie-favorite-" + photoId
-          );
+  if (photo.location) {
 
-        if (favorite === "true") {
+    pieces.push(
+      photo.location
+    );
 
-          const button =
-            card.querySelector(".favorite");
+  }
 
-          button.classList.add("active");
-          button.textContent = "♥";
-        }
 
-      });
+  return pieces.join(
+    " • "
+  );
 
-    });
+}
 
-  </script>
+
+/* ==========================================
+   SECURITY HELPERS
+========================================== */
+
+function escapeHTML(value) {
+
+  if (
+    value === null ||
+    value === undefined
+  ) {
+
+    return "";
+
+  }
+
+
+  return String(value)
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+function escapeAttribute(value) {
+
+  return escapeHTML(value);
+
+}
+
+
+/* ==========================================
+   START
+========================================== */
+
+loadScrapbook();
+
+</script>
 
 </body>
 </html>
