@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Add a Memory — Andie's 50 Years</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Kalam:wght@300;400&family=Sacramento&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --paper: #f5ead4;
+      --paper-light: #fffaf0;
+      --ink: #3a2b25;
+      --muted: #7b6b61;
+      --rose: #a96758;
+      --border: #d9c8aa;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Cormorant Garamond", Georgia, serif;
+
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(90,60,40,.025),
+          rgba(90,60,40,.025) 1px,
+          transparent 1px,
+          transparent 4px
+        ),
+        var(--paper);
+    }
+
+    nav {
+      padding: 18px;
+      text-align: center;
+      background: rgba(255,250,240,.95);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 1.15rem;
+    }
+
+    nav a:hover {
+      color: var(--rose);
+    }
+
+    .page {
+      max-width: 850px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .paper {
+      background: var(--paper-light);
+      padding: 45px;
+      box-shadow: 0 12px 35px rgba(60,40,30,.15);
+    }
+
+    h1 {
+      margin: 0;
+      text-align: center;
+      font-family: "Sacramento", cursive;
+      font-weight: 400;
+      font-size: 4rem;
+    }
+
+    .subtitle {
+      max-width: 550px;
+      margin: 5px auto 35px;
+      text-align: center;
+      font-size: 1.15rem;
+      color: var(--muted);
+    }
+
+    label {
+      display: block;
+      margin: 18px 0 6px;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #fffdf8;
+      padding: 12px;
+      color: var(--ink);
+      font: inherit;
+      font-size: 1rem;
+      border-radius: 4px;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--rose);
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .upload-area {
+      border: 2px dashed var(--border);
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 25px;
+      background: rgba(255,255,255,.35);
+    }
+
+    .preview {
+      display: none;
+      max-width: 100%;
+      max-height: 450px;
+      margin: 20px auto 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,.15);
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      margin-top: 30px;
+      border: none;
+      padding: 15px;
+      border-radius: 7px;
+      background: var(--rose);
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #955a4d;
+    }
+
+    .button:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
+
+    .status {
+      margin-top: 20px;
+      text-align: center;
+      font-family: "Kalam", cursive;
+      font-size: 1.1rem;
+      min-height: 30px;
+    }
+
+    .success {
+      color: #55734d;
+    }
+
+    .error {
+      color: #a64242;
+    }
+
+    @media(max-width:650px) {
+      .paper {
+        padding: 28px 20px;
+      }
+
+      .two-columns {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">← Back to Andie's Scrapbook</a>
+</nav>
+
+<div class="page">
+
+  <div class="paper">
+
+    <h1>Add a Memory</h1>
+
+    <div class="subtitle">
+      Add another photograph and story to Andie's
+      50 years of memories.
+    </div>
+
+    <form id="photoForm">
+
+      <div class="upload-area">
+
+        <label for="photo">
+          Choose a photograph
+        </label>
+
+        <input
+          type="file"
+          id="photo"
+          accept="image/jpeg,image/png,image/webp,image/heic,image/heif"
+          required
+        >
+
+        <img
+          id="preview"
+          class="preview"
+          alt="Photo preview"
+        >
+
+      </div>
+
+      <label for="title">
+        Photo title
+      </label>
+
+      <input
+        id="title"
+        type="text"
+        placeholder="Christmas Morning"
+      >
+
+
+      <div class="two-columns">
+
+        <div>
+
+          <label for="date">
+            Date, if you know it
+          </label>
+
+          <input
+            id="date"
+            type="date"
+          >
+
+        </div>
+
+        <div>
+
+          <label for="year">
+            Year
+          </label>
+
+          <input
+            id="year"
+            type="number"
+            min="1900"
+            max="2100"
+            placeholder="2004"
+          >
+
+        </div>
+
+      </div>
+
+
+      <label for="chapter">
+        Scrapbook chapter
+      </label>
+
+      <select id="chapter" required>
+
+        <option value="">
+          Loading chapters...
+        </option>
+
+      </select>
+
+
+      <label for="location">
+        Location
+      </label>
+
+      <input
+        id="location"
+        type="text"
+        placeholder="Home, Florida, Grandma's house..."
+      >
+
+
+      <label for="caption">
+        Short caption
+      </label>
+
+      <input
+        id="caption"
+        type="text"
+        placeholder="Christmas morning chaos."
+      >
+
+
+      <label for="memory">
+        Your memory
+      </label>
+
+      <textarea
+        id="memory"
+        placeholder="Write the story you want Mom to read with this photograph..."
+      ></textarea>
+
+
+      <button
+        id="submitButton"
+        class="button"
+        type="submit"
+      >
+        Add to Andie's Scrapbook ♥
+      </button>
+
+      <div
+        id="status"
+        class="status"
+      ></div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+  "https://pxwkirgekfrfwsozqzmy.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_-sSrsb4qejl2ISgJN3Ts8w_JCezDFX9";
+
+
+const supabaseClient =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+const form =
+  document.getElementById("photoForm");
+
+const photoInput =
+  document.getElementById("photo");
+
+const preview =
+  document.getElementById("preview");
+
+const chapterSelect =
+  document.getElementById("chapter");
+
+const statusBox =
+  document.getElementById("status");
+
+const submitButton =
+  document.getElementById("submitButton");
+
+
+/* =====================================
+   LOAD CHAPTERS
+===================================== */
+
+async function loadChapters() {
+
+  const { data, error } =
+    await supabaseClient
+      .from("chapters")
+      .select("id, name, start_year, end_year")
+      .order("display_order");
+
+
+  if (error) {
+
+    chapterSelect.innerHTML =
+      `<option value="">
+        Could not load chapters
+       </option>`;
+
+    console.error(error);
+
+    return;
+  }
+
+
+  chapterSelect.innerHTML =
+    `<option value="">
+      Choose a chapter
+     </option>`;
+
+
+  data.forEach(chapter => {
+
+    const option =
+      document.createElement("option");
+
+    option.value =
+      chapter.id;
+
+    option.textContent =
+      `${chapter.name} (${chapter.start_year}–${chapter.end_year})`;
+
+    chapterSelect.appendChild(option);
+
+  });
+
+}
+
+
+/* =====================================
+   PHOTO PREVIEW
+===================================== */
+
+photoInput.addEventListener(
+  "change",
+  () => {
+
+    const file =
+      photoInput.files[0];
+
+    if (!file) {
+      preview.style.display = "none";
+      return;
+    }
+
+    const objectUrl =
+      URL.createObjectURL(file);
+
+    preview.src =
+      objectUrl;
+
+    preview.style.display =
+      "block";
+
+  }
+);
+
+
+/* =====================================
+   CREATE SAFE FILE NAME
+===================================== */
+
+function makeFileName(file) {
+
+  const extension =
+    file.name
+      .split(".")
+      .pop()
+      .toLowerCase();
+
+  const random =
+    crypto.randomUUID();
+
+  return `${Date.now()}-${random}.${extension}`;
+}
+
+
+/* =====================================
+   UPLOAD PHOTO
+===================================== */
+
+form.addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+    const file =
+      photoInput.files[0];
+
+    if (!file) {
+
+      showError(
+        "Please choose a photograph first."
+      );
+
+      return;
+    }
+
+
+    submitButton.disabled =
+      true;
+
+    submitButton.textContent =
+      "Adding Memory...";
+
+    statusBox.className =
+      "status";
+
+    statusBox.textContent =
+      "Uploading photograph...";
+
+
+    const fileName =
+      makeFileName(file);
+
+
+    /* -----------------------------
+       UPLOAD IMAGE
+    ----------------------------- */
+
+    const {
+      data: uploadData,
+      error: uploadError
+    } =
+      await supabaseClient
+        .storage
+        .from("family-photos")
+        .upload(
+          fileName,
+          file,
+          {
+            cacheControl: "3600",
+            upsert: false
+          }
+        );
+
+
+    if (uploadError) {
+
+      console.error(uploadError);
+
+      showError(
+        "The photograph could not be uploaded: " +
+        uploadError.message
+      );
+
+      resetButton();
+
+      return;
+    }
+
+
+    statusBox.textContent =
+      "Saving the memory...";
+
+
+    /* -----------------------------
+       PHOTO INFORMATION
+    ----------------------------- */
+
+    const dateValue =
+      document.getElementById("date").value;
+
+    const yearValue =
+      document.getElementById("year").value;
+
+
+    let calculatedYear =
+      yearValue
+        ? Number(yearValue)
+        : null;
+
+
+    if (!calculatedYear && dateValue) {
+
+      calculatedYear =
+        new Date(
+          dateValue + "T12:00:00"
+        ).getFullYear();
+
+    }
+
+
+    const photoRecord = {
+
+      image_path:
+        uploadData.path,
+
+      title:
+        valueOrNull("title"),
+
+      caption:
+        valueOrNull("caption"),
+
+      my_memory:
+        valueOrNull("memory"),
+
+      photo_date:
+        dateValue || null,
+
+      photo_year:
+        calculatedYear,
+
+      location:
+        valueOrNull("location"),
+
+      chapter_id:
+        Number(chapterSelect.value)
+
+    };
+
+
+    /* -----------------------------
+       SAVE DATABASE RECORD
+    ----------------------------- */
+
+    const {
+      error: insertError
+    } =
+      await supabaseClient
+        .from("photos")
+        .insert(photoRecord);
+
+
+    if (insertError) {
+
+      console.error(insertError);
+
+      showError(
+        "The photograph uploaded, but its scrapbook information could not be saved: " +
+        insertError.message
+      );
+
+      resetButton();
+
+      return;
+    }
+
+
+    /* -----------------------------
+       SUCCESS
+    ----------------------------- */
+
+    statusBox.className =
+      "status success";
+
+    statusBox.innerHTML =
+      `♥ Added to Andie's scrapbook!`;
+
+
+    form.reset();
+
+    preview.src =
+      "";
+
+    preview.style.display =
+      "none";
+
+
+    resetButton();
+
+  }
+);
+
+
+/* =====================================
+   HELPERS
+===================================== */
+
+function valueOrNull(id) {
+
+  const value =
+    document
+      .getElementById(id)
+      .value
+      .trim();
+
+  return value || null;
+
+}
+
+
+function showError(message) {
+
+  statusBox.className =
+    "status error";
+
+  statusBox.textContent =
+    message;
+
+}
+
+
+function resetButton() {
+
+  submitButton.disabled =
+    false;
+
+  submitButton.textContent =
+    "Add to Andie's Scrapbook ♥";
+
+}
+
+
+/* START */
+
+loadChapters();
+
+</script>
+
+</body>
+</html>
