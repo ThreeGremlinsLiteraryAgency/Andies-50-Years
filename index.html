@@ -32,6 +32,8 @@
   --ink:#193650;
   --muted:#6f777b;
   --heart:#a85e64;
+  --danger:#9e4d4d;
+  --danger-dark:#773838;
 
   --shadow:0 18px 42px rgba(8,25,42,.25);
   --deep-shadow:0 30px 80px rgba(5,20,35,.38);
@@ -179,8 +181,6 @@ button{
       transparent 8px
     );
 }
-
-/* layered paper */
 
 .paper-shadow-one,
 .paper-shadow-two{
@@ -380,7 +380,7 @@ button{
 }
 
 /* =========================================================
-   CSS BOOK ILLUSTRATIONS
+   BOOK ILLUSTRATIONS
 ========================================================= */
 
 .book-stack{
@@ -899,8 +899,7 @@ button{
   font-size:1.2rem;
   pointer-events:none;
 }
-
-.photo-image-wrapper{
+  .photo-image-wrapper{
   position:relative;
   overflow:hidden;
   background:#dce6e9;
@@ -1393,10 +1392,79 @@ button{
 }
 
 /* =========================================================
+   PHOTO MANAGEMENT / DELETE
+========================================================= */
+
+.photo-management{
+  position:relative;
+  margin-top:34px;
+  padding:22px 20px 20px;
+  border:1px dashed rgba(158,77,77,.35);
+  background:rgba(158,77,77,.035);
+}
+
+.photo-management::before{
+  content:"";
+  position:absolute;
+  top:-1px;
+  left:18px;
+  right:18px;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(158,77,77,.22),
+    transparent
+  );
+}
+
+.photo-management h4{
+  margin:0 0 5px;
+  color:var(--danger-dark);
+  font-size:1.08rem;
+  font-weight:600;
+}
+
+.photo-management p{
+  margin:0 0 13px;
+  color:#7a6969;
+  font-size:.93rem;
+  line-height:1.4;
+}
+
+.delete-photo-button{
+  padding:9px 18px;
+  border:1px solid rgba(158,77,77,.42);
+  border-radius:24px;
+  background:transparent;
+  color:var(--danger);
+  transition:.2s;
+}
+
+.delete-photo-button:hover{
+  background:var(--danger);
+  color:#fff;
+}
+
+.delete-photo-button:disabled{
+  opacity:.55;
+  cursor:default;
+}
+
+.delete-status{
+  display:block;
+  margin-top:9px;
+  color:var(--danger);
+  font-family:"Kalam",cursive;
+  font-size:.9rem;
+}
+
+/* =========================================================
    RESPONSIVE
 ========================================================= */
 
 @media(max-width:1200px){
+
   .botanical-left{
     left:1%;
   }
@@ -1408,9 +1476,11 @@ button{
   .paper-note{
     display:none;
   }
+
 }
 
 @media(max-width:1000px){
+
   .hero{
     min-height:650px;
   }
@@ -1436,9 +1506,11 @@ button{
   .photo-grid{
     grid-template-columns:repeat(2,minmax(0,1fr));
   }
+
 }
 
 @media(max-width:950px){
+
   .modal{
     align-items:flex-start;
   }
@@ -1472,9 +1544,11 @@ button{
     overflow:visible;
     background:transparent;
   }
+
 }
 
 @media(max-width:700px){
+
   .top-nav{
     gap:12px;
     min-height:58px;
@@ -1565,7 +1639,9 @@ button{
   .andie-box h3{
     font-size:2.5rem;
   }
+
 }
+
 </style>
 </head>
 
@@ -1576,40 +1652,102 @@ button{
 ========================================================= -->
 
 <nav class="top-nav">
-  <a href="#home">Home</a>
 
-  <button type="button" onclick="showAllMemories()">
+  <a href="#home">
+    Home
+  </a>
+
+  <button
+    type="button"
+    onclick="showAllMemories()"
+  >
     Scrapbook
   </button>
 
-  <button type="button" onclick="showFavorites()">
+  <button
+    type="button"
+    onclick="showFavorites()"
+  >
     Mom's Favorites
   </button>
 
-  <a class="add-memory" href="add-photo.html">
+  <a
+    class="add-memory"
+    href="add-photo.html"
+  >
     + Add a Memory
   </a>
+
 </nav>
 
 <!-- =========================================================
      HERO
 ========================================================= -->
 
-<header class="hero" id="home">
+<header
+  class="hero"
+  id="home"
+>
 
-  <div class="paper-shadow-one" aria-hidden="true"></div>
-  <div class="paper-shadow-two" aria-hidden="true"></div>
+  <div
+    class="paper-shadow-one"
+    aria-hidden="true"
+  ></div>
 
-  <span class="decor spark spark-a" aria-hidden="true">✦</span>
-  <span class="decor spark spark-b" aria-hidden="true">✧</span>
-  <span class="decor spark spark-c" aria-hidden="true">✦</span>
-  <span class="decor spark spark-d" aria-hidden="true">✧</span>
-  <span class="decor spark spark-e" aria-hidden="true">⋆</span>
-  <span class="decor spark spark-f" aria-hidden="true">⋆</span>
+  <div
+    class="paper-shadow-two"
+    aria-hidden="true"
+  ></div>
+
+  <span
+    class="decor spark spark-a"
+    aria-hidden="true"
+  >
+    ✦
+  </span>
+
+  <span
+    class="decor spark spark-b"
+    aria-hidden="true"
+  >
+    ✧
+  </span>
+
+  <span
+    class="decor spark spark-c"
+    aria-hidden="true"
+  >
+    ✦
+  </span>
+
+  <span
+    class="decor spark spark-d"
+    aria-hidden="true"
+  >
+    ✧
+  </span>
+
+  <span
+    class="decor spark spark-e"
+    aria-hidden="true"
+  >
+    ⋆
+  </span>
+
+  <span
+    class="decor spark spark-f"
+    aria-hidden="true"
+  >
+    ⋆
+  </span>
 
   <!-- LEFT BOOKS -->
 
-  <div class="book-stack books-left" aria-hidden="true">
+  <div
+    class="book-stack books-left"
+    aria-hidden="true"
+  >
+
     <div class="book book-one">
       <span class="book-label"></span>
     </div>
@@ -1621,11 +1759,16 @@ button{
     <div class="book book-three">
       <span class="book-label"></span>
     </div>
+
   </div>
 
   <!-- RIGHT BOOKS -->
 
-  <div class="book-stack books-right" aria-hidden="true">
+  <div
+    class="book-stack books-right"
+    aria-hidden="true"
+  >
+
     <div class="book book-one">
       <span class="book-label"></span>
     </div>
@@ -1637,11 +1780,16 @@ button{
     <div class="book book-three">
       <span class="book-label"></span>
     </div>
+
   </div>
 
   <!-- LEFT FLOWERS -->
 
-  <div class="botanical botanical-left" aria-hidden="true">
+  <div
+    class="botanical botanical-left"
+    aria-hidden="true"
+  >
+
     <div class="stem"></div>
 
     <div class="leaf l1"></div>
@@ -1650,21 +1798,38 @@ button{
     <div class="leaf l4"></div>
 
     <div class="flower f1">
-      <span></span><span></span><span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
     <div class="flower f2">
-      <span></span><span></span><span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
     <div class="flower f3">
-      <span></span><span></span><span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+
   </div>
 
   <!-- RIGHT FLOWERS -->
 
-  <div class="botanical botanical-right" aria-hidden="true">
+  <div
+    class="botanical botanical-right"
+    aria-hidden="true"
+  >
+
     <div class="stem"></div>
 
     <div class="leaf l1"></div>
@@ -1673,37 +1838,66 @@ button{
     <div class="leaf l4"></div>
 
     <div class="flower f1">
-      <span></span><span></span><span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
     <div class="flower f2">
-      <span></span><span></span><span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
     <div class="flower f3">
-      <span></span><span></span><span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+
   </div>
 
-  <div class="paper-note note-left" aria-hidden="true">
-    a life full<br>of stories
+  <div
+    class="paper-note note-left"
+    aria-hidden="true"
+  >
+    a life full<br>
+    of stories
   </div>
 
-  <div class="paper-note note-right" aria-hidden="true">
-    fifty years<br>of love ♡
+  <div
+    class="paper-note note-right"
+    aria-hidden="true"
+  >
+    fifty years<br>
+    of love ♡
   </div>
 
   <!-- MAIN PAPER -->
 
   <div class="hero-paper">
 
-    <div class="hero-tape" aria-hidden="true"></div>
+    <div
+      class="hero-tape"
+      aria-hidden="true"
+    ></div>
 
-    <div class="hero-small-star" aria-hidden="true">
+    <div
+      class="hero-small-star"
+      aria-hidden="true"
+    >
       ✦ ✧ ✦
     </div>
 
-    <h1>ANDIE</h1>
+    <h1>
+      ANDIE
+    </h1>
 
     <div class="script-title">
       50 Years of Memories
@@ -1722,20 +1916,26 @@ button{
       places, adventures, laughter, and little moments that made it ours.
     </p>
 
-    <button class="open-button" type="button" onclick="openScrapbook()">
+    <button
+      class="open-button"
+      type="button"
+      onclick="openScrapbook()"
+    >
       Open the Scrapbook →
     </button>
 
   </div>
 
 </header>
-
 <!-- =========================================================
      CHAPTER SELECTOR
 ========================================================= -->
 
 <div class="chapter-selector-wrapper">
-  <div class="chapter-selector" id="chapterSelector"></div>
+  <div
+    class="chapter-selector"
+    id="chapterSelector"
+  ></div>
 </div>
 
 <!-- =========================================================
@@ -1744,26 +1944,47 @@ button{
 
 <div class="scrapbook-stage">
 
-  <main class="scrapbook" id="scrapbook">
+  <main
+    class="scrapbook"
+    id="scrapbook"
+  >
 
-    <span class="scrapbook-corner corner-one" aria-hidden="true">
+    <span
+      class="scrapbook-corner corner-one"
+      aria-hidden="true"
+    >
       ✦
     </span>
 
-    <span class="scrapbook-corner corner-two" aria-hidden="true">
+    <span
+      class="scrapbook-corner corner-two"
+      aria-hidden="true"
+    >
       ✧
     </span>
 
-    <div class="loading" id="loading">
-      <span class="loading-heart">♥</span>
+    <div
+      class="loading"
+      id="loading"
+    >
+      <span class="loading-heart">
+        ♥
+      </span>
+
       Opening Andie's scrapbook...
     </div>
 
-    <div id="scrapbookView" style="display:none;">
+    <div
+      id="scrapbookView"
+      style="display:none;"
+    >
 
       <div class="view-heading">
 
-        <div class="mini-ornament" aria-hidden="true">
+        <div
+          class="mini-ornament"
+          aria-hidden="true"
+        >
           ✦ ✧ ✦
         </div>
 
@@ -1771,19 +1992,40 @@ button{
           All Memories
         </h2>
 
-        <div class="view-years" id="viewYears"></div>
+        <div
+          class="view-years"
+          id="viewYears"
+        ></div>
 
-        <div class="memory-count" id="memoryCount"></div>
+        <div
+          class="memory-count"
+          id="memoryCount"
+        ></div>
 
-        <div class="view-description" id="viewDescription"></div>
+        <div
+          class="view-description"
+          id="viewDescription"
+        ></div>
 
       </div>
 
-      <div class="photo-grid" id="photoGrid"></div>
+      <div
+        class="photo-grid"
+        id="photoGrid"
+      ></div>
 
-      <div class="empty-view" id="emptyView" style="display:none;">
-        <span class="big-heart">♡</span>
+      <div
+        class="empty-view"
+        id="emptyView"
+        style="display:none;"
+      >
+
+        <span class="big-heart">
+          ♡
+        </span>
+
         No memories have been added here yet.
+
       </div>
 
     </div>
@@ -1797,15 +2039,25 @@ button{
 ========================================================= -->
 
 <section class="ending">
-  <h2>50 years down.</h2>
-  <p>We're going to need a lot more pages. ♥</p>
+
+  <h2>
+    50 years down.
+  </h2>
+
+  <p>
+    We're going to need a lot more pages. ♥
+  </p>
+
 </section>
 
 <!-- =========================================================
      PHOTO MODAL
 ========================================================= -->
 
-<div class="modal" id="photoModal">
+<div
+  class="modal"
+  id="photoModal"
+>
 
   <div class="modal-paper">
 
@@ -1818,19 +2070,28 @@ button{
       ×
     </button>
 
+    <!-- LEFT PAGE -->
+
     <div class="modal-left">
+
       <img
         class="modal-image"
         id="modalImage"
         alt=""
       >
+
     </div>
+
+    <!-- RIGHT PAGE -->
 
     <div class="modal-content">
 
       <div class="modal-title-row">
 
-        <h2 class="modal-title" id="modalTitle"></h2>
+        <h2
+          class="modal-title"
+          id="modalTitle"
+        ></h2>
 
         <button
           class="modal-favorite"
@@ -1843,17 +2104,33 @@ button{
 
       </div>
 
-      <div class="modal-meta" id="modalMeta"></div>
+      <div
+        class="modal-meta"
+        id="modalMeta"
+      ></div>
 
-      <div class="modal-chapter" id="modalChapter"></div>
+      <div
+        class="modal-chapter"
+        id="modalChapter"
+      ></div>
 
-      <div class="modal-caption" id="modalCaption"></div>
+      <div
+        class="modal-caption"
+        id="modalCaption"
+      ></div>
 
-      <div class="modal-my-memory" id="modalMyMemory"></div>
+      <div
+        class="modal-my-memory"
+        id="modalMyMemory"
+      ></div>
+
+      <!-- ANDIE'S MEMORY -->
 
       <div class="andie-box">
 
-        <h3>Andie's Memory</h3>
+        <h3>
+          Andie's Memory
+        </h3>
 
         <p>
           Mom, what do you remember about this moment?
@@ -1881,6 +2158,37 @@ button{
 
       </div>
 
+      <!-- ===================================================
+           PHOTO MANAGEMENT
+      ==================================================== -->
+
+      <div class="photo-management">
+
+        <h4>
+          Photo Management
+        </h4>
+
+        <p>
+          Uploaded the wrong photo or found a duplicate?
+          You can permanently remove it from the scrapbook.
+        </p>
+
+        <button
+          class="delete-photo-button"
+          id="deletePhotoButton"
+          type="button"
+          onclick="deleteActivePhoto()"
+        >
+          Delete This Photo
+        </button>
+
+        <span
+          class="delete-status"
+          id="deleteStatus"
+        ></span>
+
+      </div>
+
     </div>
 
   </div>
@@ -1894,6 +2202,11 @@ button{
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
+/* =========================================================
+   SUPABASE CONNECTION
+========================================================= */
+
 const SUPABASE_URL =
   "https://pxwkirgekfrfwsozqzmy.supabase.co";
 
@@ -1906,22 +2219,32 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
+/* =========================================================
+   APP STATE
+========================================================= */
+
 let chapters = [];
+
 let photos = [];
+
 let memories = [];
+
 let favorites = [];
 
 let activePhoto = null;
+
 let activeView = "all";
 
 /* =========================================================
-   LOAD
+   LOAD SCRAPBOOK
 ========================================================= */
 
 async function loadScrapbook(){
 
   const loading =
-    document.getElementById("loading");
+    document.getElementById(
+      "loading"
+    );
 
   try{
 
@@ -1933,7 +2256,9 @@ async function loadScrapbook(){
           .select("*")
           .order(
             "display_order",
-            {ascending:true}
+            {
+              ascending:true
+            }
           ),
 
         supabaseClient
@@ -1955,7 +2280,9 @@ async function loadScrapbook(){
           )
           .order(
             "display_order",
-            {ascending:true}
+            {
+              ascending:true
+            }
           ),
 
         supabaseClient
@@ -2013,13 +2340,17 @@ async function loadScrapbook(){
 
     renderChapterSelector();
 
-    showAllMemories(false);
+    showAllMemories(
+      false
+    );
 
   }
 
   catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
 
     loading.innerHTML =
       `
@@ -2029,7 +2360,9 @@ async function loadScrapbook(){
 
         <br><br>
 
-        ${escapeHTML(error.message)}
+        ${escapeHTML(
+          error.message
+        )}
       `;
 
   }
@@ -2047,7 +2380,8 @@ function renderChapterSelector(){
       "chapterSelector"
     );
 
-  selector.innerHTML = "";
+  selector.innerHTML =
+    "";
 
   selector.appendChild(
     createChapterButton(
@@ -2062,24 +2396,36 @@ function renderChapterSelector(){
     )
   );
 
-  chapters.forEach(chapter => {
+  chapters.forEach(
+    chapter => {
 
-    const count =
-      photos.filter(
-        photo =>
-          Number(photo.chapter_id) ===
-          Number(chapter.id)
-      ).length;
+      const count =
+        photos.filter(
+          photo =>
+            Number(
+              photo.chapter_id
+            ) ===
+            Number(
+              chapter.id
+            )
+        ).length;
 
-    selector.appendChild(
-      createChapterButton(
-        String(chapter.id),
-        chapter.name,
-        `${formatChapterYears(chapter)} • ${count}`
-      )
-    );
+      selector.appendChild(
+        createChapterButton(
+          String(
+            chapter.id
+          ),
+          chapter.name,
+          `${
+            formatChapterYears(
+              chapter
+            )
+          } • ${count}`
+        )
+      );
 
-  });
+    }
+  );
 
   selector.appendChild(
     createChapterButton(
@@ -2096,6 +2442,10 @@ function renderChapterSelector(){
   updateActiveButton();
 
 }
+
+/* =========================================================
+   CREATE CHAPTER BUTTON
+========================================================= */
 
 function createChapterButton(
   view,
@@ -2132,14 +2482,18 @@ function createChapterButton(
     "click",
     () => {
 
-      if(view === "all"){
+      if(
+        view ===
+        "all"
+      ){
 
         showAllMemories();
 
       }
 
       else if(
-        view === "favorites"
+        view ===
+        "favorites"
       ){
 
         showFavorites();
@@ -2162,14 +2516,15 @@ function createChapterButton(
 }
 
 /* =========================================================
-   VIEWS
+   ALL MEMORIES
 ========================================================= */
 
 function showAllMemories(
   scroll = true
 ){
 
-  activeView = "all";
+  activeView =
+    "all";
 
   setViewHeader(
     "All Memories",
@@ -2185,10 +2540,16 @@ function showAllMemories(
   updateActiveButton();
 
   if(scroll){
+
     scrollToScrapbook();
+
   }
 
 }
+
+/* =========================================================
+   SINGLE CHAPTER
+========================================================= */
 
 function showChapter(
   chapterId
@@ -2197,8 +2558,12 @@ function showChapter(
   const chapter =
     chapters.find(
       item =>
-        Number(item.id) ===
-        Number(chapterId)
+        Number(
+          item.id
+        ) ===
+        Number(
+          chapterId
+        )
     );
 
   if(!chapter){
@@ -2206,18 +2571,26 @@ function showChapter(
   }
 
   activeView =
-    String(chapterId);
+    String(
+      chapterId
+    );
 
   const chapterPhotos =
     photos.filter(
       photo =>
-        Number(photo.chapter_id) ===
-        Number(chapterId)
+        Number(
+          photo.chapter_id
+        ) ===
+        Number(
+          chapterId
+        )
     );
 
   setViewHeader(
     chapter.name,
-    formatChapterYears(chapter),
+    formatChapterYears(
+      chapter
+    ),
     chapterPhotos.length,
     chapter.description || ""
   );
@@ -2232,6 +2605,10 @@ function showChapter(
 
 }
 
+/* =========================================================
+   FAVORITES VIEW
+========================================================= */
+
 function showFavorites(
   scroll = true
 ){
@@ -2242,7 +2619,9 @@ function showFavorites(
   const favoritePhotos =
     photos.filter(
       photo =>
-        isFavorite(photo.id)
+        isFavorite(
+          photo.id
+        )
     );
 
   setViewHeader(
@@ -2260,10 +2639,16 @@ function showFavorites(
   updateActiveButton();
 
   if(scroll){
+
     scrollToScrapbook();
+
   }
 
 }
+
+/* =========================================================
+   VIEW HEADER
+========================================================= */
 
 function setViewHeader(
   title,
@@ -2299,7 +2684,7 @@ function setViewHeader(
 }
 
 /* =========================================================
-   PHOTO GRID
+   RENDER PHOTOS
 ========================================================= */
 
 function renderPhotos(
@@ -2317,7 +2702,8 @@ function renderPhotos(
       "emptyView"
     );
 
-  grid.innerHTML = "";
+  grid.innerHTML =
+    "";
 
   if(!photoList.length){
 
@@ -2362,7 +2748,9 @@ function renderPhotos(
     photo => {
 
       grid.appendChild(
-        createPhotoCard(photo)
+        createPhotoCard(
+          photo
+        )
       );
 
     }
@@ -2370,7 +2758,13 @@ function renderPhotos(
 
 }
 
-function createPhotoCard(photo){
+/* =========================================================
+   CREATE PHOTO CARD
+========================================================= */
+
+function createPhotoCard(
+  photo
+){
 
   const card =
     document.createElement(
@@ -2396,7 +2790,9 @@ function createPhotoCard(photo){
     );
 
   const meta =
-    buildMeta(photo);
+    buildMeta(
+      photo
+    );
 
   card.innerHTML =
     `
@@ -2404,7 +2800,9 @@ function createPhotoCard(photo){
 
         <img
           class="photo-image"
-          src="${escapeAttribute(imageUrl)}"
+          src="${escapeAttribute(
+            imageUrl
+          )}"
           alt="${escapeAttribute(
             photo.title ||
             "Family memory"
@@ -2417,7 +2815,9 @@ function createPhotoCard(photo){
             ?
             `
               <div class="chapter-sticker">
-                ${escapeHTML(chapter.name)}
+                ${escapeHTML(
+                  chapter.name
+                )}
               </div>
             `
             :
@@ -2431,10 +2831,12 @@ function createPhotoCard(photo){
         <div class="photo-top">
 
           <div class="photo-title">
+
             ${escapeHTML(
               photo.title ||
               "A Memory"
             )}
+
           </div>
 
           <button
@@ -2446,11 +2848,13 @@ function createPhotoCard(photo){
             }"
             aria-label="Favorite photo"
           >
+
             ${
               favorite
                 ? "♥"
                 : "♡"
             }
+
           </button>
 
         </div>
@@ -2460,7 +2864,11 @@ function createPhotoCard(photo){
             ?
             `
               <div class="photo-meta">
-                ${escapeHTML(meta)}
+
+                ${escapeHTML(
+                  meta
+                )}
+
               </div>
             `
             :
@@ -2472,9 +2880,11 @@ function createPhotoCard(photo){
             ?
             `
               <div class="photo-caption">
+
                 ${escapeHTML(
                   photo.caption
                 )}
+
               </div>
             `
             :
@@ -2486,9 +2896,11 @@ function createPhotoCard(photo){
             ?
             `
               <div class="photo-memory">
+
                 ${escapeHTML(
                   photo.my_memory
                 )}
+
               </div>
             `
             :
@@ -2498,28 +2910,31 @@ function createPhotoCard(photo){
       </div>
     `;
 
-  card
-    .querySelector(
+  const favoriteButton =
+    card.querySelector(
       ".favorite-button"
-    )
-    .addEventListener(
-      "click",
-      event => {
-
-        event.stopPropagation();
-
-        toggleFavorite(
-          photo.id
-        );
-
-      }
     );
+
+  favoriteButton.addEventListener(
+    "click",
+    event => {
+
+      event.stopPropagation();
+
+      toggleFavorite(
+        photo.id
+      );
+
+    }
+  );
 
   card.addEventListener(
     "click",
     () => {
 
-      openPhoto(photo);
+      openPhoto(
+        photo
+      );
 
     }
   );
@@ -2527,673 +2942,3 @@ function createPhotoCard(photo){
   return card;
 
 }
-
-/* =========================================================
-   PHOTO MODAL
-========================================================= */
-
-function openPhoto(photo){
-
-  activePhoto =
-    photo;
-
-  const chapter =
-    getChapter(
-      photo.chapter_id
-    );
-
-  const img =
-    document.getElementById(
-      "modalImage"
-    );
-
-  img.src =
-    getPhotoUrl(
-      photo.image_path
-    );
-
-  img.alt =
-    photo.title ||
-    "Family memory";
-
-  document.getElementById(
-    "modalTitle"
-  ).textContent =
-    photo.title ||
-    "A Memory";
-
-  document.getElementById(
-    "modalMeta"
-  ).textContent =
-    buildMeta(photo);
-
-  const chapterBox =
-    document.getElementById(
-      "modalChapter"
-    );
-
-  if(chapter){
-
-    chapterBox.textContent =
-      chapter.name;
-
-    chapterBox.style.display =
-      "inline-block";
-
-  }
-
-  else{
-
-    chapterBox.style.display =
-      "none";
-
-  }
-
-  const caption =
-    document.getElementById(
-      "modalCaption"
-    );
-
-  if(photo.caption){
-
-    caption.textContent =
-      photo.caption;
-
-    caption.style.display =
-      "block";
-
-  }
-
-  else{
-
-    caption.style.display =
-      "none";
-
-  }
-
-  const myMemory =
-    document.getElementById(
-      "modalMyMemory"
-    );
-
-  if(photo.my_memory){
-
-    myMemory.textContent =
-      photo.my_memory;
-
-    myMemory.style.display =
-      "block";
-
-  }
-
-  else{
-
-    myMemory.style.display =
-      "none";
-
-  }
-
-  const existingMemory =
-    memories.find(
-      item =>
-        item.photo_id ===
-        photo.id
-    );
-
-  document.getElementById(
-    "andieMemory"
-  ).value =
-    existingMemory?.memory ||
-    "";
-
-  document.getElementById(
-    "memoryStatus"
-  ).textContent =
-    "";
-
-  updateModalFavorite();
-
-  document.getElementById(
-    "photoModal"
-  ).classList.add(
-    "open"
-  );
-
-  document.body.style.overflow =
-    "hidden";
-
-}
-
-function closeModal(){
-
-  document.getElementById(
-    "photoModal"
-  ).classList.remove(
-    "open"
-  );
-
-  document.body.style.overflow =
-    "";
-
-  activePhoto =
-    null;
-
-}
-
-document.getElementById(
-  "photoModal"
-).addEventListener(
-  "click",
-  event => {
-
-    if(
-      event.target.id ===
-      "photoModal"
-    ){
-      closeModal();
-    }
-
-  }
-);
-
-document.addEventListener(
-  "keydown",
-  event => {
-
-    if(event.key === "Escape"){
-      closeModal();
-    }
-
-  }
-);
-
-document.getElementById(
-  "modalFavorite"
-).addEventListener(
-  "click",
-  async () => {
-
-    if(!activePhoto){
-      return;
-    }
-
-    await toggleFavorite(
-      activePhoto.id
-    );
-
-    updateModalFavorite();
-
-  }
-);
-
-/* =========================================================
-   FAVORITES
-========================================================= */
-
-function isFavorite(photoId){
-
-  return favorites.some(
-    favorite =>
-      favorite.photo_id ===
-      photoId
-  );
-
-}
-
-async function toggleFavorite(
-  photoId
-){
-
-  const existing =
-    favorites.find(
-      favorite =>
-        favorite.photo_id ===
-        photoId
-    );
-
-  if(existing){
-
-    const result =
-      await supabaseClient
-        .from("favorites")
-        .delete()
-        .eq(
-          "photo_id",
-          photoId
-        );
-
-    if(result.error){
-
-      console.error(
-        result.error
-      );
-
-      alert(
-        "Favorites aren't writable yet. We'll enable this when we add Andie's login."
-      );
-
-      return;
-
-    }
-
-    favorites =
-      favorites.filter(
-        favorite =>
-          favorite.photo_id !==
-          photoId
-      );
-
-  }
-
-  else{
-
-    const result =
-      await supabaseClient
-        .from("favorites")
-        .insert({
-          photo_id:photoId
-        })
-        .select()
-        .single();
-
-    if(result.error){
-
-      console.error(
-        result.error
-      );
-
-      alert(
-        "Favorites aren't writable yet. We'll enable this when we add Andie's login."
-      );
-
-      return;
-
-    }
-
-    favorites.push(
-      result.data
-    );
-
-  }
-
-  renderChapterSelector();
-
-  if(activeView === "favorites"){
-
-    showFavorites(false);
-
-  }
-
-  else if(activeView === "all"){
-
-    showAllMemories(false);
-
-  }
-
-  else{
-
-    renderPhotos(
-      photos.filter(
-        photo =>
-          Number(photo.chapter_id) ===
-          Number(activeView)
-      )
-    );
-
-  }
-
-  updateModalFavorite();
-
-}
-
-function updateModalFavorite(){
-
-  const button =
-    document.getElementById(
-      "modalFavorite"
-    );
-
-  if(!activePhoto){
-
-    button.textContent =
-      "♡";
-
-    button.classList.remove(
-      "active"
-    );
-
-    return;
-
-  }
-
-  if(
-    isFavorite(
-      activePhoto.id
-    )
-  ){
-
-    button.textContent =
-      "♥";
-
-    button.classList.add(
-      "active"
-    );
-
-  }
-
-  else{
-
-    button.textContent =
-      "♡";
-
-    button.classList.remove(
-      "active"
-    );
-
-  }
-
-}
-
-/* =========================================================
-   ANDIE'S MEMORY
-========================================================= */
-
-async function saveAndieMemory(){
-
-  if(!activePhoto){
-    return;
-  }
-
-  const textarea =
-    document.getElementById(
-      "andieMemory"
-    );
-
-  const status =
-    document.getElementById(
-      "memoryStatus"
-    );
-
-  const button =
-    document.getElementById(
-      "saveMemoryButton"
-    );
-
-  button.disabled =
-    true;
-
-  status.textContent =
-    "Saving...";
-
-  const memoryText =
-    textarea.value.trim();
-
-  const existing =
-    memories.find(
-      item =>
-        item.photo_id ===
-        activePhoto.id
-    );
-
-  let result;
-
-  if(existing){
-
-    result =
-      await supabaseClient
-        .from(
-          "andie_memories"
-        )
-        .update({
-          memory:
-            memoryText ||
-            null,
-
-          updated_at:
-            new Date()
-              .toISOString()
-        })
-        .eq(
-          "photo_id",
-          activePhoto.id
-        )
-        .select()
-        .single();
-
-  }
-
-  else{
-
-    result =
-      await supabaseClient
-        .from(
-          "andie_memories"
-        )
-        .insert({
-          photo_id:
-            activePhoto.id,
-
-          memory:
-            memoryText ||
-            null
-        })
-        .select()
-        .single();
-
-  }
-
-  if(result.error){
-
-    console.error(
-      result.error
-    );
-
-    status.textContent =
-      "Saving will be enabled with Mom's login.";
-
-    button.disabled =
-      false;
-
-    return;
-
-  }
-
-  if(existing){
-
-    memories =
-      memories.map(
-        item =>
-          item.photo_id ===
-          activePhoto.id
-            ? result.data
-            : item
-      );
-
-  }
-
-  else{
-
-    memories.push(
-      result.data
-    );
-
-  }
-
-  status.textContent =
-    "Saved ♥";
-
-  button.disabled =
-    false;
-
-}
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function getPhotoUrl(path){
-
-  return supabaseClient
-    .storage
-    .from(
-      "family-photos"
-    )
-    .getPublicUrl(path)
-    .data
-    .publicUrl;
-
-}
-
-function getChapter(chapterId){
-
-  return chapters.find(
-    chapter =>
-      Number(chapter.id) ===
-      Number(chapterId)
-  );
-
-}
-
-function formatChapterYears(
-  chapter
-){
-
-  if(
-    chapter.start_year ===
-    chapter.end_year
-  ){
-
-    return String(
-      chapter.start_year
-    );
-
-  }
-
-  return (
-    chapter.start_year +
-    " — " +
-    chapter.end_year
-  );
-
-}
-
-function buildMeta(photo){
-
-  const pieces = [];
-
-  if(photo.photo_date){
-
-    const date =
-      new Date(
-        photo.photo_date +
-        "T12:00:00"
-      );
-
-    pieces.push(
-      date.toLocaleDateString(
-        undefined,
-        {
-          year:"numeric",
-          month:"long",
-          day:"numeric"
-        }
-      )
-    );
-
-  }
-
-  else if(photo.photo_year){
-
-    pieces.push(
-      String(
-        photo.photo_year
-      )
-    );
-
-  }
-
-  if(photo.location){
-
-    pieces.push(
-      photo.location
-    );
-
-  }
-
-  return pieces.join(
-    " • "
-  );
-
-}
-
-function updateActiveButton(){
-
-  document
-    .querySelectorAll(
-      ".chapter-button"
-    )
-    .forEach(
-      button => {
-
-        button.classList.toggle(
-          "active",
-          button.dataset.view ===
-          String(activeView)
-        );
-
-      }
-    );
-
-}
-
-function openScrapbook(){
-
-  showAllMemories(false);
-
-  scrollToScrapbook();
-
-}
-
-function scrollToScrapbook(){
-
-  document.getElementById(
-    "scrapbook"
-  ).scrollIntoView({
-    behavior:"smooth",
-    block:"start"
-  });
-
-}
-
-function escapeHTML(value){
-
-  if(
-    value === null ||
-    value === undefined
-  ){
-    return "";
-  }
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-function escapeAttribute(value){
-  return escapeHTML(value);
-}
-
-/* =========================================================
-   START
-========================================================= */
-
-loadScrapbook();
-
-</script>
-
-</body>
-</html>
