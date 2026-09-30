@@ -2383,7 +2383,55 @@ button {
   }
 
 }
-   </style>
+   
+/* FANTASY DECORATIONS V1 */
+.fantasy-decor {
+  position:absolute;
+  z-index:4;
+  pointer-events:none;
+  user-select:none;
+}
+.fantasy-dragon-sheet {
+  width:clamp(170px, 18vw, 300px);
+  border-radius:28px;
+  opacity:.96;
+  filter:drop-shadow(0 14px 22px rgba(17,38,58,.22));
+  mix-blend-mode:multiply;
+}
+.fantasy-hero-left { left:1.5%; bottom:3%; transform:rotate(-6deg); }
+.fantasy-hero-right { right:1.5%; top:8%; transform:rotate(6deg) scale(.78); }
+.fantasy-scrap-left { left:-18px; top:115px; transform:rotate(-4deg) scale(.68); transform-origin:left top; }
+.fantasy-scrap-right { right:-18px; bottom:65px; transform:rotate(5deg) scale(.68); transform-origin:right bottom; }
+.fantasy-sparkle {
+  position:absolute;
+  z-index:5;
+  pointer-events:none;
+  color:var(--gold);
+  text-shadow:0 2px 8px rgba(184,154,91,.28);
+  animation:fantasyTwinkle 3.8s ease-in-out infinite;
+}
+.fantasy-sparkle.s1 { left:7%; top:8%; font-size:1.5rem; }
+.fantasy-sparkle.s2 { right:8%; top:18%; font-size:2rem; animation-delay:-1.1s; }
+.fantasy-sparkle.s3 { left:3%; top:46%; font-size:1.1rem; animation-delay:-2.2s; }
+.fantasy-sparkle.s4 { right:4%; top:58%; font-size:1.6rem; animation-delay:-.6s; }
+.fantasy-sparkle.s5 { left:9%; bottom:8%; font-size:1.9rem; animation-delay:-1.7s; }
+@keyframes fantasyTwinkle {
+  0%,100% { opacity:.38; transform:translateY(0) rotate(0deg) scale(.85); }
+  50% { opacity:1; transform:translateY(-8px) rotate(12deg) scale(1.12); }
+}
+.scrapbook-stage { overflow:hidden; }
+.scrapbook { isolation:isolate; }
+.photo-grid, .view-heading, #scrapbookView, #loading { position:relative; z-index:6; }
+@media(max-width:1050px) {
+  .fantasy-dragon-sheet { width:165px; opacity:.82; }
+  .fantasy-scrap-left, .fantasy-scrap-right { transform:scale(.5); }
+}
+@media(max-width:700px) {
+  .fantasy-hero-left, .fantasy-hero-right, .fantasy-scrap-left, .fantasy-scrap-right { display:none; }
+  .fantasy-sparkle { opacity:.65; }
+}
+
+</style>
 
 </head>
 
@@ -2431,6 +2479,16 @@ button {
   class="hero"
   id="home"
 >
+
+<!-- FANTASY DECORATIONS V1 -->
+<img class="fantasy-decor fantasy-dragon-sheet fantasy-hero-left" src="dragon-decorations.png" alt="" aria-hidden="true">
+<img class="fantasy-decor fantasy-dragon-sheet fantasy-hero-right" src="dragon-decorations.png" alt="" aria-hidden="true">
+<span class="fantasy-sparkle s1" aria-hidden="true">✦</span>
+<span class="fantasy-sparkle s2" aria-hidden="true">✧</span>
+<span class="fantasy-sparkle s3" aria-hidden="true">✦</span>
+<span class="fantasy-sparkle s4" aria-hidden="true">✧</span>
+<span class="fantasy-sparkle s5" aria-hidden="true">✦</span>
+
 
   <span
     class="sparkle one"
@@ -2569,6 +2627,10 @@ button {
     class="scrapbook"
     id="scrapbook"
   >
+
+<img class="fantasy-decor fantasy-dragon-sheet fantasy-scrap-left" src="dragon-decorations.png" alt="" aria-hidden="true">
+<img class="fantasy-decor fantasy-dragon-sheet fantasy-scrap-right" src="dragon-decorations.png" alt="" aria-hidden="true">
+
 
     <div
       class="loading"
